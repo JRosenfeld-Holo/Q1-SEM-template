@@ -52,7 +52,7 @@ export function HeroSection() {
 
             {/* Subhead */}
             <p
-              className="text-lg text-white/55 max-w-md leading-relaxed"
+              className="text-xl text-white/80 max-w-md leading-relaxed"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Your devices deserve better than single-carrier reliability.

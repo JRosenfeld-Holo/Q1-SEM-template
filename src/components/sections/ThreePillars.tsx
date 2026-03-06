@@ -15,7 +15,7 @@ export function ThreePillars() {
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-5"
+            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-5"
             style={{ fontFamily: "var(--font-messina-var)" }}
           >
             How Hologram is different
@@ -40,7 +40,7 @@ export function ThreePillars() {
             <div className="h-full flex flex-col justify-between p-8 md:p-10">
               <div className="flex flex-col gap-5">
                 <span
-                  className="text-xs text-brand-cyan tracking-[0.2em] uppercase font-semibold"
+                  className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
                   style={{ fontFamily: "var(--font-messina-var)" }}
                 >
                   Reliability
@@ -52,7 +52,7 @@ export function ThreePillars() {
                   Multi-carrier redundancy, not single-carrier risk.
                 </h3>
                 <p
-                  className="text-sm text-white/50 leading-relaxed max-w-md"
+                  className="text-base text-white/80 leading-relaxed max-w-md"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   HyperSIM connects across 550+ carriers. If one network falters, your devices
@@ -66,7 +66,7 @@ export function ThreePillars() {
                     "Zero-touch remediation",
                     "99.95% uptime SLA (historical 99.99%)",
                   ].map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-sm text-white/60" style={{ fontFamily: "var(--font-inter-var)" }}>
+                    <li key={f} className="flex items-center gap-2.5 text-base text-white/80" style={{ fontFamily: "var(--font-inter-var)" }}>
                       <Check color="#53f2fa" />
                       {f}
                     </li>
@@ -83,7 +83,7 @@ export function ThreePillars() {
                   99.95%
                 </p>
                 <p
-                  className="text-xs text-white/40 mt-2"
+                  className="text-sm text-white/65 mt-2"
                   style={{ fontFamily: "var(--font-messina-var)" }}
                 >
                   Uptime SLA — contractually guaranteed
@@ -99,7 +99,7 @@ export function ThreePillars() {
             style={{ background: "linear-gradient(135deg, rgba(191,253,17,0.04) 0%, rgba(255,255,255,0.015) 100%)" } as React.CSSProperties}
           >
             <span
-              className="block text-xs text-brand-lime tracking-[0.2em] uppercase font-semibold mb-4"
+              className="block text-sm text-brand-lime tracking-[0.2em] uppercase font-semibold mb-4"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Pricing
@@ -111,7 +111,7 @@ export function ThreePillars() {
               Transparent pricing you can build a business on.
             </h3>
             <p
-              className="text-sm text-white/50 leading-relaxed mb-6"
+              className="text-base text-white/80 leading-relaxed mb-6"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Predictable rates, flexible plans, no hidden fees. Your unit economics stay intact from 10 devices to 10,000.
@@ -124,7 +124,7 @@ export function ThreePillars() {
                 Up to 50%
               </span>
               <span
-                className="text-xs text-white/35"
+                className="text-sm text-white/60"
                 style={{ fontFamily: "var(--font-messina-var)" }}
               >
                 savings vs. carrier direct
@@ -139,7 +139,7 @@ export function ThreePillars() {
             style={{ background: "linear-gradient(135deg, rgba(155,89,212,0.04) 0%, rgba(255,255,255,0.015) 100%)" } as React.CSSProperties}
           >
             <span
-              className="block text-xs text-brand-violet tracking-[0.2em] uppercase font-semibold mb-4"
+              className="block text-sm text-brand-violet tracking-[0.2em] uppercase font-semibold mb-4"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Partnership
@@ -151,7 +151,7 @@ export function ThreePillars() {
               An engineering partner, not a support ticket queue.
             </h3>
             <p
-              className="text-sm text-white/50 leading-relaxed mb-6"
+              className="text-base text-white/80 leading-relaxed mb-6"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Our solutions engineers dig into modem logs with you. Scale from 1 to 1 million devices with a team that actually picks up the phone.
@@ -164,7 +164,7 @@ export function ThreePillars() {
                 1 → 1M
               </span>
               <span
-                className="text-xs text-white/35"
+                className="text-sm text-white/60"
                 style={{ fontFamily: "var(--font-messina-var)" }}
               >
                 devices with hands-on support

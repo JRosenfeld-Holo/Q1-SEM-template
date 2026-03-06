@@ -87,7 +87,7 @@ function StatItem({
         </span>
       </div>
       <p
-        className="text-xs text-white/40 leading-snug max-w-[160px] mx-auto"
+        className="text-sm text-white/65 leading-snug max-w-[160px] mx-auto"
         style={{ fontFamily: "var(--font-messina-var)" }}
       >
         {label}

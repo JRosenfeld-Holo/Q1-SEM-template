@@ -48,7 +48,7 @@ export function Nav() {
                 href={link.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+                className="text-sm text-white/80 hover:text-white transition-colors duration-200 cursor-pointer"
                 style={{ fontFamily: "var(--font-inter-var)" }}
               >
                 {link.label}
@@ -103,7 +103,7 @@ export function Nav() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/70 hover:text-white transition-colors duration-200"
+                  className="text-sm text-white/85 hover:text-white transition-colors duration-200"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                   onClick={() => setMenuOpen(false)}
                 >

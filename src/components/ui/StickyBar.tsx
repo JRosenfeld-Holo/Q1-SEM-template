@@ -44,7 +44,7 @@ export function StickyBar() {
         >
           <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
             <p
-              className="text-sm text-white/60 hidden sm:block"
+              className="text-sm text-white/80 hidden sm:block"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Stop losing revenue to connectivity downtime.

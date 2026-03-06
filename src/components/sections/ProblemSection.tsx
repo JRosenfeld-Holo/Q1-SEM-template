@@ -24,7 +24,7 @@ export function ProblemSection() {
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-5"
+            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-5"
             style={{ fontFamily: "var(--font-messina-var)" }}
           >
             The problem
@@ -36,7 +36,7 @@ export function ProblemSection() {
             Your connectivity provider is costing you more than you think.
           </h2>
           <p
-            className="text-white/50 text-lg mb-16 max-w-xl leading-relaxed"
+            className="text-white/80 text-xl mb-16 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             Unpredictable pricing. Weeks-long support tickets. Single-carrier dead zones. Sound familiar?
@@ -48,7 +48,7 @@ export function ProblemSection() {
             <FadeIn key={p.number} delay={i * 0.09}>
               <div className="group h-full p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-brand-lime/30 hover:bg-white/[0.04] transition-all duration-300 cursor-default">
                 <span
-                  className="block text-xs text-white/40 mb-5 tracking-widest"
+                  className="block text-sm text-white/65 mb-5 tracking-widest"
                   style={{ fontFamily: "var(--font-messina-var)" }}
                 >
                   {p.number}
@@ -60,7 +60,7 @@ export function ProblemSection() {
                   {p.title}
                 </h3>
                 <p
-                  className="text-sm text-white/50 leading-relaxed"
+                  className="text-base text-white/80 leading-relaxed"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   {p.body}

@@ -39,7 +39,7 @@ export function HyperSIMProduct() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <div>
               <p
-                className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-4"
+                className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-4"
                 style={{ fontFamily: "var(--font-messina-var)" }}
               >
                 HyperSIM
@@ -60,7 +60,7 @@ export function HyperSIMProduct() {
             <FadeIn key={f.label} delay={i * 0.08}>
               <div className="h-full p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-brand-lime/20 hover:bg-white/[0.035] transition-all duration-300 cursor-default">
                 <span
-                  className="block text-xs text-brand-lime tracking-[0.18em] uppercase mb-4"
+                  className="block text-sm text-brand-lime tracking-[0.18em] uppercase mb-4"
                   style={{ fontFamily: "var(--font-messina-var)" }}
                 >
                   {f.label}
@@ -72,7 +72,7 @@ export function HyperSIMProduct() {
                   {f.headline}
                 </h3>
                 <p
-                  className="text-sm text-white/50 leading-relaxed mb-6"
+                  className="text-base text-white/80 leading-relaxed mb-6"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   {f.body}
@@ -85,7 +85,7 @@ export function HyperSIMProduct() {
                     {f.stat}
                   </span>
                   <span
-                    className="text-xs text-white/40"
+                    className="text-sm text-white/65"
                     style={{ fontFamily: "var(--font-messina-var)" }}
                   >
                     {f.statLabel}

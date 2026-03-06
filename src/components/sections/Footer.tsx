@@ -56,7 +56,7 @@ export function Footer() {
               />
             </div>
             <p
-              className="text-sm text-white/40 leading-relaxed max-w-xs mb-5"
+              className="text-sm text-white/70 leading-relaxed max-w-xs mb-5"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Carrier-grade IoT connectivity with multi-carrier redundancy,
@@ -75,7 +75,7 @@ export function Footer() {
           {FOOTER_LINKS.map((section) => (
             <div key={section.title}>
               <p
-                className="text-xs text-white/40 tracking-[0.15em] uppercase mb-4"
+                className="text-sm text-white/60 tracking-[0.15em] uppercase mb-4"
                 style={{ fontFamily: "var(--font-messina-var)" }}
               >
                 {section.title}
@@ -87,7 +87,7 @@ export function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-white/50 hover:text-white transition-colors duration-200"
+                      className="text-sm text-white/75 hover:text-white transition-colors duration-200"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     >
                       {link.label}
@@ -102,7 +102,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/[0.06]">
           <p
-            className="text-xs text-white/40"
+            className="text-sm text-white/60"
             style={{ fontFamily: "var(--font-messina-var)" }}
           >
             © {new Date().getFullYear()} Hologram, Inc. All rights reserved.
@@ -112,7 +112,7 @@ export function Footer() {
               href="https://hologram.io/privacy-policy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-white/40 hover:text-white/50 transition-colors duration-200"
+              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Privacy Policy
@@ -121,7 +121,7 @@ export function Footer() {
               href="https://hologram.io/terms-of-use/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-white/40 hover:text-white/50 transition-colors duration-200"
+              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Terms of Use
@@ -130,7 +130,7 @@ export function Footer() {
               href="https://hologram.io/sdn-security/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-white/40 hover:text-white/50 transition-colors duration-200"
+              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Security

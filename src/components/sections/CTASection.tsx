@@ -15,7 +15,7 @@ export function CTASection() {
       <div className="relative z-10 max-w-2xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-6"
+            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-6"
             style={{ fontFamily: "var(--font-messina-var)" }}
           >
             Get connected
@@ -27,7 +27,7 @@ export function CTASection() {
             Ready to stop fighting your connectivity provider?
           </h2>
           <p
-            className="text-white/55 text-lg mb-10 leading-relaxed"
+            className="text-white/80 text-xl mb-10 leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             Start with a free developer account and 1 SIM. Scale to
@@ -65,7 +65,7 @@ export function CTASection() {
             ].map((line) => (
               <div
                 key={line}
-                className="flex items-center gap-2 text-xs text-white/40"
+                className="flex items-center gap-2 text-sm text-white/65"
                 style={{ fontFamily: "var(--font-inter-var)" }}
               >
                 <span className="text-brand-lime shrink-0">

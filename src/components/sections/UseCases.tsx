@@ -160,7 +160,7 @@ export function UseCases() {
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-5"
+            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-5"
             style={{ fontFamily: "var(--font-messina-var)" }}
           >
             Use cases
@@ -172,7 +172,7 @@ export function UseCases() {
             Built for the devices your business depends on.
           </h2>
           <p
-            className="text-white/50 text-lg mb-14 max-w-xl leading-relaxed"
+            className="text-white/80 text-xl mb-14 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             From cameras to charging stations to robots — Hologram keeps every connected device online.
@@ -196,16 +196,16 @@ export function UseCases() {
                   aria-controls={`panel-${u.id}`}
                   onClick={() => setActive(u.id)}
                   className={`
-                    inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-medium whitespace-nowrap shrink-0
+                    inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium whitespace-nowrap shrink-0
                     border transition-all duration-200 cursor-pointer
                     ${isActive
                       ? "bg-brand-lime/10 border-brand-lime/40 text-brand-lime"
-                      : "border-white/[0.10] text-white/50 hover:text-white/80 hover:border-white/20"
+                      : "border-white/[0.10] text-white/75 hover:text-white hover:border-white/30"
                     }
                   `}
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
-                  <span className={isActive ? "text-brand-lime" : "text-white/30"}>
+                  <span className={isActive ? "text-brand-lime" : "text-white/55"}>
                     <u.Icon />
                   </span>
                   {u.label}
@@ -239,7 +239,7 @@ export function UseCases() {
                   {current.subhead}
                 </p>
                 <p
-                  className="text-white/55 text-sm leading-relaxed mb-8"
+                  className="text-white/80 text-base leading-relaxed mb-8"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   {current.pain}
@@ -256,7 +256,7 @@ export function UseCases() {
                         </svg>
                       </span>
                       <span
-                        className="text-sm text-white/70 leading-relaxed"
+                        className="text-base text-white/85 leading-relaxed"
                         style={{ fontFamily: "var(--font-inter-var)" }}
                       >
                         {point}
@@ -278,7 +278,7 @@ export function UseCases() {
                   {current.stat.value}
                 </p>
                 <p
-                  className="text-sm text-white/40 leading-snug"
+                  className="text-base text-white/65 leading-snug"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   {current.stat.label}
@@ -288,13 +288,13 @@ export function UseCases() {
               {/* Quote card */}
               <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8">
                 <blockquote
-                  className="text-sm text-white/70 leading-relaxed italic mb-4"
+                  className="text-base text-white/85 leading-relaxed italic mb-4"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
                 <p
-                  className="text-xs text-white/40 uppercase tracking-wider"
+                  className="text-sm text-white/65 uppercase tracking-wider"
                   style={{ fontFamily: "var(--font-messina-var)" }}
                 >
                   — {current.customer}

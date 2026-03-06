@@ -34,7 +34,7 @@ function InputField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={name}
-        className="text-xs font-medium text-white/70 tracking-wide"
+        className="text-sm font-medium text-white/85 tracking-wide"
         style={{ fontFamily: "var(--font-inter-var)" }}
       >
         {label}{required && <span className="text-brand-lime ml-0.5">*</span>}
@@ -47,7 +47,7 @@ function InputField({
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-sm placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200"
+        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-base placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200"
         style={{ fontFamily: "var(--font-inter-var)" }}
       />
     </div>
@@ -73,7 +73,7 @@ function SelectField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={name}
-        className="text-xs font-medium text-white/70 tracking-wide"
+        className="text-sm font-medium text-white/85 tracking-wide"
         style={{ fontFamily: "var(--font-inter-var)" }}
       >
         {label}{required && <span className="text-brand-lime ml-0.5">*</span>}
@@ -84,7 +84,7 @@ function SelectField({
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-sm focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 cursor-pointer appearance-none"
+        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-base focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 cursor-pointer appearance-none"
         style={{
           fontFamily: "var(--font-inter-var)",
           color: value ? "#ffffff" : "rgba(255,255,255,0.25)",
@@ -166,7 +166,7 @@ export function ContactSection() {
           {/* Left: copy — 2 cols */}
           <FadeIn className="lg:col-span-2 flex flex-col gap-6 lg:sticky lg:top-28">
             <p
-              className="text-xs text-brand-lime tracking-[0.2em] uppercase"
+              className="text-sm text-brand-lime tracking-[0.2em] uppercase"
               style={{ fontFamily: "var(--font-messina-var)" }}
             >
               Contact sales
@@ -178,7 +178,7 @@ export function ContactSection() {
               Talk to an IoT expert.
             </h2>
             <p
-              className="text-white/50 text-base leading-relaxed"
+              className="text-white/80 text-lg leading-relaxed"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Tell us about your deployment. We&apos;ll match you with the
@@ -193,7 +193,7 @@ export function ContactSection() {
                       <path d="M4.5 7L6.5 9L9.5 5" stroke="#bffd11" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </span>
-                  <span className="text-sm text-white/55" style={{ fontFamily: "var(--font-inter-var)" }}>
+                  <span className="text-base text-white/80" style={{ fontFamily: "var(--font-inter-var)" }}>
                     {point}
                   </span>
                 </li>
@@ -215,7 +215,7 @@ export function ContactSection() {
                     <p className="text-white font-medium text-lg mb-1" style={{ fontFamily: "var(--font-roobert-var)" }}>
                       We&apos;ll be in touch soon.
                     </p>
-                    <p className="text-white/45 text-sm" style={{ fontFamily: "var(--font-inter-var)" }}>
+                    <p className="text-white/70 text-base" style={{ fontFamily: "var(--font-inter-var)" }}>
                       Expect a response within one business day.
                     </p>
                   </div>
@@ -263,7 +263,7 @@ export function ContactSection() {
                   <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="message"
-                      className="text-xs font-medium text-white/70 tracking-wide"
+                      className="text-sm font-medium text-white/85 tracking-wide"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     >
                       Tell us about your use case
@@ -275,7 +275,7 @@ export function ContactSection() {
                       placeholder="Describe your deployment, industry, or connectivity challenge…"
                       value={form.message}
                       onChange={set("message")}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-sm placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-base placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 resize-none"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     />
                   </div>
@@ -295,9 +295,9 @@ export function ContactSection() {
                     {status === "submitting" ? "Sending…" : "Talk to an IoT expert"}
                   </button>
 
-                  <p className="text-xs text-white/25 text-center" style={{ fontFamily: "var(--font-inter-var)" }}>
+                  <p className="text-sm text-white/50 text-center" style={{ fontFamily: "var(--font-inter-var)" }}>
                     By submitting, you agree to Hologram&apos;s{" "}
-                    <a href="https://www.hologram.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-brand-lime/70 transition-colors underline underline-offset-2">
+                    <a href="https://www.hologram.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-brand-lime/70 transition-colors underline underline-offset-2">
                       Privacy Policy
                     </a>.
                   </p>

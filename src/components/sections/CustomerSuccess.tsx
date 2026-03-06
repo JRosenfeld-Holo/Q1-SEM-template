@@ -140,7 +140,7 @@ export function CustomerSuccess() {
               <button
                 onClick={() => go(index - 1, -1)}
                 aria-label="Previous story"
-                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/50 hover:text-white hover:border-white/25 transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/75 hover:text-white hover:border-white/40 transition-all duration-200 cursor-pointer"
               >
                 <ChevronLeft />
               </button>
@@ -161,7 +161,7 @@ export function CustomerSuccess() {
               <button
                 onClick={() => go(index + 1, 1)}
                 aria-label="Next story"
-                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/50 hover:text-white hover:border-white/25 transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/75 hover:text-white hover:border-white/40 transition-all duration-200 cursor-pointer"
               >
                 <ChevronRight />
               </button>
@@ -202,7 +202,7 @@ export function CustomerSuccess() {
                       />
                       <span className="h-px flex-1 bg-white/[0.08]" />
                       <span
-                        className="text-xs text-white/40 uppercase tracking-wider shrink-0"
+                        className="text-sm text-white/65 uppercase tracking-wider shrink-0"
                         style={{ fontFamily: "var(--font-messina-var)" }}
                       >
                         {s.industry}
@@ -211,7 +211,7 @@ export function CustomerSuccess() {
 
                     {/* Quote */}
                     <blockquote
-                      className="text-xl md:text-2xl text-white/90 leading-snug font-medium mb-5"
+                      className="text-xl md:text-2xl text-white leading-snug font-medium mb-5"
                       style={{ fontFamily: "var(--font-roobert-var)" }}
                     >
                       &ldquo;{s.quote}&rdquo;
@@ -219,7 +219,7 @@ export function CustomerSuccess() {
 
                     {/* Attribution */}
                     <p
-                      className="text-xs text-white/40 leading-snug"
+                      className="text-sm text-white/65 leading-snug"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     >
                       {s.name} &mdash; {s.title}
@@ -237,7 +237,7 @@ export function CustomerSuccess() {
                           {m.value}
                         </p>
                         <p
-                          className="text-xs text-white/40 leading-tight"
+                          className="text-sm text-white/65 leading-tight"
                           style={{ fontFamily: "var(--font-messina-var)" }}
                         >
                           {m.label}
@@ -257,7 +257,7 @@ export function CustomerSuccess() {
                       Challenge
                     </p>
                     <p
-                      className="text-sm text-white/55 leading-relaxed"
+                      className="text-base text-white/80 leading-relaxed"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     >
                       {s.challenge}
@@ -271,7 +271,7 @@ export function CustomerSuccess() {
                       Solution
                     </p>
                     <p
-                      className="text-sm text-white/55 leading-relaxed"
+                      className="text-base text-white/80 leading-relaxed"
                       style={{ fontFamily: "var(--font-inter-var)" }}
                     >
                       {s.solution}
