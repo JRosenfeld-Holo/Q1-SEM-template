@@ -1,26 +1,86 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand Colors */
+  --color-brand-lime: #bffd11;
+  --color-brand-deep: #00040f;
+  --color-brand-cyan: #53f2fa;
+  --color-brand-olive: #4c6810;
+  --color-brand-teal: #106468;
+  --color-brand-gray: #3a3c46;
+  --color-brand-gold: #c9a84c;
+  --color-brand-violet: #9b59d4;
+
+  /* Font Families */
+  --font-inter: var(--font-inter-var);
+  --font-roobert: var(--font-roobert-var);
+  --font-messina: var(--font-messina-var);
+
+  /* Box Shadows */
+  --shadow-lime-glow: 0 0 30px rgba(191, 253, 17, 0.35);
+  --shadow-lime-glow-lg: 0 0 60px rgba(191, 253, 17, 0.25);
+  --shadow-gold-glow: 0 0 20px rgba(201, 168, 76, 0.4);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #00040f;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Keyboard navigation focus ring ── */
+:focus-visible {
+  outline: 2px solid #bffd11;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ── Text selection ── */
+::selection {
+  background-color: #bffd11;
+  color: #000000;
+}
+
+/* ── Logo marquee ── */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 32s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #00040f;
+}
+::-webkit-scrollbar-thumb {
+  background: #3a3c46;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #bffd11;
 }
