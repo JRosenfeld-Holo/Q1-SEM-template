@@ -83,36 +83,20 @@ export function HeroSection() {
                 className="flex flex-col sm:flex-row gap-4"
               >
                 <a
-                  href="https://dashboard.hologram.io/account/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#contact"
                   className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
-                  Start building for free
+                  Talk to an IoT expert
                 </a>
                 <a
-                  href="#contact"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-[10px] border border-white/20 text-white text-sm cursor-pointer hover:bg-[#2b2f3b] hover:border-white/40 transition-all duration-200"
+                  href="https://dashboard.hologram.io/account/register"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] border border-white/20 text-white text-sm cursor-pointer hover:bg-[#2b2f3b] hover:border-white/40 transition-all duration-200"
                   style={{ fontFamily: "var(--font-inter-var)" }}
                 >
-                  Talk to an IoT expert
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
-                  >
-                    <path
-                      d="M3 7h8M8 4l3 3-3 3"
-                      stroke="currentColor"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
+                  Start building for free
                 </a>
               </motion.div>
 
