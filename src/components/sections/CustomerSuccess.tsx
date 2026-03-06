@@ -102,7 +102,7 @@ function VideoLightbox({ videoId, onClose }: { videoId: string; onClose: () => v
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
       className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
-      style={{ background: "rgba(0,4,15,0.88)", backdropFilter: "blur(12px)" }}
+      style={{ background: "rgba(0,0,0,0.88)", backdropFilter: "blur(12px)" }}
       onClick={onClose}
     >
       <motion.div
@@ -182,7 +182,7 @@ export function CustomerSuccess() {
   };
 
   return (
-    <section id="customers" className="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section id="customers" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
@@ -191,9 +191,9 @@ export function CustomerSuccess() {
           >
             Customer success
           </p>
-          <div className="flex items-end justify-between mb-12 gap-6 flex-wrap">
+          <div className="flex items-end justify-between mb-8 md:mb-12 gap-6 flex-wrap">
             <h2
-              className="font-medium text-4xl md:text-5xl text-white max-w-2xl leading-[1.1]"
+              className="font-medium text-3xl md:text-4xl lg:text-5xl text-white max-w-2xl leading-[1.1]"
               style={{ fontFamily: "var(--font-roobert-var)" }}
             >
               Teams that switched to Hologram — and never looked back.
@@ -249,13 +249,13 @@ export function CustomerSuccess() {
               animate="center"
               exit="exit"
             >
-              <div className="rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/[0.14] transition-colors duration-300 flex flex-col">
+              <div className="rounded-2xl border border-white/[0.12] overflow-hidden hover:border-white/[0.22] transition-colors duration-300 flex flex-col">
 
                 {/* Video thumbnail — full-width header */}
                 <button
                   onClick={() => setActiveVideoId(s.videoId)}
                   aria-label={`Watch ${s.company} customer story video`}
-                  className="group relative w-full h-72 overflow-hidden cursor-pointer shrink-0 border-b border-white/[0.06]"
+                  className="group relative w-full h-52 md:h-72 overflow-hidden cursor-pointer shrink-0 border-b border-white/[0.06]"
                 >
                   <Image
                     src={s.thumbnail}
@@ -270,7 +270,7 @@ export function CustomerSuccess() {
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div
                       className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-[#bffd11] group-hover:scale-110 transition-transform duration-300"
-                      style={{ background: "rgba(0,4,15,0.55)", backdropFilter: "blur(6px)" }}
+                      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)" }}
                     >
                       <svg width="20" height="20" viewBox="0 0 24 24" fill="#bffd11" aria-hidden="true" style={{ marginLeft: "3px" }}>
                         <polygon points="5,3 19,12 5,21" />
@@ -280,7 +280,7 @@ export function CustomerSuccess() {
                   {/* Bottom fade — blends thumbnail into card body */}
                   <div
                     className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-                    style={{ background: "linear-gradient(to bottom, transparent, #00040f)" }}
+                    style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
                     aria-hidden="true"
                   />
                   {/* Watch story label */}
@@ -295,7 +295,7 @@ export function CustomerSuccess() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 flex-1">
 
                 {/* Left: logo + quote + attribution + metrics */}
-                <div className="p-8 md:p-10 bg-white/[0.02] flex flex-col justify-between gap-8">
+                <div className="p-6 md:p-10 bg-white/[0.05] flex flex-col justify-between gap-8">
                   <div>
                     {/* Company header */}
                     <div className="flex items-center gap-3 mb-6">
@@ -355,7 +355,7 @@ export function CustomerSuccess() {
                 </div>
 
                 {/* Right: challenge / solution */}
-                <div className="p-8 md:p-10 flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-white/[0.06]">
+                <div className="p-6 md:p-10 flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-white/[0.06]">
                   <div>
                     <p
                       className="text-xs text-brand-lime tracking-[0.18em] uppercase mb-3"

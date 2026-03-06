@@ -20,7 +20,7 @@ const PROBLEMS = [
 
 export function ProblemSection() {
   return (
-    <section id="solutions" className="py-24 px-6 md:px-12">
+    <section id="solutions" className="py-16 md:py-24 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
@@ -30,13 +30,13 @@ export function ProblemSection() {
             The problem
           </p>
           <h2
-            className="font-medium text-4xl md:text-5xl text-white mb-6 max-w-2xl leading-[1.1]"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl text-white mb-6 max-w-2xl leading-[1.1]"
             style={{ fontFamily: "var(--font-roobert-var)" }}
           >
             Your connectivity provider is costing you more than you think.
           </h2>
           <p
-            className="text-white/80 text-xl mb-16 max-w-xl leading-relaxed"
+            className="text-white/80 text-lg md:text-xl mb-10 md:mb-16 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             Unpredictable pricing. Weeks-long support tickets. Single-carrier dead zones. Sound familiar?
@@ -46,7 +46,7 @@ export function ProblemSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {PROBLEMS.map((p, i) => (
             <FadeIn key={p.number} delay={i * 0.09}>
-              <div className="group h-full p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-brand-lime/30 hover:bg-white/[0.04] transition-all duration-300 cursor-default">
+              <div className="group h-full p-6 md:p-8 rounded-2xl border border-white/[0.12] bg-white/[0.05] hover:border-brand-lime/40 hover:bg-white/[0.08] transition-all duration-300 cursor-default">
                 <span
                   className="block text-sm text-white/65 mb-5 tracking-widest"
                   style={{ fontFamily: "var(--font-messina-var)" }}

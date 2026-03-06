@@ -33,10 +33,10 @@ const FEATURES = [
 
 export function HyperSIMProduct() {
   return (
-    <section className="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-16">
             <div>
               <p
                 className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-4"
@@ -45,7 +45,7 @@ export function HyperSIMProduct() {
                 HyperSIM
               </p>
               <h2
-                className="font-medium text-4xl md:text-5xl text-white leading-[1.1] max-w-xl"
+                className="font-medium text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] max-w-xl"
                 style={{ fontFamily: "var(--font-roobert-var)" }}
               >
                 One SIM that never locks you into a single carrier
@@ -58,7 +58,7 @@ export function HyperSIMProduct() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {FEATURES.map((f, i) => (
             <FadeIn key={f.label} delay={i * 0.08}>
-              <div className="h-full p-8 rounded-2xl border border-white/[0.08] bg-white/[0.02] hover:border-brand-lime/20 hover:bg-white/[0.035] transition-all duration-300 cursor-default">
+              <div className="h-full p-6 md:p-8 rounded-2xl border border-white/[0.12] bg-white/[0.05] hover:border-brand-lime/35 hover:bg-white/[0.08] transition-all duration-300 cursor-default">
                 <span
                   className="block text-sm text-brand-lime tracking-[0.18em] uppercase mb-4"
                   style={{ fontFamily: "var(--font-messina-var)" }}

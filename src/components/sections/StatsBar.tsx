@@ -77,7 +77,7 @@ function StatItem({
   return (
     <div className="text-center">
       <div
-        className="text-4xl md:text-5xl font-semibold text-brand-lime mb-2 tabular-nums"
+        className="text-3xl md:text-4xl lg:text-5xl font-semibold text-brand-lime mb-2 tabular-nums"
         style={{ fontFamily: "var(--font-roobert-var)" }}
       >
         <span ref={ref}>
@@ -98,8 +98,8 @@ function StatItem({
 
 export function StatsBar() {
   return (
-    <section className="py-20 px-6 border-y border-white/[0.06]">
-      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-10">
+    <section className="py-14 md:py-20 px-6 border-y border-white/[0.06]">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
         {STATS.map((s, i) => (
           <FadeIn key={s.label} delay={i * 0.1} direction="none">
             <StatItem {...s} />

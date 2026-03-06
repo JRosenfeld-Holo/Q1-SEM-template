@@ -156,7 +156,7 @@ export function UseCases() {
   const current = USE_CASES.find((u) => u.id === active)!;
 
   return (
-    <section id="use-cases" className="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section id="use-cases" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
@@ -166,13 +166,13 @@ export function UseCases() {
             Use cases
           </p>
           <h2
-            className="font-medium text-4xl md:text-5xl text-white mb-6 max-w-2xl leading-[1.1]"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl text-white mb-6 max-w-2xl leading-[1.1]"
             style={{ fontFamily: "var(--font-roobert-var)" }}
           >
             Built for the devices your business depends on.
           </h2>
           <p
-            className="text-white/80 text-xl mb-14 max-w-xl leading-relaxed"
+            className="text-white/80 text-lg md:text-xl mb-10 md:mb-14 max-w-xl leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             From cameras to charging stations to robots — Hologram keeps every connected device online.
@@ -224,7 +224,7 @@ export function UseCases() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Left: main content — spans 3 cols */}
-            <div className="lg:col-span-3 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 md:p-10 flex flex-col gap-8">
+            <div className="lg:col-span-3 rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-10 flex flex-col gap-8">
               <div>
                 <h3
                   className="font-medium text-2xl md:text-3xl text-white mb-2 leading-snug"
@@ -270,9 +270,9 @@ export function UseCases() {
             {/* Right: stat + quote — spans 2 cols */}
             <div className="lg:col-span-2 flex flex-col gap-6">
               {/* Stat card */}
-              <div className="flex-1 rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8 flex flex-col justify-center">
+              <div className="flex-1 rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-8 flex flex-col justify-center">
                 <p
-                  className="text-5xl md:text-6xl font-semibold text-brand-lime leading-none mb-3"
+                  className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-lime leading-none mb-3"
                   style={{ fontFamily: "var(--font-roobert-var)" }}
                 >
                   {current.stat.value}
@@ -286,7 +286,7 @@ export function UseCases() {
               </div>
 
               {/* Quote card */}
-              <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-8">
+              <div className="rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-8">
                 <blockquote
                   className="text-base text-white/85 leading-relaxed italic mb-4"
                   style={{ fontFamily: "var(--font-inter-var)" }}

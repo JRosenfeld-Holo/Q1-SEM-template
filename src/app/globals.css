@@ -3,7 +3,7 @@
 @theme inline {
   /* Brand Colors */
   --color-brand-lime: #bffd11;
-  --color-brand-deep: #00040f;
+  --color-brand-deep: #000000;
   --color-brand-cyan: #53f2fa;
   --color-brand-olive: #4c6810;
   --color-brand-teal: #106468;
@@ -27,7 +27,7 @@ html {
 }
 
 body {
-  background-color: #00040f;
+  background-color: #000000;
   color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -75,7 +75,7 @@ body {
   width: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #00040f;
+  background: #000000;
 }
 ::-webkit-scrollbar-thumb {
   background: #3a3c46;

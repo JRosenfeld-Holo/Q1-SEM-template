@@ -11,7 +11,7 @@ function Check({ color = "#53f2fa" }: { color?: string }) {
 
 export function ThreePillars() {
   return (
-    <section id="products" className="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section id="products" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
@@ -21,7 +21,7 @@ export function ThreePillars() {
             How Hologram is different
           </p>
           <h2
-            className="font-medium text-4xl md:text-5xl text-white mb-12 max-w-2xl leading-[1.1]"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl text-white mb-8 md:mb-12 max-w-2xl leading-[1.1]"
             style={{ fontFamily: "var(--font-roobert-var)" }}
           >
             Carrier-grade connectivity without the carrier headaches.
@@ -34,10 +34,10 @@ export function ThreePillars() {
           {/* ── RELIABILITY — dominant card (3/5 cols, full height) ── */}
           <FadeIn
             delay={0.05}
-            className="md:col-span-3 md:row-span-2 rounded-2xl border border-brand-cyan/20 overflow-hidden"
-            style={{ background: "linear-gradient(135deg, rgba(83,242,250,0.04) 0%, rgba(255,255,255,0.015) 60%, transparent 100%)" } as React.CSSProperties}
+            className="md:col-span-3 md:row-span-2 rounded-2xl border border-brand-cyan/30 overflow-hidden"
+            style={{ background: "linear-gradient(135deg, rgba(83,242,250,0.08) 0%, rgba(255,255,255,0.03) 60%, transparent 100%)" } as React.CSSProperties}
           >
-            <div className="h-full flex flex-col justify-between p-8 md:p-10">
+            <div className="h-full flex flex-col justify-between p-6 md:p-10">
               <div className="flex flex-col gap-5">
                 <span
                   className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
@@ -77,7 +77,7 @@ export function ThreePillars() {
               {/* Big stat */}
               <div className="mt-8 pt-7 border-t border-white/[0.07]">
                 <p
-                  className="text-5xl md:text-6xl font-semibold text-brand-cyan leading-none tabular-nums"
+                  className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-cyan leading-none tabular-nums"
                   style={{ fontFamily: "var(--font-roobert-var)" }}
                 >
                   99.95%
@@ -95,8 +95,8 @@ export function ThreePillars() {
           {/* ── PRICING — top-right (2/5 cols) ── */}
           <FadeIn
             delay={0.12}
-            className="md:col-span-2 rounded-2xl border border-brand-lime/20 p-8"
-            style={{ background: "linear-gradient(135deg, rgba(191,253,17,0.04) 0%, rgba(255,255,255,0.015) 100%)" } as React.CSSProperties}
+            className="md:col-span-2 rounded-2xl border border-brand-lime/30 p-6 md:p-8"
+            style={{ background: "linear-gradient(135deg, rgba(191,253,17,0.08) 0%, rgba(255,255,255,0.03) 100%)" } as React.CSSProperties}
           >
             <span
               className="block text-sm text-brand-lime tracking-[0.2em] uppercase font-semibold mb-4"
@@ -135,8 +135,8 @@ export function ThreePillars() {
           {/* ── PARTNERSHIP — bottom-right (2/5 cols) ── */}
           <FadeIn
             delay={0.19}
-            className="md:col-span-2 rounded-2xl border border-brand-violet/20 p-8"
-            style={{ background: "linear-gradient(135deg, rgba(155,89,212,0.04) 0%, rgba(255,255,255,0.015) 100%)" } as React.CSSProperties}
+            className="md:col-span-2 rounded-2xl border border-brand-violet/30 p-6 md:p-8"
+            style={{ background: "linear-gradient(135deg, rgba(155,89,212,0.08) 0%, rgba(255,255,255,0.03) 100%)" } as React.CSSProperties}
           >
             <span
               className="block text-sm text-brand-violet tracking-[0.2em] uppercase font-semibold mb-4"

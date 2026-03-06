@@ -52,12 +52,12 @@ export function SocialProofBar() {
         {/* Edge fades */}
         <div
           className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to right, #00040f, transparent)" }}
+          style={{ background: "linear-gradient(to right, #000000, transparent)" }}
           aria-hidden="true"
         />
         <div
           className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-          style={{ background: "linear-gradient(to left, #00040f, transparent)" }}
+          style={{ background: "linear-gradient(to left, #000000, transparent)" }}
           aria-hidden="true"
         />
 
