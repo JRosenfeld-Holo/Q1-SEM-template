@@ -53,7 +53,7 @@ export function StickyBar() {
               href="https://dashboard.hologram.io/account/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-brand-lime text-black font-semibold text-sm cursor-pointer hover:shadow-lime-glow transition-all duration-300 shrink-0"
+              className="ml-auto inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200 shrink-0"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Sign up free →

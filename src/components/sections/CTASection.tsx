@@ -42,14 +42,14 @@ export function CTASection() {
               href="https://dashboard.hologram.io/register"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-brand-lime text-black font-semibold text-sm cursor-pointer hover:shadow-lime-glow-lg transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Start building for free
             </a>
             <a
               href="mailto:sales@hologram.io"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-full border border-white/20 text-white text-sm cursor-pointer hover:border-brand-lime hover:text-brand-lime transition-all duration-300"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] border border-white/20 text-white text-sm cursor-pointer hover:bg-[#2b2f3b] hover:border-white/40 transition-all duration-200"
               style={{ fontFamily: "var(--font-inter-var)" }}
             >
               Talk to an IoT expert

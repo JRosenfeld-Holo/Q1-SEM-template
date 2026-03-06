@@ -289,7 +289,7 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="mt-1 w-full inline-flex items-center justify-center px-7 py-3.5 rounded-full bg-brand-lime text-black font-semibold text-sm cursor-pointer hover:shadow-lime-glow transition-all duration-300 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="mt-1 w-full inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{ fontFamily: "var(--font-inter-var)" }}
                   >
                     {status === "submitting" ? "Sending…" : "Talk to an IoT expert"}

@@ -1,6 +1,5 @@
 import { Nav } from "@/components/nav/Nav";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { SocialProofBar } from "@/components/sections/SocialProofBar";
 import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ThreePillars } from "@/components/sections/ThreePillars";
 import { HyperSIMProduct } from "@/components/sections/HyperSIMProduct";
@@ -19,7 +18,6 @@ export default function HomePage() {
       <StickyBar />
       <main>
         <HeroSection />
-        <SocialProofBar />
         <ProblemSection />
         <ThreePillars />
         <HyperSIMProduct />

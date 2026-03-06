@@ -60,10 +60,8 @@ export function Nav() {
         {/* Desktop CTA */}
         <div className="hidden md:flex items-center">
           <a
-            href="https://www.hologram.io/contact-sales/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-5 py-2 rounded-full bg-brand-lime text-black font-semibold text-sm cursor-pointer hover:shadow-lime-glow transition-all duration-300"
+            href="#contact"
+            className="inline-flex items-center px-5 py-2 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200"
             style={{ fontFamily: "var(--font-inter-var)" }}
           >
             Talk to an IoT expert
@@ -113,10 +111,8 @@ export function Nav() {
             ))}
             <li className="pt-3 border-t border-white/[0.08]">
               <a
-                href="https://www.hologram.io/contact-sales/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex px-5 py-2.5 rounded-full bg-brand-lime text-black font-semibold text-sm w-fit"
+                href="#contact"
+                className="inline-flex px-5 py-2.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm w-fit hover:bg-[#cffe4e] transition-all duration-200"
                 style={{ fontFamily: "var(--font-inter-var)" }}
                 onClick={() => setMenuOpen(false)}
               >

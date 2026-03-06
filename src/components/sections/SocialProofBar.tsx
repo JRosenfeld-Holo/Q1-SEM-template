@@ -39,7 +39,7 @@ function LogoList({ ariaHidden = false }: { ariaHidden?: boolean }) {
 
 export function SocialProofBar() {
   return (
-    <section className="py-10 border-y border-white/[0.06] overflow-hidden">
+    <section className="py-10 border-t border-white/[0.06] overflow-hidden">
       <p
         className="text-xs text-brand-lime tracking-[0.18em] uppercase text-center mb-7"
         style={{ fontFamily: "var(--font-messina-var)" }}

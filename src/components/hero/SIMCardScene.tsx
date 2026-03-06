@@ -35,11 +35,17 @@ export function SIMCardScene() {
       style={{ perspective: "900px" }}
       className="w-full h-full flex items-center justify-center relative"
     >
-      {/* Outer div: cinematic entrance animation */}
+      {/* Outer div: cinematic spring entrance from near-edge-on */}
       <motion.div
-        initial={{ rotateY: 72, rotateX: -18, rotateZ: 8, scale: 1.45, opacity: 0 }}
+        initial={{ rotateY: 88, rotateX: -22, rotateZ: 10, scale: 1.8, opacity: 0 }}
         animate={{ rotateY: -14, rotateX: 6, rotateZ: -3, scale: 1, opacity: 1 }}
-        transition={{ duration: 1.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+        transition={{
+          type: "spring",
+          stiffness: 55,
+          damping: 18,
+          delay: 0.3,
+          opacity: { duration: 0.35, ease: "easeOut", delay: 0.3 },
+        }}
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Inner div: ongoing mouse parallax */}
@@ -64,6 +70,30 @@ export function SIMCardScene() {
               userSelect: "none",
             }}
           />
+
+          {/* Light sweep — runs once at card arrival, clipped to card shape */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: "absolute",
+              inset: 0,
+              borderRadius: "18px",
+              overflow: "hidden",
+              pointerEvents: "none",
+            }}
+          >
+            <motion.div
+              initial={{ x: "-110%" }}
+              animate={{ x: "210%" }}
+              transition={{ duration: 1.0, ease: [0.4, 0, 0.2, 1], delay: 1.6 }}
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(105deg, transparent 25%, rgba(255,255,255,0.15) 48%, rgba(191,253,17,0.07) 56%, transparent 72%)",
+              }}
+            />
+          </div>
 
           {/* Subtle edge rim highlight */}
           <div

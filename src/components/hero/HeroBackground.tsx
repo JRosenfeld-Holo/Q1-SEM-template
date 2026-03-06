@@ -2,7 +2,7 @@
 import { useEffect, useRef } from "react";
 
 // ── Burst config ───────────────────────────────────────────────────────────────
-const BURST_COUNT = 150;
+const BURST_COUNT = 220;
 const LIME = "#bffd11";
 const WHITE = "#ffffff";
 
@@ -86,7 +86,7 @@ export function HeroBackground() {
           life: 1,
           decay: 1 / (Math.random() * 2.8 + 1.0),
           r: Math.random() * 1.6 + 0.3,
-          lime: Math.random() < 0.12,
+          lime: Math.random() < 0.22,
         });
       }
     };
