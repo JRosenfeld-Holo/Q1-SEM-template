@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
+import { createPortal } from "react-dom";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 const STORIES = [
@@ -12,6 +13,8 @@ const STORIES = [
     name: "Brandon Davito",
     title: "SVP of Product Management",
     logo: { src: "/customer-logos/verkada.png", w: 56, h: 44 },
+    thumbnail: "/case-study-thumbnails/verkada.jpg",
+    videoId: "m-q18SEOScc",
     quote:
       "When AT&T and Verizon both had outages this year, our devices never went down. That's the flexibility Hologram gives us.",
     metrics: [
@@ -30,6 +33,8 @@ const STORIES = [
     name: "Luke Saunders",
     title: "President & CEO",
     logo: { src: "/customer-logos/farmers-fridge.avif", w: 73, h: 28 },
+    thumbnail: "/case-study-thumbnails/farmers-fridge.jpg",
+    videoId: "QPPWgESttVE",
     quote:
       "The ROI with Hologram has been exceptional. We were able to cut our IoT bills in half.",
     metrics: [
@@ -48,6 +53,8 @@ const STORIES = [
     name: "Endre Ulberg",
     title: "Software Engineer",
     logo: { src: "/customer-logos/sunday-power.png", w: 148, h: 28 },
+    thumbnail: "/case-study-thumbnails/sunday-power.jpg",
+    videoId: "6FUO4UBT3YU",
     quote:
       "With Hologram, we get the ability to scale on top of systems that we trust and we get to do it in a cost-effective way.",
     metrics: [
@@ -77,12 +84,68 @@ function ChevronRight() {
   );
 }
 
+function VideoLightbox({ videoId, onClose }: { videoId: string; onClose: () => void }) {
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = "";
+    };
+  }, [onClose]);
+
+  return createPortal(
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+      style={{ background: "rgba(0,4,15,0.88)", backdropFilter: "blur(12px)" }}
+      onClick={onClose}
+    >
+      <motion.div
+        initial={{ scale: 0.94, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        exit={{ scale: 0.94, opacity: 0 }}
+        transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+        className="relative w-full max-w-4xl"
+        style={{ aspectRatio: "16/9" }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <iframe
+          src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`}
+          allow="autoplay; fullscreen"
+          allowFullScreen
+          className="w-full h-full rounded-xl border border-white/[0.1]"
+          style={{ display: "block" }}
+          title="Customer story video"
+        />
+        <button
+          onClick={onClose}
+          aria-label="Close video"
+          className="absolute -top-10 right-0 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
+          style={{ fontFamily: "var(--font-inter-var)" }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18" />
+            <line x1="6" y1="6" x2="18" y2="18" />
+          </svg>
+        </button>
+      </motion.div>
+    </motion.div>,
+    document.body
+  );
+}
+
 const AUTO_INTERVAL = 9000;
 
 export function CustomerSuccess() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [paused, setPaused] = useState(false);
+  const [activeVideoId, setActiveVideoId] = useState<string | null>(null);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const go = useCallback((next: number, dir: 1 | -1) => {
@@ -90,9 +153,9 @@ export function CustomerSuccess() {
     setIndex((next + STORIES.length) % STORIES.length);
   }, []);
 
-  // Auto-rotate
+  // Auto-rotate (paused while lightbox is open)
   useEffect(() => {
-    if (paused) return;
+    if (paused || activeVideoId) return;
     timerRef.current = setInterval(() => {
       setDirection(1);
       setIndex((i) => (i + 1) % STORIES.length);
@@ -100,7 +163,7 @@ export function CustomerSuccess() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [paused, index]);
+  }, [paused, index, activeVideoId]);
 
   const s = STORIES[index];
 
@@ -186,7 +249,51 @@ export function CustomerSuccess() {
               animate="center"
               exit="exit"
             >
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/[0.14] transition-colors duration-300">
+              <div className="rounded-2xl border border-white/[0.08] overflow-hidden hover:border-white/[0.14] transition-colors duration-300 flex flex-col">
+
+                {/* Video thumbnail — full-width header */}
+                <button
+                  onClick={() => setActiveVideoId(s.videoId)}
+                  aria-label={`Watch ${s.company} customer story video`}
+                  className="group relative w-full h-72 overflow-hidden cursor-pointer shrink-0 border-b border-white/[0.06]"
+                >
+                  <Image
+                    src={s.thumbnail}
+                    alt={`${s.company} customer story`}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    draggable={false}
+                  />
+                  {/* Dark overlay */}
+                  <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-colors duration-300" />
+                  {/* Play button */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div
+                      className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-[#bffd11] group-hover:scale-110 transition-transform duration-300"
+                      style={{ background: "rgba(0,4,15,0.55)", backdropFilter: "blur(6px)" }}
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#bffd11" aria-hidden="true" style={{ marginLeft: "3px" }}>
+                        <polygon points="5,3 19,12 5,21" />
+                      </svg>
+                    </div>
+                  </div>
+                  {/* Bottom fade — blends thumbnail into card body */}
+                  <div
+                    className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
+                    style={{ background: "linear-gradient(to bottom, transparent, #00040f)" }}
+                    aria-hidden="true"
+                  />
+                  {/* Watch story label */}
+                  <div className="absolute bottom-3 left-4">
+                    <span className="text-xs text-white/70 tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-messina-var)" }}>
+                      Watch story
+                    </span>
+                  </div>
+                </button>
+
+                {/* Body — 2-column grid */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 flex-1">
+
                 {/* Left: logo + quote + attribution + metrics */}
                 <div className="p-8 md:p-10 bg-white/[0.02] flex flex-col justify-between gap-8">
                   <div>
@@ -278,11 +385,23 @@ export function CustomerSuccess() {
                     </p>
                   </div>
                 </div>
-              </div>
+
+                </div>{/* end inner grid */}
+              </div>{/* end outer card */}
             </motion.div>
           </AnimatePresence>
         </div>
       </div>
+
+      {/* Video lightbox */}
+      <AnimatePresence>
+        {activeVideoId && (
+          <VideoLightbox
+            videoId={activeVideoId}
+            onClose={() => setActiveVideoId(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }
