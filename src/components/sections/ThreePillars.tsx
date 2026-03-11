@@ -140,19 +140,19 @@ export function ThreePillars() {
               >
                 {t.pillars.pricing.body}
               </p>
-              <div className="flex items-baseline gap-2">
-                <span
-                  className="text-3xl font-semibold"
+              <div>
+                <p
+                  className="text-3xl font-semibold leading-none"
                   style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
                 >
                   {t.pillars.pricing.stat}
-                </span>
-                <span
-                  className="text-sm"
+                </p>
+                <p
+                  className="text-sm mt-1.5"
                   style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                 >
                   {t.pillars.pricing.statLabel}
-                </span>
+                </p>
               </div>
             </div>
           </FadeIn>
@@ -186,19 +186,19 @@ export function ThreePillars() {
               >
                 {t.pillars.partnership.body}
               </p>
-              <div className="flex items-baseline gap-2">
-                <span
-                  className="text-3xl font-semibold"
+              <div>
+                <p
+                  className="text-3xl font-semibold leading-none"
                   style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-tertiary)" }}
                 >
                   {t.pillars.partnership.stat}
-                </span>
-                <span
-                  className="text-sm"
+                </p>
+                <p
+                  className="text-sm mt-1.5"
                   style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                 >
                   {t.pillars.partnership.statLabel}
-                </span>
+                </p>
               </div>
             </div>
           </FadeIn>

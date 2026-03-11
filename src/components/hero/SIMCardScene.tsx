@@ -43,6 +43,27 @@ export function SIMCardScene() {
       style={{ perspective: "900px" }}
       className="w-full h-full flex items-center justify-center relative"
     >
+      {/* Backlight — fades in after card entrance animation concludes */}
+      <motion.div
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, ease: "easeOut", delay: 1.6 }}
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          width: "120%",
+          height: "120%",
+          transform: "translate(-50%, -48%) translateZ(0)",
+          background:
+            "radial-gradient(ellipse at 50% 55%, rgba(191,253,17,0.22) 0%, rgba(83,242,250,0.09) 40%, transparent 65%)",
+          filter: "blur(60px)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
       {/* Outer div: cinematic spring entrance from near-edge-on */}
       <motion.div
         initial={{ rotateY: 88, rotateX: -22, rotateZ: 10, scale: 1.8, opacity: 0 }}
