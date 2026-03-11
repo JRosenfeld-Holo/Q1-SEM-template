@@ -25,13 +25,13 @@ export function CTASection() {
             {t.cta.eyebrow}
           </p>
           <h2
-            className="font-medium text-5xl md:text-6xl mb-6 leading-[1.05]"
+            className="font-medium text-4xl md:text-5xl lg:text-6xl mb-6 leading-[1.05]"
             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
             {t.cta.headline}
           </h2>
           <p
-            className="text-xl mb-10 leading-relaxed"
+            className="text-lg md:text-xl mb-10 leading-relaxed"
             style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
           >
             {t.cta.sub}

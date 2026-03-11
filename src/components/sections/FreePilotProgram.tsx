@@ -2,16 +2,10 @@
 
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 const PROMO_CODE = "FREEPILOTSIM";
 const STORE_URL = "https://store.hologram.io/";
-
-const CHECKLIST = [
-    "Free SIM card shipped to you",
-    "Test data included — no credit card needed",
-    "Full access to the Hologram Dashboard",
-    "REST API + webhooks from day one",
-];
 
 const WHATS_INCLUDED = [
     "Free SIM",
@@ -87,6 +81,7 @@ function ExternalLinkIcon() {
 }
 
 export function FreePilotProgram() {
+    const { t } = useI18n();
     return (
         <section id="free-pilot" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
             <FadeIn>
@@ -115,7 +110,7 @@ export function FreePilotProgram() {
                             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#BFFD11]/25 bg-[#BFFD11]/5 mb-8 w-fit">
                                 <span className="w-1.5 h-1.5 rounded-full bg-[#BFFD11] animate-pulse" aria-hidden="true" />
                                 <span className="font-mono text-[11px] font-semibold tracking-widest uppercase text-[#BFFD11]">
-                                    Free Pilot Program
+                                    {t.freePilot.badge}
                                 </span>
                             </div>
 
@@ -134,19 +129,19 @@ export function FreePilotProgram() {
 
                             {/* Headline */}
                             <h2 className="text-3xl sm:text-4xl font-semibold leading-tight mb-4 text-white">
-                                Start building today.
+                                {t.freePilot.headline}
                                 <br />
-                                <span className="text-[#BFFD11]">Free SIM included.</span>
+                                <span className="text-[#BFFD11]">{t.freePilot.headlineLine2}</span>
                             </h2>
 
                             {/* Body copy */}
                             <p className="text-base text-white/55 leading-relaxed mb-8 max-w-lg">
-                                Sign up for a free Hologram account and claim your free SIM card. No credit card required. Includes test data, full Dashboard access, and complete API access from the moment you activate.
+                                {t.freePilot.body}
                             </p>
 
                             {/* Feature list */}
                             <ul className="space-y-2.5 mb-10">
-                                {CHECKLIST.map((item) => (
+                                {t.freePilot.checklist.map((item) => (
                                     <li key={item} className="flex items-center gap-3 text-sm text-white/70">
                                         <div className="w-5 h-5 rounded-full bg-[#BFFD11]/15 border border-[#BFFD11]/25 flex items-center justify-center shrink-0">
                                             <CheckIcon size={11} />
@@ -161,7 +156,7 @@ export function FreePilotProgram() {
                                 <div className="inline-flex items-center gap-0 rounded-xl overflow-hidden border border-[#BFFD11]/30">
                                     <div className="px-4 py-2.5 bg-[#BFFD11]/[0.08] border-r border-[#BFFD11]/20">
                                         <p className="font-mono text-[10px] font-semibold tracking-widest uppercase text-[#BFFD11]/60 mb-0.5">
-                                            Promo Code
+                                            {t.freePilot.promoCodeLabel}
                                         </p>
                                         <p className="font-mono text-lg font-semibold tracking-widest text-[#BFFD11] leading-none">
                                             {PROMO_CODE}
@@ -188,7 +183,7 @@ export function FreePilotProgram() {
                                     className="inline-flex items-center gap-2.5 px-7 py-4 rounded-xl bg-[#BFFD11] text-[#00040F] font-semibold text-base transition-colors duration-200 cursor-pointer w-fit focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#BFFD11] focus-visible:ring-offset-[#030810]"
                                     aria-label="Claim Your Free SIM (opens in new tab)"
                                 >
-                                    Claim Your Free SIM
+                                    {t.freePilot.cta}
                                     <ExternalLinkIcon />
                                 </a>
                             </div>

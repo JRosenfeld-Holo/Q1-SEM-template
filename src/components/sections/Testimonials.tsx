@@ -134,7 +134,7 @@ export function Testimonials() {
             {t.testimonials.eyebrow}
           </p>
           <h2
-            className="font-medium text-4xl md:text-5xl mb-14 leading-[1.1] text-center max-w-2xl mx-auto"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-14 leading-[1.1] text-center max-w-2xl mx-auto"
             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
             {t.testimonials.headline}
@@ -232,7 +232,7 @@ export function Testimonials() {
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 md:-translate-x-5 w-10 h-10 rounded-full items-center justify-center transition-all duration-200 cursor-pointer"
             style={{
               borderWidth: "1px",
               borderStyle: "solid",
@@ -246,7 +246,7 @@ export function Testimonials() {
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 md:translate-x-5 w-10 h-10 rounded-full items-center justify-center transition-all duration-200 cursor-pointer"
             style={{
               borderWidth: "1px",
               borderStyle: "solid",

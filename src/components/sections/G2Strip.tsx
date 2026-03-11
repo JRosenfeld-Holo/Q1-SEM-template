@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 const BADGE_SIZE = 90;
 
@@ -17,6 +18,7 @@ const BADGES: { src: string; alt: string; scale?: number }[] = [
 ];
 
 export function G2Strip() {
+  const { t } = useI18n();
   return (
     <section
       className="py-14 md:py-20 px-6"
@@ -32,7 +34,7 @@ export function G2Strip() {
             className="text-xs tracking-[0.2em] uppercase text-center mb-8"
             style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
           >
-            Recognized by G2 — the world&apos;s largest software review platform
+            {t.g2.headline}
           </p>
         </FadeIn>
         <FadeIn delay={0.08}>

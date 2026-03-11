@@ -1,6 +1,5 @@
 import { Nav } from "@/components/nav/Nav";
 import { HeroSection } from "@/components/hero/HeroSection";
-import { ProblemSection } from "@/components/sections/ProblemSection";
 import { ThreePillars } from "@/components/sections/ThreePillars";
 import { StickyBar } from "@/components/ui/StickyBar";
 import dynamic from "next/dynamic";
@@ -27,7 +26,6 @@ export default function HomePage() {
       <main>
         <HeroSection />
         <StatsBar />
-        <ProblemSection />
         <ThreePillars />
         <HyperSIMProduct />
         <CoverageSection />

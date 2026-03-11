@@ -7,14 +7,14 @@ const FEATURES = [
   {
     label: "Global Coverage",
     headline: "550+ carriers, zero coverage gaps",
-    body: "Connect across AT&T, T-Mobile, Verizon, and 550+ global carrier partners with a single SIM. HyperSIM intelligently selects the strongest network — so vehicles, cameras, and sensors stay online everywhere they operate.",
+    body: "Connect across AT&T, T-Mobile, Verizon, and 550+ global carrier partners with a single SIM. HyperSIM intelligently selects the strongest network so vehicles, cameras, and sensors stay online everywhere they operate.",
     stat: "550+",
     statLabel: "Carrier partners",
   },
   {
     label: "Outage Protection",
     headline: "Automatic failover before you lose a single transaction",
-    body: "Multiple independent cores on every SIM provide redundant paths. If an outage is detected, HyperSIM switches to the backup network in seconds — not minutes. We put 99.95% uptime in the contract, not just the marketing.",
+    body: "Multiple independent cores on every SIM provide redundant paths. If an outage is detected, HyperSIM switches to the backup network in seconds, not minutes. We put 99.95% uptime in the contract, not just the marketing.",
     stat: "99.95%",
     statLabel: "Uptime SLA",
   },
@@ -28,7 +28,7 @@ const FEATURES = [
   {
     label: "Future Ready",
     headline: "Future-proof with over-the-air provisioning",
-    body: "Push carrier profile updates remotely through the entire device lifecycle. No truck rolls, no SIM swaps, no hardware touches. Add new carrier profiles, switch networks, and re-provision — all over the air.",
+    body: "Push carrier profile updates remotely through the entire device lifecycle. No truck rolls, no SIM swaps, no hardware touches. Add new carrier profiles, switch networks, and re-provision, all over the air.",
     stat: "eUICC",
     statLabel: "OTA provisioning",
   },
@@ -63,8 +63,10 @@ export function HyperSIMProduct() {
         </FadeIn>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-          {FEATURES.map((f, i) => (
-            <FadeIn key={f.label} delay={i * 0.08}>
+          {FEATURES.map((f, i) => {
+            const tf = t.hyperSIM.features[i];
+            return (
+            <FadeIn key={tf.label} delay={i * 0.08}>
               <div
                 className="h-full p-6 md:p-8 rounded-2xl transition-all duration-300 cursor-default"
                 style={{
@@ -81,13 +83,13 @@ export function HyperSIMProduct() {
                   className="block text-sm tracking-[0.18em] uppercase mb-4"
                   style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                 >
-                  {f.label}
+                  {tf.label}
                 </span>
                 <h3
                   className="font-medium text-xl mb-3 leading-snug"
                   style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                 >
-                  {f.headline}
+                  {tf.headline}
                 </h3>
                 <p
                   className="text-base leading-relaxed mb-6"
@@ -111,7 +113,8 @@ export function HyperSIMProduct() {
                 </div>
               </div>
             </FadeIn>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

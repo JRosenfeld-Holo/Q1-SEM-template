@@ -204,7 +204,7 @@ export function ContactSection() {
               {t.contact.eyebrow}
             </p>
             <h2
-              className="font-medium text-4xl md:text-5xl leading-[1.1]"
+              className="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1]"
               style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
             >
               {t.contact.headline}
@@ -348,7 +348,7 @@ export function ContactSection() {
 
                   <p className="text-sm text-center" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-faint)" }}>
                     By submitting, you agree to Hologram&apos;s{" "}
-                    <a href="https://www.hologram.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>
+                    <a href="https://hologram.io/privacy-policy/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>
                       Privacy Policy
                     </a>.
                   </p>

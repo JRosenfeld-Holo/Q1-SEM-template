@@ -56,7 +56,7 @@ export function ThreePillars() {
                     className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
                     style={{ fontFamily: "var(--font-messina-var)" }}
                   >
-                    Reliability
+                    {t.pillars.reliability.label}
                   </span>
                   <h3
                     className="font-medium text-2xl md:text-3xl leading-snug max-w-sm"

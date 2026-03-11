@@ -1,37 +1,54 @@
 "use client";
 
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
+
+const PAIN_STATS = [
+  { stat: "35%+", label: "avg price increase mid-contract, with zero warning" },
+  { stat: "Weeks", label: "average time to resolve a connectivity support ticket" },
+  { stat: "1 carrier", label: "no redundancy, no failover. A single point of failure" },
+];
 
 export function ProblemSection() {
+  const { t } = useI18n();
   return (
-    <section id="solutions" className="py-10 md:py-14 px-6 md:px-12">
-      <div className="max-w-5xl mx-auto text-center">
+    <section id="solutions" className="py-12 md:py-16 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-lg md:text-xl lg:text-2xl leading-relaxed"
-            style={{
-              fontFamily: "var(--font-inter-var)",
-              color: "var(--theme-text-secondary)",
-            }}
+            className="text-sm tracking-[0.2em] uppercase mb-4"
+            style={{ fontFamily: "var(--font-messina-var)", color: "#c9a84c" }}
           >
-            Tired of{" "}
-            <span style={{ color: "var(--theme-text)", fontWeight: 500 }}>surprise price hikes</span>,{" "}
-            <span style={{ color: "var(--theme-text)", fontWeight: 500 }}>single-carrier dead zones</span>, and{" "}
-            <span style={{ color: "var(--theme-text)", fontWeight: 500 }}>week-long support tickets</span>?{" "}
-            <a
-              href="#products"
-              className="inline-flex items-center gap-1 transition-colors duration-200"
-              style={{ color: "var(--theme-accent)", fontWeight: 600 }}
-              onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.8")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
-            >
-              See how Hologram solves this
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginTop: 1 }}>
-                <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
-              </svg>
-            </a>
+            {t.problem.eyebrow}
           </p>
+          <h2
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-10 md:mb-14 max-w-2xl leading-[1.1]"
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
+          >
+            {t.problem.headline}
+          </h2>
         </FadeIn>
+
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-12">
+          {PAIN_STATS.map((item, i) => (
+            <FadeIn key={item.stat} delay={i * 0.08}>
+              <div>
+                <p
+                  className="text-3xl md:text-4xl font-semibold mb-2 tabular-nums"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "#c9a84c" }}
+                >
+                  {item.stat}
+                </p>
+                <p
+                  className="text-sm leading-snug"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                >
+                  {item.label}
+                </p>
+              </div>
+            </FadeIn>
+          ))}
+        </div>
       </div>
     </section>
   );

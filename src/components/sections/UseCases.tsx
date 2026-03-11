@@ -56,9 +56,9 @@ const USE_CASES = [
     Icon: IconCamera,
     headline: "Cameras that can't go dark.",
     subhead: "Multi-carrier failover for mission-critical video.",
-    pain: "A security camera on a single carrier is one outage away from a compliance failure — and a furious customer. When AT&T and Verizon both had network outages, Verkada's 28,000+ Hologram-powered devices never missed a frame.",
+    pain: "A security camera on a single carrier is one outage away from a compliance failure and a furious customer. When AT&T and Verizon both had network outages, Verkada's 28,000+ Hologram-powered devices never missed a frame.",
     solution: [
-      "Automatic multi-carrier failover — cameras stay online when any single carrier goes down",
+      "Automatic multi-carrier failover: cameras stay online when any single carrier goes down",
       "Pre-certified Verizon path eliminates $20K+ self-certification for US deployments",
       "One SIM per device for indoor, outdoor, and remote camera deployments worldwide",
     ],
@@ -72,11 +72,11 @@ const USE_CASES = [
     Icon: IconMap,
     headline: "One SIM for every route, every border.",
     subhead: "Global coverage without per-country carrier contracts.",
-    pain: "Containers cross borders. Fleets go international. Managing carrier contracts per country kills expansion before it starts. Tracking gaps mean blind spots — and blind spots mean liability.",
+    pain: "Containers cross borders. Fleets go international. Managing carrier contracts per country kills expansion before it starts. Tracking gaps mean blind spots, and blind spots mean liability.",
     solution: [
-      "Multi-carrier SIM that works in 200+ countries — no renegotiating per market",
+      "Multi-carrier SIM that works in 200+ countries, no renegotiating per market",
       "Pause unused SIMs to stop billing on idle assets and seasonal fleets",
-      "Pay only for the data each device actually uses — predictable cost at scale",
+      "Pay only for the data each device actually uses, predictable cost at scale",
     ],
     stat: { value: "126", label: "Carriers reached by Purfresh in 54 countries in a single month" },
     quote: "We used to discuss changing carriers quite a lot. When we made the decision to move to Hologram, the discussion stopped.",
@@ -88,14 +88,14 @@ const USE_CASES = [
     Icon: IconBot,
     headline: "Connectivity that keeps robots in motion.",
     subhead: "Cellular where factory WiFi fails.",
-    pain: "WiFi fails where robots work hardest — in open fields, dense warehouses, and high-interference environments. A dropped connection means a stopped robot. A stopped robot means idle workers, missed harvests, and delayed operations.",
+    pain: "WiFi fails where robots work hardest: in open fields, dense warehouses, and high-interference environments. A dropped connection means a stopped robot. A stopped robot means idle workers, missed harvests, and delayed operations.",
     solution: [
-      "Cellular that works where factory WiFi can't — no dead zones from metal interference",
+      "Cellular that works where factory WiFi can't, no dead zones from metal interference",
       "Multi-carrier failover so a single carrier outage never stops your fleet",
       "5G-ready for latency-critical navigation and real-time command-and-control",
     ],
     stat: { value: "6,000+", label: "Fieldin autonomous farm vehicles with zero downtime" },
-    quote: "Our business can't afford downtime. With Hologram, latency is very low — we don't lose signal.",
+    quote: "Our business can't afford downtime. With Hologram, latency is very low and we don't lose signal.",
     customer: "Fieldin",
   },
   {
@@ -103,10 +103,10 @@ const USE_CASES = [
     label: "Patient Monitoring",
     Icon: IconHeart,
     headline: "Cellular that reaches every patient.",
-    subhead: "No WiFi, no app, no patient setup — just works.",
+    subhead: "No WiFi, no app, no patient setup. Just works.",
     pain: "15% of US adults don't own a smartphone. Bluetooth-dependent RPM excludes the patients who need remote care most. Rural patients with weak broadband can't rely on WiFi-dependent devices. Every missed reading is missed CMS reimbursement.",
     solution: [
-      "Cellular-first devices that transmit out of the box — no WiFi or app required",
+      "Cellular-first devices that transmit out of the box, no WiFi or app required",
       "Multi-carrier coverage for rural deployments where single-carrier has gaps",
       "Private APN for HIPAA-compliant PHI transmission without infrastructure overhead",
     ],
@@ -120,13 +120,13 @@ const USE_CASES = [
     Icon: IconZap,
     headline: "Payments that process on every charge.",
     subhead: "Always-on cellular for NEVI-compliant chargers.",
-    pain: "25%+ of public EV chargers report downtime issues — connectivity failures are the top culprit. A charger that can't process payments is a liability. With federal NEVI funding now requiring credit card capability, reliable cellular isn't optional.",
+    pain: "25%+ of public EV chargers report downtime issues. Connectivity failures are the top culprit. A charger that can't process payments is a liability. With federal NEVI funding now requiring credit card capability, reliable cellular isn't optional.",
     solution: [
       "Multi-carrier SIM per charger ensures payment processing survives any carrier outage",
       "Remote diagnostics and firmware delivery without truck rolls to each site",
       "One connectivity solution for charger networks spanning highway corridors, lots, and garages",
     ],
-    stat: { value: "19.1%", label: "CAGR in EV charger cellular connectivity — every new charger needs a SIM" },
+    stat: { value: "19.1%", label: "CAGR in EV charger cellular connectivity. Every new charger needs a SIM" },
     quote: "Our charging network spans highway corridors, parking structures, and event venues. Single-carrier coverage doesn't hold up across all of them. Hologram keeps every station online.",
     customer: "ChargeFuse",
   },
@@ -138,7 +138,7 @@ const USE_CASES = [
     subhead: "Deploy globally without per-region carrier contracts.",
     pain: "Managing carrier contracts country-by-country at sensor scale is a full-time operational burden. Remote and rural locations have spotty single-carrier coverage. Seasonal deployments billing through dormancy waste budget that should go to product.",
     solution: [
-      "Low-data pricing from $0.10/month per device — Cat-M1 and NB-IoT ready",
+      "Low-data pricing from $0.10/month per device, Cat-M1 and NB-IoT ready",
       "Pause SIMs on seasonal sensors to stop billing on inactive devices",
       "API-first platform to manage thousands of devices from a single dashboard",
     ],
@@ -155,7 +155,9 @@ export function UseCases() {
   const { t } = useI18n();
   const [active, setActive] = useState<UseCaseId>("security-video");
 
-  const current = USE_CASES.find((u) => u.id === active)!;
+  const currentIdx = USE_CASES.findIndex((u) => u.id === active);
+  const current = USE_CASES[currentIdx];
+  const card = t.useCases.cards[currentIdx];
 
   return (
     <section
@@ -192,7 +194,7 @@ export function UseCases() {
             role="tablist"
             aria-label="Use cases"
           >
-            {USE_CASES.map((u) => {
+            {USE_CASES.map((u, i) => {
               const isActive = u.id === active;
               return (
                 <button
@@ -233,7 +235,7 @@ export function UseCases() {
                   <span style={{ color: isActive ? "var(--theme-accent)" : "var(--theme-text-muted)" }}>
                     <u.Icon />
                   </span>
-                  {u.label}
+                  {t.useCases.tabs[i] ?? u.label}
                 </button>
               );
             })}
@@ -264,24 +266,24 @@ export function UseCases() {
                   className="font-medium text-2xl md:text-3xl mb-2 leading-snug"
                   style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                 >
-                  {current.headline}
+                  {card?.headline ?? current.headline}
                 </h3>
                 <p
                   className="text-sm mb-6"
                   style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent-muted)" }}
                 >
-                  {current.subhead}
+                  {card?.subhead ?? current.subhead}
                 </p>
                 <p
                   className="text-base leading-relaxed mb-8"
                   style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                 >
-                  {current.pain}
+                  {card?.pain ?? current.pain}
                 </p>
 
                 {/* Solution bullets */}
                 <ul className="flex flex-col gap-3">
-                  {current.solution.map((point) => (
+                  {current.solution.map((point, idx) => (
                     <li key={point} className="flex items-start gap-3">
                       <span className="shrink-0 mt-0.5" style={{ color: "var(--theme-accent)" }}>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -293,7 +295,7 @@ export function UseCases() {
                         className="text-base leading-relaxed"
                         style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                       >
-                        {point}
+                        {card?.solution[idx] ?? point}
                       </span>
                     </li>
                   ))}
@@ -324,7 +326,7 @@ export function UseCases() {
                   className="text-base leading-snug"
                   style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                 >
-                  {current.stat.label}
+                  {card?.statLabel ?? current.stat.label}
                 </p>
               </div>
 
@@ -343,7 +345,7 @@ export function UseCases() {
                   className="text-base leading-relaxed italic mb-4"
                   style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                 >
-                  &ldquo;{current.quote}&rdquo;
+                  &ldquo;{card?.quote ?? current.quote}&rdquo;
                 </blockquote>
                 <p
                   className="text-sm uppercase tracking-wider"

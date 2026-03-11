@@ -24,9 +24,9 @@ const STORIES = [
       { value: "85", label: "Countries served" },
     ],
     challenge:
-      "33,000+ enterprise customers depend on always-on security cameras. Single-carrier connectivity meant any outage put customer trust — and revenue — at risk.",
+      "33,000+ enterprise customers depend on always-on security cameras. Single-carrier connectivity meant any outage put customer trust and revenue at risk.",
     solution:
-      "HyperSIM with multi-carrier failover ensures cameras stay online through any carrier outage. One SIM per device, worldwide — no carrier lock-in.",
+      "HyperSIM with multi-carrier failover ensures cameras stay online through any carrier outage. One SIM per device, worldwide, no carrier lock-in.",
   },
   {
     company: "Farmer's Fridge",
@@ -209,7 +209,7 @@ export function CustomerSuccess() {
               <button
                 onClick={() => go(index - 1, -1)}
                 aria-label="Previous story"
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
                 style={{
                   borderWidth: "1px",
                   borderStyle: "solid",
@@ -236,7 +236,7 @@ export function CustomerSuccess() {
               <button
                 onClick={() => go(index + 1, 1)}
                 aria-label="Next story"
-                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+                className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
                 style={{
                   borderWidth: "1px",
                   borderStyle: "solid",
@@ -315,7 +315,7 @@ export function CustomerSuccess() {
                   {/* Watch story label */}
                   <div className="absolute bottom-3 left-4">
                     <span className="text-xs text-white/70 tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-messina-var)" }}>
-                      Watch story
+                      {t.customerSuccess.watchStory}
                     </span>
                   </div>
                 </button>
@@ -349,7 +349,7 @@ export function CustomerSuccess() {
                           className="text-sm uppercase tracking-wider shrink-0"
                           style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                         >
-                          {s.industry}
+                          {t.customerSuccess.stories[index]?.industry ?? s.industry}
                         </span>
                       </div>
 
@@ -358,7 +358,7 @@ export function CustomerSuccess() {
                         className="text-xl md:text-2xl leading-snug font-medium mb-5"
                         style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                       >
-                        &ldquo;{s.quote}&rdquo;
+                        &ldquo;{t.customerSuccess.stories[index]?.quote ?? s.quote}&rdquo;
                       </blockquote>
 
                       {/* Attribution */}
@@ -366,7 +366,7 @@ export function CustomerSuccess() {
                         className="text-sm leading-snug"
                         style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                       >
-                        {s.name} &mdash; {s.title}
+                        {s.name} &mdash; {t.customerSuccess.stories[index]?.title ?? s.title}
                       </p>
                     </div>
 
@@ -375,7 +375,7 @@ export function CustomerSuccess() {
                       className="grid grid-cols-3 gap-4 pt-6"
                       style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                     >
-                      {s.metrics.map((m) => (
+                      {s.metrics.map((m, mIdx) => (
                         <div key={m.label}>
                           <p
                             className="text-xl md:text-2xl font-semibold leading-none mb-1"
@@ -387,7 +387,7 @@ export function CustomerSuccess() {
                             className="text-sm leading-tight"
                             style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                           >
-                            {m.label}
+                            {t.customerSuccess.stories[index]?.metricLabels[mIdx] ?? m.label}
                           </p>
                         </div>
                       ))}
@@ -408,13 +408,13 @@ export function CustomerSuccess() {
                         className="text-xs tracking-[0.18em] uppercase mb-3"
                         style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                       >
-                        Challenge
+                        {t.customerSuccess.challengeLabel}
                       </p>
                       <p
                         className="text-base leading-relaxed"
                         style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                       >
-                        {s.challenge}
+                        {t.customerSuccess.stories[index]?.challenge ?? s.challenge}
                       </p>
                     </div>
                     <div>
@@ -422,13 +422,13 @@ export function CustomerSuccess() {
                         className="text-xs tracking-[0.18em] uppercase mb-3"
                         style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                       >
-                        Solution
+                        {t.customerSuccess.solutionLabel}
                       </p>
                       <p
                         className="text-base leading-relaxed"
                         style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                       >
-                        {s.solution}
+                        {t.customerSuccess.stories[index]?.solution ?? s.solution}
                       </p>
                     </div>
                   </div>

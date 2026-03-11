@@ -2,6 +2,7 @@
 
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useState } from "react";
+import { useI18n } from "@/lib/i18n/context";
 
 /* ── Icon components ── */
 function CheckIcon({ accent }: { accent?: boolean }) {
@@ -58,6 +59,7 @@ const ENTERPRISE_EXTRAS = [
 
 export function PricingSection() {
     const [hoveredCard, setHoveredCard] = useState<"payg" | "enterprise" | null>(null);
+    const { t } = useI18n();
 
     return (
         <section id="pricing" className="py-20 md:py-32 px-6 relative overflow-hidden">
@@ -79,19 +81,19 @@ export function PricingSection() {
                             className="text-xs tracking-[0.2em] uppercase mb-4"
                             style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                         >
-                            Simple, Transparent Pricing
+                            {t.pricing.eyebrow}
                         </p>
                         <h2
-                            className="font-medium text-4xl md:text-5xl lg:text-[3.25rem] mb-5 leading-[1.1]"
+                            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-5 leading-[1.1]"
                             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                         >
-                            Pay only for what you use.
+                            {t.pricing.headline}
                         </h2>
                         <p
                             className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
                             style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                         >
-                            Start with pay-as-you-go — no minimums, no contracts. Scale into custom enterprise pricing when you&apos;re ready.
+                            {t.pricing.sub}
                         </p>
                     </div>
                 </FadeIn>
@@ -116,19 +118,19 @@ export function PricingSection() {
                                     className="text-xs tracking-[0.2em] uppercase mb-3"
                                     style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                                 >
-                                    Self-Service
+                                    {t.pricing.selfService}
                                 </p>
                                 <h3
                                     className="text-2xl md:text-3xl font-medium mb-3"
                                     style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                                 >
-                                    Pay-As-You-Go
+                                    {t.pricing.paygName}
                                 </h3>
                                 <p
                                     className="text-sm leading-relaxed"
                                     style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                                 >
-                                    For developers and early-stage teams. Start building immediately — no minimums, no contracts.
+                                    {t.pricing.paygDesc}
                                 </p>
                             </div>
 
@@ -138,7 +140,7 @@ export function PricingSection() {
                                 style={{ borderBottom: "1px solid var(--theme-border-subtle)" }}
                             >
                                 <span
-                                    className="text-4xl md:text-5xl font-semibold"
+                                    className="text-3xl md:text-4xl lg:text-5xl font-semibold"
                                     style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                                 >
                                     $0.03
@@ -201,7 +203,7 @@ export function PricingSection() {
                                     e.currentTarget.style.transform = "translateY(0)";
                                 }}
                             >
-                                Start Free — No Credit Card
+                                {t.pricing.paygCta}
                                 <ArrowRightIcon />
                             </a>
                         </div>
@@ -233,7 +235,7 @@ export function PricingSection() {
                                     className="text-[10px] tracking-[0.18em] uppercase font-bold"
                                     style={{ fontFamily: "var(--font-messina-var)", color: "#00040F" }}
                                 >
-                                    Most Popular
+                                    {t.pricing.enterpriseBadge}
                                 </span>
                             </div>
 
@@ -259,19 +261,19 @@ export function PricingSection() {
                                         className="text-xs tracking-[0.2em] uppercase mb-3"
                                         style={{ fontFamily: "var(--font-messina-var)", color: "rgba(191,253,17,0.7)" }}
                                     >
-                                        Custom Plan
+                                        {t.pricing.customPlan}
                                     </p>
                                     <h3
                                         className="text-2xl md:text-3xl font-medium mb-3"
                                         style={{ fontFamily: "var(--font-roobert-var)", color: "#ffffff" }}
                                     >
-                                        Enterprise
+                                        {t.pricing.enterpriseName}
                                     </h3>
                                     <p
                                         className="text-sm leading-relaxed"
                                         style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.55)" }}
                                     >
-                                        Tailored pricing with volume discounts, dedicated support, and fully flexible terms for mature deployments.
+                                        {t.pricing.enterpriseDesc}
                                     </p>
                                 </div>
 
@@ -281,7 +283,7 @@ export function PricingSection() {
                                     style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
                                 >
                                     <span
-                                        className="text-4xl md:text-5xl font-semibold"
+                                        className="text-3xl md:text-4xl lg:text-5xl font-semibold"
                                         style={{ fontFamily: "var(--font-roobert-var)", color: "#ffffff" }}
                                     >
                                         Custom
@@ -364,7 +366,7 @@ export function PricingSection() {
                                         e.currentTarget.style.boxShadow = "none";
                                     }}
                                 >
-                                    Talk to Sales
+                                    {t.pricing.enterpriseCta}
                                     <ArrowRightIcon />
                                 </a>
                             </div>
@@ -376,12 +378,7 @@ export function PricingSection() {
                 <FadeIn delay={0.2}>
                     <div className="mt-12 md:mt-16 text-center">
                         <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-                            {[
-                                "No long-term contracts required",
-                                "190+ countries covered",
-                                "550+ carrier networks",
-                                "99.9% platform uptime SLA",
-                            ].map((item) => (
+                            {t.pricing.trust.map((item) => (
                                 <div
                                     key={item}
                                     className="flex items-center gap-2 text-sm"

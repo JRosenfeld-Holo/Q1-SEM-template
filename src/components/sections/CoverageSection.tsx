@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 /* ── Lazy-load the Three.js scene (SSR disabled) ── */
 const GlobeScene = dynamic(
@@ -95,6 +96,7 @@ const CountryDatabase: Record<string, string> = {
 const EXCLUDED_REGIONS = new Set(["Unknown Region", "Antarctica"]);
 
 export function CoverageSection() {
+    const { t } = useI18n();
     const [selectedRegions, setSelectedRegions] = useState<Region[]>([]);
     const [isGlobeLoaded, setIsGlobeLoaded] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
@@ -185,20 +187,20 @@ export function CoverageSection() {
                         className="text-sm tracking-[0.2em] uppercase mb-4"
                         style={{ fontFamily: "var(--font-messina-var)", color: "#bffd11" }}
                     >
-                        Global Coverage
+                        {t.coverage.eyebrow}
                     </p>
                     <h2
                         className="font-medium text-3xl md:text-4xl lg:text-5xl mb-4 max-w-2xl leading-[1.1] text-white"
                         style={{ fontFamily: "var(--font-roobert-var)" }}
                     >
-                        550+ carriers. 190+ countries.{" "}
+                        {t.coverage.headline}{" "}
                         <span style={{ color: "#bffd11" }}>Zero dead zones.</span>
                     </h2>
                     <p
                         className="text-lg md:text-xl mb-2 max-w-xl leading-relaxed"
                         style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.55)" }}
                     >
-                        Click any region to explore carrier coverage, technology standards, and partner networks.
+                        {t.coverage.sub}
                     </p>
                 </FadeIn>
             </div>
@@ -212,7 +214,7 @@ export function CoverageSection() {
                         <div className="text-center space-y-4">
                             <div className="w-8 h-8 border-2 border-[#bffd11]/20 border-t-[#bffd11] rounded-full animate-spin mx-auto" />
                             <p className="text-[#bffd11] text-[10px] uppercase tracking-[0.35em] font-mono">
-                                Initializing Network Map
+                                {t.coverage.loading}
                             </p>
                         </div>
                     </div>
@@ -248,7 +250,7 @@ export function CoverageSection() {
                                 className="block text-[8px] md:text-[10px] uppercase tracking-widest font-bold mb-2 truncate"
                                 style={{ color: "#bffd11" }}
                             >
-                                Search Database
+                                {t.coverage.searchLabel}
                             </label>
                             <div className="relative">
                                 <input
@@ -256,8 +258,8 @@ export function CoverageSection() {
                                     value={searchQuery}
                                     onChange={(e) => { setSearchQuery(e.target.value); setShowSuggestions(true); }}
                                     onFocus={() => setShowSuggestions(true)}
-                                    placeholder="Find Country..."
-                                    className="w-full text-[10px] md:text-xs px-2 py-1.5 md:px-3 md:py-2 rounded-sm font-mono uppercase focus:outline-none"
+                                    placeholder={t.coverage.searchPlaceholder}
+                                    className="w-full text-base md:text-[10px] px-2 py-1.5 md:px-3 md:py-2 rounded-sm font-mono uppercase focus:outline-none"
                                     style={{
                                         backgroundColor: "#00040F",
                                         border: "1px solid rgba(191,253,17,0.5)",
