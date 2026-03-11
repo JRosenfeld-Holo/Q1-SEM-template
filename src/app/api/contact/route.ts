@@ -20,6 +20,9 @@ export async function POST(req: NextRequest) {
       ...body,
       context: {
         ...body.context,
+        // Use the production domain so HubSpot's allowed-domain check passes.
+        // Replace with the real page URL once the custom domain is set up.
+        pageUri: "https://www.hologram.io/contact-sales/",
         ...(ip && { ipAddress: ip }),
         ...(hutk && { hutk }),
       },
