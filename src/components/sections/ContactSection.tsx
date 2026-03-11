@@ -8,8 +8,6 @@ const PORTAL_ID = "49396559";
 const FORM_ID = "5eaff5cf-059f-4b6f-8eaa-385e4d6abc29";
 const SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
-
-
 function InputField({
   label,
   name,
@@ -157,7 +155,6 @@ export function ContactSection() {
       .filter((k) => form[k])
       .map((k) => ({ name: k, value: form[k] }));
 
-    // Append UTM params as hidden fields
     for (const [key, value] of Object.entries(utmRef.current)) {
       fields.push({ name: key, value: value as string });
     }
