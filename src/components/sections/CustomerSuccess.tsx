@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { createPortal } from "react-dom";
+import { useI18n } from "@/lib/i18n/context";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 const STORIES = [
@@ -13,7 +14,7 @@ const STORIES = [
     name: "Brandon Davito",
     title: "SVP of Product Management",
     logo: { src: "/customer-logos/verkada.png", w: 56, h: 44 },
-    thumbnail: "/case-study-thumbnails/verkada.jpg",
+    thumbnail: "/case-study-thumbnails/verkada.avif",
     videoId: "m-q18SEOScc",
     quote:
       "When AT&T and Verizon both had outages this year, our devices never went down. That's the flexibility Hologram gives us.",
@@ -33,7 +34,7 @@ const STORIES = [
     name: "Luke Saunders",
     title: "President & CEO",
     logo: { src: "/customer-logos/farmers-fridge.avif", w: 73, h: 28 },
-    thumbnail: "/case-study-thumbnails/farmers-fridge.jpg",
+    thumbnail: "/case-study-thumbnails/farmers-fridge.avif",
     videoId: "QPPWgESttVE",
     quote:
       "The ROI with Hologram has been exceptional. We were able to cut our IoT bills in half.",
@@ -52,8 +53,8 @@ const STORIES = [
     industry: "Renewable Energy",
     name: "Endre Ulberg",
     title: "Software Engineer",
-    logo: { src: "/customer-logos/sunday-power.png", w: 148, h: 28 },
-    thumbnail: "/case-study-thumbnails/sunday-power.jpg",
+    logo: { src: "/customer-logos/sunday-power.avif", w: 148, h: 28 },
+    thumbnail: "/case-study-thumbnails/sunday-power.avif",
     videoId: "6FUO4UBT3YU",
     quote:
       "With Hologram, we get the ability to scale on top of systems that we trust and we get to do it in a cost-effective way.",
@@ -142,6 +143,7 @@ function VideoLightbox({ videoId, onClose }: { videoId: string; onClose: () => v
 const AUTO_INTERVAL = 9000;
 
 export function CustomerSuccess() {
+  const { t } = useI18n();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [paused, setPaused] = useState(false);
@@ -182,28 +184,38 @@ export function CustomerSuccess() {
   };
 
   return (
-    <section id="customers" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section
+      id="customers"
+      className="py-16 md:py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-brand-lime tracking-[0.2em] uppercase mb-5"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-xs tracking-[0.2em] uppercase mb-5"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
           >
-            Customer success
+            {t.customerSuccess.eyebrow}
           </p>
           <div className="flex items-end justify-between mb-8 md:mb-12 gap-6 flex-wrap">
             <h2
-              className="font-medium text-3xl md:text-4xl lg:text-5xl text-white max-w-2xl leading-[1.1]"
-              style={{ fontFamily: "var(--font-roobert-var)" }}
+              className="font-medium text-3xl md:text-4xl lg:text-5xl max-w-2xl leading-[1.1]"
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
             >
-              Teams that switched to Hologram — and never looked back.
+              {t.customerSuccess.headline}
             </h2>
             {/* Navigation controls — top right */}
             <div className="flex items-center gap-3 shrink-0">
               <button
                 onClick={() => go(index - 1, -1)}
                 aria-label="Previous story"
-                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/75 hover:text-white hover:border-white/40 transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  color: "var(--theme-text-secondary)",
+                }}
               >
                 <ChevronLeft />
               </button>
@@ -215,16 +227,22 @@ export function CustomerSuccess() {
                     aria-selected={i === index}
                     aria-label={st.company}
                     onClick={() => go(i, i > index ? 1 : -1)}
-                    className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
-                      i === index ? "w-6 bg-brand-lime" : "w-3 bg-white/20 hover:bg-white/40"
-                    }`}
+                    className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${i === index ? "w-6" : "w-3"
+                      }`}
+                    style={{ backgroundColor: i === index ? "var(--theme-accent)" : "var(--theme-border)" }}
                   />
                 ))}
               </div>
               <button
                 onClick={() => go(index + 1, 1)}
                 aria-label="Next story"
-                className="w-9 h-9 rounded-full border border-white/[0.12] flex items-center justify-center text-white/75 hover:text-white hover:border-white/40 transition-all duration-200 cursor-pointer"
+                className="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  color: "var(--theme-text-secondary)",
+                }}
               >
                 <ChevronRight />
               </button>
@@ -249,18 +267,29 @@ export function CustomerSuccess() {
               animate="center"
               exit="exit"
             >
-              <div className="rounded-2xl border border-white/[0.12] overflow-hidden hover:border-white/[0.22] transition-colors duration-300 flex flex-col">
+              <div
+                className="rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  backgroundColor: "var(--theme-surface)",
+                  boxShadow: "var(--theme-card-shadow)",
+                }}
+              >
 
                 {/* Video thumbnail — full-width header */}
                 <button
                   onClick={() => setActiveVideoId(s.videoId)}
                   aria-label={`Watch ${s.company} customer story video`}
-                  className="group relative w-full h-52 md:h-72 overflow-hidden cursor-pointer shrink-0 border-b border-white/[0.06]"
+                  className="group relative w-full h-52 md:h-72 overflow-hidden cursor-pointer shrink-0"
+                  style={{ borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "var(--theme-border-subtle)" }}
                 >
                   <Image
                     src={s.thumbnail}
                     alt={`${s.company} customer story`}
                     fill
+                    sizes="(max-width: 1024px) 100vw, 896px"
                     style={{ objectFit: "cover" }}
                     draggable={false}
                   />
@@ -269,10 +298,10 @@ export function CustomerSuccess() {
                   {/* Play button */}
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div
-                      className="flex items-center justify-center w-14 h-14 rounded-full border-2 border-[#bffd11] group-hover:scale-110 transition-transform duration-300"
-                      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)" }}
+                      className="flex items-center justify-center w-14 h-14 rounded-full group-hover:scale-110 transition-transform duration-300"
+                      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)", border: "2px solid var(--theme-accent)" }}
                     >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#bffd11" aria-hidden="true" style={{ marginLeft: "3px" }}>
+                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style={{ marginLeft: "3px", fill: "var(--theme-accent)" }}>
                         <polygon points="5,3 19,12 5,21" />
                       </svg>
                     </div>
@@ -280,7 +309,7 @@ export function CustomerSuccess() {
                   {/* Bottom fade — blends thumbnail into card body */}
                   <div
                     className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-                    style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+                    style={{ background: `linear-gradient(to bottom, transparent, var(--theme-video-fade))` }}
                     aria-hidden="true"
                   />
                   {/* Watch story label */}
@@ -294,97 +323,115 @@ export function CustomerSuccess() {
                 {/* Body — 2-column grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 flex-1">
 
-                {/* Left: logo + quote + attribution + metrics */}
-                <div className="p-6 md:p-10 bg-white/[0.05] flex flex-col justify-between gap-8">
-                  <div>
-                    {/* Company header */}
-                    <div className="flex items-center gap-3 mb-6">
-                      <Image
-                        src={s.logo.src}
-                        alt={s.company}
-                        width={s.logo.w}
-                        height={s.logo.h}
-                        style={{ width: "auto", height: `${s.logo.h}px` }}
-                        draggable={false}
-                      />
-                      <span className="h-px flex-1 bg-white/[0.08]" />
-                      <span
-                        className="text-sm text-white/65 uppercase tracking-wider shrink-0"
-                        style={{ fontFamily: "var(--font-messina-var)" }}
+                  {/* Left: logo + quote + attribution + metrics */}
+                  <div
+                    className="p-6 md:p-10 flex flex-col justify-between gap-8"
+                    style={{ backgroundColor: "var(--theme-surface)" }}
+                  >
+                    <div>
+                      {/* Company header */}
+                      <div className="flex items-center gap-3 mb-6">
+                        <Image
+                          src={s.logo.src}
+                          alt={s.company}
+                          width={s.logo.w}
+                          height={s.logo.h}
+                          style={{
+                            width: "auto",
+                            height: `${s.logo.h}px`,
+                            filter: "var(--theme-logo-filter)",
+                            transition: "filter 0.35s ease",
+                          }}
+                          draggable={false}
+                        />
+                        <span className="h-px flex-1" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
+                        <span
+                          className="text-sm uppercase tracking-wider shrink-0"
+                          style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                        >
+                          {s.industry}
+                        </span>
+                      </div>
+
+                      {/* Quote */}
+                      <blockquote
+                        className="text-xl md:text-2xl leading-snug font-medium mb-5"
+                        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                       >
-                        {s.industry}
-                      </span>
+                        &ldquo;{s.quote}&rdquo;
+                      </blockquote>
+
+                      {/* Attribution */}
+                      <p
+                        className="text-sm leading-snug"
+                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                      >
+                        {s.name} &mdash; {s.title}
+                      </p>
                     </div>
 
-                    {/* Quote */}
-                    <blockquote
-                      className="text-xl md:text-2xl text-white leading-snug font-medium mb-5"
-                      style={{ fontFamily: "var(--font-roobert-var)" }}
+                    {/* Metrics */}
+                    <div
+                      className="grid grid-cols-3 gap-4 pt-6"
+                      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                     >
-                      &ldquo;{s.quote}&rdquo;
-                    </blockquote>
-
-                    {/* Attribution */}
-                    <p
-                      className="text-sm text-white/65 leading-snug"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
-                    >
-                      {s.name} &mdash; {s.title}
-                    </p>
+                      {s.metrics.map((m) => (
+                        <div key={m.label}>
+                          <p
+                            className="text-xl md:text-2xl font-semibold leading-none mb-1"
+                            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                          >
+                            {m.value}
+                          </p>
+                          <p
+                            className="text-sm leading-tight"
+                            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                          >
+                            {m.label}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Metrics */}
-                  <div className="grid grid-cols-3 gap-4 pt-6 border-t border-white/[0.06]">
-                    {s.metrics.map((m) => (
-                      <div key={m.label}>
-                        <p
-                          className="text-xl md:text-2xl font-semibold text-brand-lime leading-none mb-1"
-                          style={{ fontFamily: "var(--font-roobert-var)" }}
-                        >
-                          {m.value}
-                        </p>
-                        <p
-                          className="text-sm text-white/65 leading-tight"
-                          style={{ fontFamily: "var(--font-messina-var)" }}
-                        >
-                          {m.label}
-                        </p>
-                      </div>
-                    ))}
+                  {/* Right: challenge / solution */}
+                  <div
+                    className="p-6 md:p-10 flex flex-col gap-6"
+                    style={{
+                      borderTopWidth: "1px",
+                      borderTopStyle: "solid",
+                      borderTopColor: "var(--theme-border-subtle)",
+                    }}
+                  >
+                    <div>
+                      <p
+                        className="text-xs tracking-[0.18em] uppercase mb-3"
+                        style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
+                      >
+                        Challenge
+                      </p>
+                      <p
+                        className="text-base leading-relaxed"
+                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      >
+                        {s.challenge}
+                      </p>
+                    </div>
+                    <div>
+                      <p
+                        className="text-xs tracking-[0.18em] uppercase mb-3"
+                        style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
+                      >
+                        Solution
+                      </p>
+                      <p
+                        className="text-base leading-relaxed"
+                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      >
+                        {s.solution}
+                      </p>
+                    </div>
                   </div>
-                </div>
-
-                {/* Right: challenge / solution */}
-                <div className="p-6 md:p-10 flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-white/[0.06]">
-                  <div>
-                    <p
-                      className="text-xs text-brand-lime tracking-[0.18em] uppercase mb-3"
-                      style={{ fontFamily: "var(--font-messina-var)" }}
-                    >
-                      Challenge
-                    </p>
-                    <p
-                      className="text-base text-white/80 leading-relaxed"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
-                    >
-                      {s.challenge}
-                    </p>
-                  </div>
-                  <div>
-                    <p
-                      className="text-xs text-brand-lime tracking-[0.18em] uppercase mb-3"
-                      style={{ fontFamily: "var(--font-messina-var)" }}
-                    >
-                      Solution
-                    </p>
-                    <p
-                      className="text-base text-white/80 leading-relaxed"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
-                    >
-                      {s.solution}
-                    </p>
-                  </div>
-                </div>
 
                 </div>{/* end inner grid */}
               </div>{/* end outer card */}

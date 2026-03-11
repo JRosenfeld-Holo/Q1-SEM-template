@@ -1,6 +1,10 @@
+"use client";
+
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 export function CTASection() {
+  const { t } = useI18n();
   return (
     <section id="cta" className="py-32 px-6 text-center relative overflow-hidden">
       {/* Radial lime glow */}
@@ -15,60 +19,66 @@ export function CTASection() {
       <div className="relative z-10 max-w-2xl mx-auto">
         <FadeIn>
           <p
-            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-6"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-sm tracking-[0.2em] uppercase mb-6"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
           >
-            Get connected
+            {t.cta.eyebrow}
           </p>
           <h2
-            className="font-medium text-5xl md:text-6xl text-white mb-6 leading-[1.05]"
-            style={{ fontFamily: "var(--font-roobert-var)" }}
+            className="font-medium text-5xl md:text-6xl mb-6 leading-[1.05]"
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
-            Ready to stop fighting your connectivity provider?
+            {t.cta.headline}
           </h2>
           <p
-            className="text-white/80 text-xl mb-10 leading-relaxed"
-            style={{ fontFamily: "var(--font-inter-var)" }}
+            className="text-xl mb-10 leading-relaxed"
+            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
           >
-            Start with a free developer account and 1 SIM. Scale to
-            1,000,000. No minimums, no contracts, and predictable pricing
-            that protects your unit economics.
+            {t.cta.sub}
           </p>
         </FadeIn>
 
         <FadeIn delay={0.15}>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <a
-              href="https://dashboard.hologram.io/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              href="#contact"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200"
+              style={{
+                fontFamily: "var(--font-inter-var)",
+                backgroundColor: "var(--theme-cta-bg)",
+                color: "var(--theme-cta-text)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-hover)"; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "var(--shadow-lime-glow)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-bg)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
             >
-              Start building for free
+              {t.cta.cta2}
             </a>
             <a
-              href="mailto:sales@hologram.io"
-              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] border border-white/20 text-white text-sm cursor-pointer hover:bg-[#2b2f3b] hover:border-white/40 transition-all duration-200"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              href="#free-pilot"
+              className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] text-sm cursor-pointer transition-all duration-200"
+              style={{
+                fontFamily: "var(--font-inter-var)",
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "var(--theme-btn-outline-border)",
+                color: "var(--theme-btn-outline-text)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-btn-outline-hover-bg)"; e.currentTarget.style.borderColor = "var(--theme-btn-outline-hover-border)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.borderColor = "var(--theme-btn-outline-border)"; e.currentTarget.style.transform = "translateY(0)"; }}
             >
-              Talk to an IoT expert
+              {t.cta.cta1}
             </a>
           </div>
 
           {/* CTA value props */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
-            {[
-              "Multi-carrier uptime with 99.95% SLA",
-              "Transparent, predictable pricing",
-              "Dedicated engineering support, not ticket queues",
-            ].map((line) => (
+            {t.cta.checks.map((line) => (
               <div
                 key={line}
-                className="flex items-center gap-2 text-sm text-white/65"
-                style={{ fontFamily: "var(--font-inter-var)" }}
+                className="flex items-center gap-2 text-sm"
+                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
               >
-                <span className="text-brand-lime shrink-0">
+                <span className="shrink-0" style={{ color: "var(--theme-accent)" }}>
                   <svg
                     width="12"
                     height="12"
@@ -78,7 +88,7 @@ export function CTASection() {
                   >
                     <path
                       d="M2 6L5 9L10 3"
-                      stroke="#bffd11"
+                      stroke="currentColor"
                       strokeWidth="1.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"

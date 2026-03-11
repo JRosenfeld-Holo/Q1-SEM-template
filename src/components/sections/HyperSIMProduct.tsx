@@ -1,4 +1,7 @@
+"use client";
+
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 const FEATURES = [
   {
@@ -32,23 +35,27 @@ const FEATURES = [
 ];
 
 export function HyperSIMProduct() {
+  const { t } = useI18n();
   return (
-    <section className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section
+      className="py-16 md:py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10 md:mb-16">
             <div>
               <p
-                className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-4"
-                style={{ fontFamily: "var(--font-messina-var)" }}
+                className="text-sm tracking-[0.2em] uppercase mb-4"
+                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
               >
-                HyperSIM
+                {t.hyperSIM.eyebrow}
               </p>
               <h2
-                className="font-medium text-3xl md:text-4xl lg:text-5xl text-white leading-[1.1] max-w-xl"
-                style={{ fontFamily: "var(--font-roobert-var)" }}
+                className="font-medium text-3xl md:text-4xl lg:text-5xl leading-[1.1] max-w-xl"
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
               >
-                One SIM that never locks you into a single carrier
+                {t.hyperSIM.headline}
               </h2>
             </div>
 
@@ -58,35 +65,46 @@ export function HyperSIMProduct() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
           {FEATURES.map((f, i) => (
             <FadeIn key={f.label} delay={i * 0.08}>
-              <div className="h-full p-6 md:p-8 rounded-2xl border border-white/[0.12] bg-white/[0.05] hover:border-brand-lime/35 hover:bg-white/[0.08] transition-all duration-300 cursor-default">
+              <div
+                className="h-full p-6 md:p-8 rounded-2xl transition-all duration-300 cursor-default"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  backgroundColor: "var(--theme-surface)",
+                  boxShadow: "var(--theme-card-shadow)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.borderColor = "var(--theme-border-strong)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.backgroundColor = "var(--theme-surface-hover)"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = "var(--theme-border)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.backgroundColor = "var(--theme-surface)"; }}
+              >
                 <span
-                  className="block text-sm text-brand-lime tracking-[0.18em] uppercase mb-4"
-                  style={{ fontFamily: "var(--font-messina-var)" }}
+                  className="block text-sm tracking-[0.18em] uppercase mb-4"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                 >
                   {f.label}
                 </span>
                 <h3
-                  className="font-medium text-xl text-white mb-3 leading-snug"
-                  style={{ fontFamily: "var(--font-roobert-var)" }}
+                  className="font-medium text-xl mb-3 leading-snug"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                 >
                   {f.headline}
                 </h3>
                 <p
-                  className="text-base text-white/80 leading-relaxed mb-6"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  className="text-base leading-relaxed mb-6"
+                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                 >
                   {f.body}
                 </p>
                 <div className="flex items-baseline gap-2">
                   <span
-                    className="text-3xl font-semibold text-brand-lime"
-                    style={{ fontFamily: "var(--font-roobert-var)" }}
+                    className="text-3xl font-semibold"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
                   >
                     {f.stat}
                   </span>
                   <span
-                    className="text-sm text-white/65"
-                    style={{ fontFamily: "var(--font-messina-var)" }}
+                    className="text-sm"
+                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                   >
                     {f.statLabel}
                   </span>

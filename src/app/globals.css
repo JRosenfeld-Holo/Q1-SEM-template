@@ -22,20 +22,166 @@
   --shadow-gold-glow: 0 0 20px rgba(201, 168, 76, 0.4);
 }
 
+/* ═══════════════════════════════════════════════════════
+   THEME CUSTOM PROPERTIES
+   ═══════════════════════════════════════════════════════ */
+
+:root,
+[data-theme="dark"] {
+  /* Surfaces */
+  --theme-bg: #000000;
+  --theme-surface: rgba(255, 255, 255, 0.05);
+  --theme-surface-hover: rgba(255, 255, 255, 0.08);
+  --theme-nav-bg: rgba(32, 33, 38, 0.92);
+  --theme-nav-shadow: 0 2px 24px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  /* Text */
+  --theme-text: #ffffff;
+  --theme-text-secondary: rgba(255, 255, 255, 0.80);
+  --theme-text-muted: rgba(255, 255, 255, 0.65);
+  --theme-text-faint: rgba(255, 255, 255, 0.50);
+
+  /* Borders */
+  --theme-border: rgba(255, 255, 255, 0.12);
+  --theme-border-subtle: rgba(255, 255, 255, 0.06);
+  --theme-border-strong: rgba(255, 255, 255, 0.20);
+
+  /* Accent color (lime in dark, purple in light) */
+  --theme-accent: #bffd11;
+  --theme-accent-muted: rgba(191, 253, 17, 0.80);
+  --theme-accent-bg: rgba(191, 253, 17, 0.10);
+  --theme-accent-border: rgba(191, 253, 17, 0.40);
+
+  /* Tertiary accent (Partnership card) */
+  --theme-tertiary: #9b59d4;
+  --theme-tertiary-rgb: 155, 89, 212;
+
+  /* CTA buttons */
+  --theme-cta-bg: #bffd11;
+  --theme-cta-text: #000000;
+  --theme-cta-hover: #cffe4e;
+
+  /* Secondary/outline button */
+  --theme-btn-outline-border: rgba(255, 255, 255, 0.20);
+  --theme-btn-outline-text: #ffffff;
+  --theme-btn-outline-hover-bg: #2b2f3b;
+  --theme-btn-outline-hover-border: rgba(255, 255, 255, 0.40);
+
+  /* Marquee logos */
+  --theme-logo-filter: none;
+  --theme-logo-opacity: 0.35;
+  --theme-logo-hover-opacity: 0.60;
+
+  /* Marquee edge fade */
+  --theme-fade-from: #000000;
+
+  /* Input fields */
+  --theme-input-bg: rgba(255, 255, 255, 0.06);
+  --theme-input-border: rgba(255, 255, 255, 0.14);
+  --theme-input-text: #ffffff;
+  --theme-input-placeholder: rgba(255, 255, 255, 0.25);
+  --theme-select-option-bg: #12121a;
+
+  /* Cards */
+  --theme-card-bg: rgba(255, 255, 255, 0.025);
+  --theme-card-shadow: none;
+
+  /* Scrollbar */
+  --theme-scrollbar-track: #000000;
+  --theme-scrollbar-thumb: #3a3c46;
+
+  /* Gradient overlays */
+  --theme-video-fade: #000000;
+}
+
+[data-theme="light"] {
+  /* Surfaces */
+  --theme-bg: #f5f5f7;
+  --theme-surface: #ffffff;
+  --theme-surface-hover: #f9f9fb;
+  --theme-nav-bg: rgba(255, 255, 255, 0.92);
+  --theme-nav-shadow: 0 2px 24px rgba(0, 0, 0, 0.12), inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+
+  /* Text */
+  --theme-text: #0f1117;
+  --theme-text-secondary: rgba(15, 17, 23, 0.70);
+  --theme-text-muted: rgba(15, 17, 23, 0.50);
+  --theme-text-faint: rgba(15, 17, 23, 0.38);
+
+  /* Borders */
+  --theme-border: rgba(0, 0, 0, 0.10);
+  --theme-border-subtle: rgba(0, 0, 0, 0.06);
+  --theme-border-strong: rgba(0, 0, 0, 0.18);
+
+  /* Card elevation */
+  --theme-card-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.04);
+
+  /* Accent color — blue in light mode */
+  --theme-accent: #003DF4;
+  --theme-accent-muted: rgba(0, 61, 244, 0.80);
+  --theme-accent-bg: rgba(0, 61, 244, 0.10);
+  --theme-accent-border: rgba(0, 61, 244, 0.40);
+
+  /* Tertiary accent (Partnership card) */
+  --theme-tertiary: #003DF4;
+  --theme-tertiary-rgb: 0, 61, 244;
+
+  /* CTA buttons — inverted for readability */
+  --theme-cta-bg: #00040F;
+  --theme-cta-text: #bffd11;
+  --theme-cta-hover: #141924;
+
+  /* Secondary/outline button */
+  --theme-btn-outline-border: rgba(0, 0, 0, 0.16);
+  --theme-btn-outline-text: #0f1117;
+  --theme-btn-outline-hover-bg: rgba(0, 0, 0, 0.05);
+  --theme-btn-outline-hover-border: rgba(0, 0, 0, 0.30);
+
+  /* Marquee logos – black */
+  --theme-logo-filter: brightness(0);
+  --theme-logo-opacity: 0.5;
+  --theme-logo-hover-opacity: 0.8;
+
+  /* Marquee edge fade */
+  --theme-fade-from: #f5f5f7;
+
+  /* Input fields */
+  --theme-input-bg: #ffffff;
+  --theme-input-border: rgba(0, 0, 0, 0.14);
+  --theme-input-text: #0f1117;
+  --theme-input-placeholder: rgba(0, 0, 0, 0.30);
+  --theme-select-option-bg: #ffffff;
+
+  /* Cards */
+  --theme-card-bg: #ffffff;
+
+  /* Scrollbar */
+  --theme-scrollbar-track: #f5f5f7;
+  --theme-scrollbar-thumb: #c4c5ca;
+
+  /* Gradient overlays */
+  --theme-video-fade: #f5f5f7;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL STYLES — using theme vars
+   ═══════════════════════════════════════════════════════ */
+
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* ── Keyboard navigation focus ring ── */
 :focus-visible {
-  outline: 2px solid #bffd11;
+  outline: 2px solid var(--theme-accent);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -46,14 +192,19 @@ body {
 
 /* ── Text selection ── */
 ::selection {
-  background-color: #bffd11;
+  background-color: var(--theme-accent);
   color: #000000;
 }
 
 /* ── Logo marquee ── */
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .animate-marquee {
@@ -74,13 +225,27 @@ body {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--theme-scrollbar-track);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: #3a3c46;
+  background: var(--theme-scrollbar-thumb);
   border-radius: 3px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: #bffd11;
+  background: var(--theme-accent);
+}
+
+/* ── Theme transitions for smooth switching ── */
+/* Only apply theme-transition to the body and nav – not every element.
+   This prevents overriding component-level hover transitions (transform, scale, etc.). */
+body,
+[data-theme] nav,
+[data-theme] header,
+[data-theme] section,
+[data-theme] footer {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
 }

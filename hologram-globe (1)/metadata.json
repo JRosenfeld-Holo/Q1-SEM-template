@@ -1,0 +1,5 @@
+{
+  "name": "Hologram Globe",
+  "description": "A 3D interactive holographic globe visualization using React Three Fiber.",
+  "requestFramePermissions": []
+}

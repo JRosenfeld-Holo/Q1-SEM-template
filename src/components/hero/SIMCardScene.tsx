@@ -1,5 +1,6 @@
 "use client";
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function SIMCardScene() {
@@ -12,18 +13,25 @@ export function SIMCardScene() {
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
+    let rafId: number | null = null;
     const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      mouseX.set(((e.clientX - rect.left) / rect.width - 0.5) * 16);
-      mouseY.set(-((e.clientY - rect.top) / rect.height - 0.5) * 10);
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(() => {
+        const rect = el.getBoundingClientRect();
+        mouseX.set(((e.clientX - rect.left) / rect.width - 0.5) * 16);
+        mouseY.set(-((e.clientY - rect.top) / rect.height - 0.5) * 10);
+        rafId = null;
+      });
     };
     const onLeave = () => {
+      if (rafId !== null) { cancelAnimationFrame(rafId); rafId = null; }
       mouseX.set(0);
       mouseY.set(0);
     };
     el.addEventListener("mousemove", onMove);
     el.addEventListener("mouseleave", onLeave);
     return () => {
+      if (rafId !== null) cancelAnimationFrame(rafId);
       el.removeEventListener("mousemove", onMove);
       el.removeEventListener("mouseleave", onLeave);
     };
@@ -57,13 +65,16 @@ export function SIMCardScene() {
             position: "relative",
           }}
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src="/textures/sim-card-front.png"
             alt="Hologram HyperSIM card"
+            width={1066}
+            height={708}
+            priority
             draggable={false}
             style={{
               width: "100%",
+              height: "auto",
               maxWidth: "460px",
               borderRadius: "18px",
               display: "block",

@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { SIMCardScene } from "./SIMCardScene";
 import { HeroBackground } from "./HeroBackground";
 import { SocialProofBar } from "@/components/sections/SocialProofBar";
+import { useI18n } from "@/lib/i18n/context";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function HeroSection() {
+  const { t } = useI18n();
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden">
+    <section className="relative min-h-screen flex flex-col overflow-hidden" style={{ backgroundColor: "var(--theme-bg)" }}>
       {/* Radial lime glow — top center */}
       <div
         className="absolute inset-0 pointer-events-none"
@@ -43,10 +45,10 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.0 }}
-                className="text-xs text-brand-lime tracking-[0.22em] uppercase"
-                style={{ fontFamily: "var(--font-messina-var)" }}
+                className="text-xs tracking-[0.22em] uppercase"
+                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
               >
-                IoT Connectivity — Built for Scale
+                {t.hero.eyebrow}
               </motion.span>
 
               {/* H1 */}
@@ -54,12 +56,12 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-                className="font-medium text-[2.1rem] sm:text-4xl md:text-5xl xl:text-[4.25rem] leading-[1.04] text-white"
-                style={{ fontFamily: "var(--font-roobert-var)" }}
+                className="font-medium text-[2.1rem] sm:text-4xl md:text-5xl xl:text-[4.25rem] leading-[1.04]"
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
               >
-                Every device.
+                {t.hero.h1a}
                 <br />
-                <span className="text-brand-lime">Always online.</span>
+                <span style={{ color: "var(--theme-accent)" }}>{t.hero.h1b}</span>
               </motion.h1>
 
               {/* Subhead */}
@@ -67,12 +69,10 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
-                className="text-xl text-white/80 max-w-md leading-relaxed"
-                style={{ fontFamily: "var(--font-inter-var)" }}
+                className="text-xl max-w-md leading-relaxed"
+                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
               >
-                Your devices deserve better than single-carrier reliability.
-                One SIM spans 550+ carriers across 190+ countries, with
-                automatic failover and a 99.95% uptime SLA.
+                {t.hero.sub}
               </motion.p>
 
               {/* CTAs */}
@@ -84,19 +84,31 @@ export function HeroSection() {
               >
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200"
+                  style={{
+                    fontFamily: "var(--font-inter-var)",
+                    backgroundColor: "var(--theme-cta-bg)",
+                    color: "var(--theme-cta-text)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-hover)"; e.currentTarget.style.transform = "translateY(-2px)"; e.currentTarget.style.boxShadow = "var(--shadow-lime-glow)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-bg)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
                 >
-                  Talk to an IoT expert
+                  {t.hero.cta1}
                 </a>
                 <a
-                  href="https://dashboard.hologram.io/account/register"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] border border-white/20 text-white text-sm cursor-pointer hover:bg-[#2b2f3b] hover:border-white/40 transition-all duration-200"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  href="#free-pilot"
+                  className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] text-sm cursor-pointer transition-all duration-200"
+                  style={{
+                    fontFamily: "var(--font-inter-var)",
+                    borderWidth: "1px",
+                    borderStyle: "solid",
+                    borderColor: "var(--theme-btn-outline-border)",
+                    color: "var(--theme-btn-outline-text)",
+                  }}
+                  onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-btn-outline-hover-bg)"; e.currentTarget.style.borderColor = "var(--theme-btn-outline-hover-border)"; e.currentTarget.style.transform = "translateY(-2px)"; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.borderColor = "var(--theme-btn-outline-border)"; e.currentTarget.style.transform = "translateY(0)"; }}
                 >
-                  Start building for free
+                  {t.hero.cta2}
                 </a>
               </motion.div>
 

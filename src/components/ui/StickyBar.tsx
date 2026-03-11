@@ -2,10 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useI18n } from "@/lib/i18n/context";
 
 export function StickyBar() {
   const [visible, setVisible] = useState(false);
   const ctaRef = useRef<Element | null>(null);
+  const { t } = useI18n();
 
   useEffect(() => {
     ctaRef.current = document.getElementById("cta");
@@ -40,23 +42,33 @@ export function StickyBar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 80, opacity: 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-          className="fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.06] bg-brand-deep/90 backdrop-blur-md"
+          className="fixed bottom-0 left-0 right-0 z-40 backdrop-blur-md"
+          style={{
+            borderTopWidth: "1px",
+            borderTopStyle: "solid",
+            borderTopColor: "var(--theme-border-subtle)",
+            backgroundColor: "var(--theme-nav-bg)",
+          }}
         >
           <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
             <p
-              className="text-sm text-white/80 hidden sm:block"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              className="text-sm hidden sm:block"
+              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
             >
-              Stop losing revenue to connectivity downtime.
+              {t.sticky.text}
             </p>
             <a
-              href="https://dashboard.hologram.io/account/register"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200 shrink-0"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              href="#free-pilot"
+              className="ml-auto inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
+              style={{
+                fontFamily: "var(--font-inter-var)",
+                backgroundColor: "var(--theme-cta-bg)",
+                color: "var(--theme-cta-text)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-hover)"; e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "var(--shadow-lime-glow)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-bg)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
             >
-              Sign up free →
+              {t.sticky.cta}
             </a>
           </div>
         </motion.div>

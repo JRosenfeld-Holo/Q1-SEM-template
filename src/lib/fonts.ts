@@ -11,22 +11,22 @@ export const inter = Inter({
 export const roobert = localFont({
   src: [
     {
-      path: "../../Brand Fonts/Roobert/TTF/Roobert-Regular.ttf",
+      path: "../../Brand Fonts/Roobert/WOFF2/Roobert-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../Brand Fonts/Roobert/TTF/Roobert-Medium.ttf",
+      path: "../../Brand Fonts/Roobert/WOFF2/Roobert-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "../../Brand Fonts/Roobert/TTF/Roobert-SemiBold.ttf",
+      path: "../../Brand Fonts/Roobert/WOFF2/Roobert-SemiBold.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "../../Brand Fonts/Roobert/TTF/Roobert-Bold.ttf",
+      path: "../../Brand Fonts/Roobert/WOFF2/Roobert-Bold.woff2",
       weight: "700",
       style: "normal",
     },
@@ -38,12 +38,12 @@ export const roobert = localFont({
 export const messina = localFont({
   src: [
     {
-      path: "../../Brand Fonts/MessinaSansMono_Family/MessinaSansMono-Regular.otf",
+      path: "../../Brand Fonts/MessinaSansMono_Family/MessinaSansMono-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "../../Brand Fonts/MessinaSansMono_Family/MessinaSansMono-SemiBold.otf",
+      path: "../../Brand Fonts/MessinaSansMono_Family/MessinaSansMono-SemiBold.woff2",
       weight: "600",
       style: "normal",
     },

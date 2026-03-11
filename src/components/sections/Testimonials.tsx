@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 const TESTIMONIALS = [
   {
@@ -31,7 +32,7 @@ const TESTIMONIALS = [
     title: "Software Engineer",
     company: "Sunday Power",
     industry: "Renewable Energy",
-    logo: { src: "/customer-logos/sunday-power.png", w: 148, h: 28 },
+    logo: { src: "/customer-logos/sunday-power.avif", w: 148, h: 28 },
   },
   {
     quote:
@@ -71,6 +72,7 @@ function ChevronRight() {
 }
 
 export function Testimonials() {
+  const { t } = useI18n();
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
   const [paused, setPaused] = useState(false);
@@ -104,7 +106,7 @@ export function Testimonials() {
     return () => window.removeEventListener("keydown", onKey);
   }, [prev, next]);
 
-  const t = TESTIMONIALS[index];
+  const testimonial = TESTIMONIALS[index];
 
   const variants = {
     enter: (d: number) => ({ opacity: 0, x: d * 40 }),
@@ -114,7 +116,8 @@ export function Testimonials() {
 
   return (
     <section
-      className="py-24 px-6 md:px-12 border-t border-white/[0.06]"
+      className="py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -125,16 +128,16 @@ export function Testimonials() {
       <div className="max-w-5xl mx-auto">
         <FadeIn>
           <p
-            className="text-xs text-white/40 tracking-[0.2em] uppercase mb-5 text-center"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-xs tracking-[0.2em] uppercase mb-5 text-center"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
           >
-            What customers say
+            {t.testimonials.eyebrow}
           </p>
           <h2
-            className="font-medium text-4xl md:text-5xl text-white mb-14 leading-[1.1] text-center max-w-2xl mx-auto"
-            style={{ fontFamily: "var(--font-roobert-var)" }}
+            className="font-medium text-4xl md:text-5xl mb-14 leading-[1.1] text-center max-w-2xl mx-auto"
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
-            Trusted by teams who can&rsquo;t afford to go offline.
+            {t.testimonials.headline}
           </h2>
         </FadeIn>
 
@@ -142,15 +145,22 @@ export function Testimonials() {
         <div className="relative">
           {/* Card */}
           <div
-            className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.02] px-8 md:px-16 py-14 min-h-[320px] flex flex-col justify-between"
+            className="relative overflow-hidden rounded-2xl px-8 md:px-16 py-14 min-h-[320px] flex flex-col justify-between"
+            style={{
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "var(--theme-border)",
+              backgroundColor: "var(--theme-surface)",
+              boxShadow: "var(--theme-card-shadow)",
+            }}
             aria-live="polite"
             aria-atomic="true"
           >
             {/* Decorative quote mark */}
             <span
-              className="absolute top-8 left-8 md:left-14 text-7xl text-brand-lime/15 leading-none select-none pointer-events-none"
+              className="absolute top-8 left-8 md:left-14 text-7xl leading-none select-none pointer-events-none"
               aria-hidden="true"
-              style={{ fontFamily: "var(--font-roobert-var)" }}
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)", opacity: 0.15 }}
             >
               &ldquo;
             </span>
@@ -167,21 +177,21 @@ export function Testimonials() {
               >
                 {/* Logo or company name */}
                 <div className="h-11 flex items-center">
-                  {t.logo ? (
+                  {testimonial.logo ? (
                     <Image
-                      src={t.logo.src}
-                      alt={t.company}
-                      width={t.logo.w}
-                      height={t.logo.h}
-                      style={{ width: "auto", height: `${t.logo.h}px`, opacity: 0.6 }}
+                      src={testimonial.logo.src}
+                      alt={testimonial.company}
+                      width={testimonial.logo.w}
+                      height={testimonial.logo.h}
+                      style={{ width: "auto", height: `${testimonial.logo.h}px`, opacity: 0.6, filter: "var(--theme-logo-filter)" }}
                       draggable={false}
                     />
                   ) : (
                     <span
-                      className="text-sm font-semibold text-white/40 uppercase tracking-widest"
-                      style={{ fontFamily: "var(--font-roobert-var)" }}
+                      className="text-sm font-semibold uppercase tracking-widest"
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                     >
-                      {t.company}
+                      {testimonial.company}
                     </span>
                   )}
                 </div>
@@ -189,28 +199,28 @@ export function Testimonials() {
                 {/* Quote */}
                 <blockquote>
                   <p
-                    className="text-lg md:text-xl text-white/85 leading-relaxed"
-                    style={{ fontFamily: "var(--font-roobert-var)" }}
+                    className="text-lg md:text-xl leading-relaxed"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                   >
-                    {t.quote}
+                    {testimonial.quote}
                   </p>
                 </blockquote>
 
                 {/* Attribution */}
                 <div className="flex items-center gap-3">
-                  <div className="h-px flex-1 bg-white/[0.06]" />
+                  <div className="h-px flex-1" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
                   <div className="text-right">
                     <p
-                      className="text-sm text-white/70"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
+                      className="text-sm"
+                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                     >
-                      {t.name}
+                      {testimonial.name}
                     </p>
                     <p
-                      className="text-xs text-white/35 mt-0.5"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
+                      className="text-xs mt-0.5"
+                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                     >
-                      {t.title} &mdash; {t.company}
+                      {testimonial.title} &mdash; {testimonial.company}
                     </p>
                   </div>
                 </div>
@@ -222,33 +232,89 @@ export function Testimonials() {
           <button
             onClick={prev}
             aria-label="Previous testimonial"
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 w-10 h-10 rounded-full border border-white/[0.12] bg-brand-deep flex items-center justify-center text-white/50 hover:text-white hover:border-white/25 transition-all duration-200 cursor-pointer"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-5 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+            style={{
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "var(--theme-border)",
+              backgroundColor: "var(--theme-surface)",
+              color: "var(--theme-text-muted)",
+            }}
           >
             <ChevronLeft />
           </button>
           <button
             onClick={next}
             aria-label="Next testimonial"
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 w-10 h-10 rounded-full border border-white/[0.12] bg-brand-deep flex items-center justify-center text-white/50 hover:text-white hover:border-white/25 transition-all duration-200 cursor-pointer"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-5 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-200 cursor-pointer"
+            style={{
+              borderWidth: "1px",
+              borderStyle: "solid",
+              borderColor: "var(--theme-border)",
+              backgroundColor: "var(--theme-surface)",
+              color: "var(--theme-text-muted)",
+            }}
           >
             <ChevronRight />
           </button>
         </div>
 
-        {/* Dot navigation */}
+        {/* Progress-bar dot navigation */}
         <div className="flex items-center justify-center gap-2 mt-8" role="tablist" aria-label="Select testimonial">
-          {TESTIMONIALS.map((t, i) => (
+          {TESTIMONIALS.map((item, i) => (
             <button
-              key={t.company}
+              key={item.company}
               role="tab"
               aria-selected={i === index}
-              aria-label={`${t.company} testimonial`}
+              aria-label={`${item.company} testimonial`}
               onClick={() => go(i, i > index ? 1 : -1)}
-              className={`h-1 rounded-full transition-all duration-300 cursor-pointer ${
-                i === index ? "w-8 bg-brand-lime" : "w-3 bg-white/20 hover:bg-white/40"
-              }`}
-            />
+              className="relative h-1 rounded-full overflow-hidden transition-all duration-300 cursor-pointer"
+              style={{
+                width: i === index ? 48 : 12,
+                backgroundColor: "var(--theme-border)",
+              }}
+            >
+              {i === index && (
+                <motion.div
+                  className="absolute inset-y-0 left-0 rounded-full"
+                  style={{ backgroundColor: "var(--theme-accent)" }}
+                  initial={{ width: "0%" }}
+                  animate={{ width: paused ? undefined : "100%" }}
+                  transition={{
+                    duration: INTERVAL_MS / 1000,
+                    ease: "linear",
+                  }}
+                  key={`progress-${index}`}
+                />
+              )}
+              {i !== index && (
+                <div
+                  className="absolute inset-0 rounded-full"
+                  style={{ backgroundColor: "var(--theme-border)" }}
+                />
+              )}
+            </button>
           ))}
+        </div>
+
+        {/* CTA nudge */}
+        <div className="flex justify-center mt-10">
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-200 group"
+            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-accent)" }}
+          >
+            Join 6,000+ IoT teams on Hologram
+            <svg
+              width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+              aria-hidden="true"
+              className="transition-transform duration-200 group-hover:translate-x-1"
+            >
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>

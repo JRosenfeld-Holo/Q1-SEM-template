@@ -1,17 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 const PORTAL_ID = "49396559";
 const FORM_ID = "5eaff5cf-059f-4b6f-8eaa-385e4d6abc29";
 const SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
 
-const TRUST_POINTS = [
-  "Immediately book a meeting with a connectivity specialist",
-  "No long-term contracts required",
-  "Free developer SIMs to test with",
-];
+
 
 function InputField({
   label,
@@ -34,10 +31,10 @@ function InputField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={name}
-        className="text-sm font-medium text-white/85 tracking-wide"
-        style={{ fontFamily: "var(--font-inter-var)" }}
+        className="text-sm font-medium tracking-wide"
+        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
       >
-        {label}{required && <span className="text-brand-lime ml-0.5">*</span>}
+        {label}{required && <span style={{ color: "var(--theme-accent)" }} className="ml-0.5">*</span>}
       </label>
       <input
         id={name}
@@ -47,8 +44,15 @@ function InputField({
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-base placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200"
-        style={{ fontFamily: "var(--font-inter-var)" }}
+        className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200"
+        style={{
+          fontFamily: "var(--font-inter-var)",
+          backgroundColor: "var(--theme-input-bg)",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: "var(--theme-input-border)",
+          color: "var(--theme-input-text)",
+        }}
       />
     </div>
   );
@@ -73,10 +77,10 @@ function SelectField({
     <div className="flex flex-col gap-1.5">
       <label
         htmlFor={name}
-        className="text-sm font-medium text-white/85 tracking-wide"
-        style={{ fontFamily: "var(--font-inter-var)" }}
+        className="text-sm font-medium tracking-wide"
+        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
       >
-        {label}{required && <span className="text-brand-lime ml-0.5">*</span>}
+        {label}{required && <span style={{ color: "var(--theme-accent)" }} className="ml-0.5">*</span>}
       </label>
       <select
         id={name}
@@ -84,18 +88,22 @@ function SelectField({
         required={required}
         value={value}
         onChange={onChange}
-        className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-base focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 cursor-pointer appearance-none"
+        className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200 cursor-pointer appearance-none"
         style={{
           fontFamily: "var(--font-inter-var)",
-          color: value ? "#ffffff" : "rgba(255,255,255,0.25)",
+          backgroundColor: "var(--theme-input-bg)",
+          borderWidth: "1px",
+          borderStyle: "solid",
+          borderColor: "var(--theme-input-border)",
+          color: value ? "var(--theme-input-text)" : "var(--theme-input-placeholder)",
           backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.4)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E")`,
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right 14px center",
         }}
       >
-        <option value="" disabled style={{ background: "#12121a", color: "rgba(255,255,255,0.4)" }}>Select…</option>
+        <option value="" disabled style={{ background: "var(--theme-select-option-bg)", color: "var(--theme-text-muted)" }}>Select…</option>
         {options.map((o) => (
-          <option key={o} value={o} style={{ background: "#12121a", color: "#ffffff" }}>{o}</option>
+          <option key={o} value={o} style={{ background: "var(--theme-select-option-bg)", color: "var(--theme-input-text)" }}>{o}</option>
         ))}
       </select>
     </div>
@@ -119,9 +127,24 @@ const EMPTY: FormData = {
   jobtitle: "", phone: "", num_employees: "", how_did_you_hear_about_us: "", message: "",
 };
 
+const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"] as const;
+type UtmKey = (typeof UTM_KEYS)[number];
+
 export function ContactSection() {
+  const { t } = useI18n();
   const [form, setForm] = useState<FormData>(EMPTY);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const utmRef = useRef<Partial<Record<UtmKey, string>>>({});
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const captured: Partial<Record<UtmKey, string>> = {};
+    for (const key of UTM_KEYS) {
+      const val = params.get(key);
+      if (val) captured[key] = val;
+    }
+    utmRef.current = captured;
+  }, []);
 
   const set = (field: keyof FormData) =>
     (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -131,9 +154,14 @@ export function ContactSection() {
     e.preventDefault();
     setStatus("submitting");
 
-    const fields = (Object.keys(form) as (keyof FormData)[])
+    const fields: { name: string; value: string }[] = (Object.keys(form) as (keyof FormData)[])
       .filter((k) => form[k])
       .map((k) => ({ name: k, value: form[k] }));
+
+    // Append UTM params as hidden fields
+    for (const [key, value] of Object.entries(utmRef.current)) {
+      fields.push({ name: key, value: value as string });
+    }
 
     try {
       const res = await fetch(SUBMIT_URL, {
@@ -159,41 +187,44 @@ export function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section
+      id="contact"
+      className="py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
 
           {/* Left: copy — 2 cols */}
           <FadeIn className="lg:col-span-2 flex flex-col gap-6 lg:sticky lg:top-28">
             <p
-              className="text-sm text-brand-lime tracking-[0.2em] uppercase"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+              className="text-sm tracking-[0.2em] uppercase"
+              style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
             >
-              Contact sales
+              {t.contact.eyebrow}
             </p>
             <h2
-              className="font-medium text-4xl md:text-5xl text-white leading-[1.1]"
-              style={{ fontFamily: "var(--font-roobert-var)" }}
+              className="font-medium text-4xl md:text-5xl leading-[1.1]"
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
             >
-              Talk to an IoT expert.
+              {t.contact.headline}
             </h2>
             <p
-              className="text-white/80 text-lg leading-relaxed"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              className="text-lg leading-relaxed"
+              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
             >
-              Tell us about your deployment. We&apos;ll match you with the
-              right connectivity plan and get you up and running fast.
+              {t.contact.sub}
             </p>
             <ul className="flex flex-col gap-3 mt-2">
-              {TRUST_POINTS.map((point) => (
+              {t.contact.trustPoints.map((point) => (
                 <li key={point} className="flex items-center gap-3">
                   <span className="shrink-0">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                      <circle cx="7" cy="7" r="6" stroke="#bffd11" strokeWidth="1.2"/>
-                      <path d="M4.5 7L6.5 9L9.5 5" stroke="#bffd11" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                      <circle cx="7" cy="7" r="6" stroke="var(--theme-accent)" strokeWidth="1.2" />
+                      <path d="M4.5 7L6.5 9L9.5 5" stroke="var(--theme-accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
-                  <span className="text-base text-white/80" style={{ fontFamily: "var(--font-inter-var)" }}>
+                  <span className="text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}>
                     {point}
                   </span>
                 </li>
@@ -203,20 +234,29 @@ export function ContactSection() {
 
           {/* Right: form — 3 cols */}
           <FadeIn delay={0.08} className="lg:col-span-3">
-            <div className="rounded-2xl border border-white/[0.09] bg-white/[0.025] p-8 md:p-10">
+            <div
+              className="rounded-2xl p-8 md:p-10"
+              style={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "var(--theme-border)",
+                backgroundColor: "var(--theme-card-bg)",
+                boxShadow: "var(--theme-card-shadow)",
+              }}
+            >
               {status === "success" ? (
                 <div className="flex flex-col items-center justify-center gap-5 py-12 text-center">
-                  <div className="w-14 h-14 rounded-full bg-brand-lime/10 border border-brand-lime/30 flex items-center justify-center">
+                  <div className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: "var(--theme-accent-bg)", border: "1px solid var(--theme-accent-border)" }}>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                      <path d="M5 12L10 17L19 7" stroke="#bffd11" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M5 12L10 17L19 7" stroke="var(--theme-accent)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white font-medium text-lg mb-1" style={{ fontFamily: "var(--font-roobert-var)" }}>
-                      We&apos;ll be in touch soon.
+                    <p className="font-medium text-lg mb-1" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}>
+                      You&apos;re in good hands.
                     </p>
-                    <p className="text-white/70 text-base" style={{ fontFamily: "var(--font-inter-var)" }}>
-                      Expect a response within one business day.
+                    <p className="text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}>
+                      A connectivity specialist will reach out today.
                     </p>
                   </div>
                 </div>
@@ -263,8 +303,8 @@ export function ContactSection() {
                   <div className="flex flex-col gap-1.5">
                     <label
                       htmlFor="message"
-                      className="text-sm font-medium text-white/85 tracking-wide"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
+                      className="text-sm font-medium tracking-wide"
+                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                     >
                       Tell us about your use case
                     </label>
@@ -275,8 +315,15 @@ export function ContactSection() {
                       placeholder="Describe your deployment, industry, or connectivity challenge…"
                       value={form.message}
                       onChange={set("message")}
-                      className="w-full px-4 py-3 rounded-xl bg-white/[0.06] border border-white/[0.14] text-white text-base placeholder-white/25 focus:outline-none focus:border-brand-lime/50 focus:bg-white/[0.08] transition-all duration-200 resize-none"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
+                      className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200 resize-none"
+                      style={{
+                        fontFamily: "var(--font-inter-var)",
+                        backgroundColor: "var(--theme-input-bg)",
+                        borderWidth: "1px",
+                        borderStyle: "solid",
+                        borderColor: "var(--theme-input-border)",
+                        color: "var(--theme-input-text)",
+                      }}
                     />
                   </div>
 
@@ -289,15 +336,19 @@ export function ContactSection() {
                   <button
                     type="submit"
                     disabled={status === "submitting"}
-                    className="mt-1 w-full inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] bg-brand-lime text-black font-medium text-sm cursor-pointer hover:bg-[#cffe4e] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-                    style={{ fontFamily: "var(--font-inter-var)" }}
+                    className="mt-1 w-full inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
+                    style={{
+                      fontFamily: "var(--font-inter-var)",
+                      backgroundColor: "var(--theme-cta-bg)",
+                      color: "var(--theme-cta-text)",
+                    }}
                   >
                     {status === "submitting" ? "Sending…" : "Talk to an IoT expert"}
                   </button>
 
-                  <p className="text-sm text-white/50 text-center" style={{ fontFamily: "var(--font-inter-var)" }}>
+                  <p className="text-sm text-center" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-faint)" }}>
                     By submitting, you agree to Hologram&apos;s{" "}
-                    <a href="https://www.hologram.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-brand-lime/70 transition-colors underline underline-offset-2">
+                    <a href="https://www.hologram.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>
                       Privacy Policy
                     </a>.
                   </p>
@@ -311,4 +362,3 @@ export function ContactSection() {
     </section>
   );
 }
-

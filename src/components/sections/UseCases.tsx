@@ -2,47 +2,48 @@
 
 import { useState } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
 function IconCamera() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+      <path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
     </svg>
   );
 }
 function IconMap() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polygon points="3 11 22 2 13 21 11 13 3 11"/>
+      <polygon points="3 11 22 2 13 21 11 13 3 11" />
     </svg>
   );
 }
 function IconBot() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 11V5"/><circle cx="12" cy="4" r="1"/><path d="M8 15h.01M16 15h.01"/><path d="M7 11V8a5 5 0 0 1 10 0v3"/>
+      <rect x="3" y="11" width="18" height="10" rx="2" /><path d="M12 11V5" /><circle cx="12" cy="4" r="1" /><path d="M8 15h.01M16 15h.01" /><path d="M7 11V8a5 5 0 0 1 10 0v3" />
     </svg>
   );
 }
 function IconHeart() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
     </svg>
   );
 }
 function IconZap() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+      <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
     </svg>
   );
 }
 function IconWifi() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/>
+      <path d="M5 12.55a11 11 0 0 1 14.08 0" /><path d="M1.42 9a16 16 0 0 1 21.16 0" /><path d="M8.53 16.11a6 6 0 0 1 6.95 0" /><circle cx="12" cy="20" r="1" fill="currentColor" />
     </svg>
   );
 }
@@ -93,7 +94,7 @@ const USE_CASES = [
       "Multi-carrier failover so a single carrier outage never stops your fleet",
       "5G-ready for latency-critical navigation and real-time command-and-control",
     ],
-    stat: { value: "5,000+", label: "Fieldin autonomous farm vehicles with zero downtime" },
+    stat: { value: "6,000+", label: "Fieldin autonomous farm vehicles with zero downtime" },
     quote: "Our business can't afford downtime. With Hologram, latency is very low — we don't lose signal.",
     customer: "Fieldin",
   },
@@ -151,31 +152,36 @@ type UseCaseId = (typeof USE_CASES)[number]["id"];
 
 // ── Component ─────────────────────────────────────────────────────────────────
 export function UseCases() {
+  const { t } = useI18n();
   const [active, setActive] = useState<UseCaseId>("security-video");
 
   const current = USE_CASES.find((u) => u.id === active)!;
 
   return (
-    <section id="use-cases" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section
+      id="use-cases"
+      className="py-16 md:py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-5"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-sm tracking-[0.2em] uppercase mb-5"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
           >
-            Use cases
+            {t.useCases.eyebrow}
           </p>
           <h2
-            className="font-medium text-3xl md:text-4xl lg:text-5xl text-white mb-6 max-w-2xl leading-[1.1]"
-            style={{ fontFamily: "var(--font-roobert-var)" }}
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-6 max-w-2xl leading-[1.1]"
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
-            Built for the devices your business depends on.
+            {t.useCases.headline}
           </h2>
           <p
-            className="text-white/80 text-lg md:text-xl mb-10 md:mb-14 max-w-xl leading-relaxed"
-            style={{ fontFamily: "var(--font-inter-var)" }}
+            className="text-lg md:text-xl mb-10 md:mb-14 max-w-xl leading-relaxed"
+            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
           >
-            From cameras to charging stations to robots — Hologram keeps every connected device online.
+            {t.useCases.sub}
           </p>
         </FadeIn>
 
@@ -198,14 +204,33 @@ export function UseCases() {
                   className={`
                     inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium whitespace-nowrap shrink-0
                     border transition-all duration-200 cursor-pointer
-                    ${isActive
-                      ? "bg-brand-lime/10 border-brand-lime/40 text-brand-lime"
-                      : "border-white/[0.10] text-white/75 hover:text-white hover:border-white/30"
-                    }
                   `}
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  style={
+                    isActive
+                      ? {
+                        fontFamily: "var(--font-inter-var)",
+                        backgroundColor: "var(--theme-accent-bg)",
+                        borderColor: "var(--theme-accent-border)",
+                        color: "var(--theme-accent)",
+                      }
+                      : {
+                        fontFamily: "var(--font-inter-var)",
+                        borderColor: "var(--theme-border)",
+                        color: "var(--theme-text-secondary)",
+                      }
+                  }
+                  onMouseEnter={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = "#bffd11";
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isActive) {
+                      e.currentTarget.style.borderColor = "var(--theme-border)";
+                    }
+                  }}
                 >
-                  <span className={isActive ? "text-brand-lime" : "text-white/55"}>
+                  <span style={{ color: isActive ? "var(--theme-accent)" : "var(--theme-text-muted)" }}>
                     <u.Icon />
                   </span>
                   {u.label}
@@ -224,23 +249,32 @@ export function UseCases() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
             {/* Left: main content — spans 3 cols */}
-            <div className="lg:col-span-3 rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-10 flex flex-col gap-8">
+            <div
+              className="lg:col-span-3 rounded-2xl p-6 md:p-10 flex flex-col gap-8"
+              style={{
+                borderWidth: "1px",
+                borderStyle: "solid",
+                borderColor: "var(--theme-border)",
+                backgroundColor: "var(--theme-surface)",
+                boxShadow: "var(--theme-card-shadow)",
+              }}
+            >
               <div>
                 <h3
-                  className="font-medium text-2xl md:text-3xl text-white mb-2 leading-snug"
-                  style={{ fontFamily: "var(--font-roobert-var)" }}
+                  className="font-medium text-2xl md:text-3xl mb-2 leading-snug"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                 >
                   {current.headline}
                 </h3>
                 <p
-                  className="text-brand-lime/80 text-sm mb-6"
-                  style={{ fontFamily: "var(--font-messina-var)" }}
+                  className="text-sm mb-6"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent-muted)" }}
                 >
                   {current.subhead}
                 </p>
                 <p
-                  className="text-white/80 text-base leading-relaxed mb-8"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  className="text-base leading-relaxed mb-8"
+                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                 >
                   {current.pain}
                 </p>
@@ -249,15 +283,15 @@ export function UseCases() {
                 <ul className="flex flex-col gap-3">
                   {current.solution.map((point) => (
                     <li key={point} className="flex items-start gap-3">
-                      <span className="text-brand-lime shrink-0 mt-0.5">
+                      <span className="shrink-0 mt-0.5" style={{ color: "var(--theme-accent)" }}>
                         <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                          <circle cx="7" cy="7" r="6" stroke="#bffd11" strokeWidth="1.2"/>
-                          <path d="M4.5 7L6.5 9L9.5 5" stroke="#bffd11" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round"/>
+                          <circle cx="7" cy="7" r="6" stroke="currentColor" strokeWidth="1.2" />
+                          <path d="M4.5 7L6.5 9L9.5 5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </span>
                       <span
-                        className="text-base text-white/85 leading-relaxed"
-                        style={{ fontFamily: "var(--font-inter-var)" }}
+                        className="text-base leading-relaxed"
+                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                       >
                         {point}
                       </span>
@@ -270,32 +304,50 @@ export function UseCases() {
             {/* Right: stat + quote — spans 2 cols */}
             <div className="lg:col-span-2 flex flex-col gap-6">
               {/* Stat card */}
-              <div className="flex-1 rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-8 flex flex-col justify-center">
+              <div
+                className="flex-1 rounded-2xl p-6 md:p-8 flex flex-col justify-center"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  backgroundColor: "var(--theme-surface)",
+                  boxShadow: "var(--theme-card-shadow)",
+                }}
+              >
                 <p
-                  className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-lime leading-none mb-3"
-                  style={{ fontFamily: "var(--font-roobert-var)" }}
+                  className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-none mb-3"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
                 >
                   {current.stat.value}
                 </p>
                 <p
-                  className="text-base text-white/65 leading-snug"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  className="text-base leading-snug"
+                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
                 >
                   {current.stat.label}
                 </p>
               </div>
 
               {/* Quote card */}
-              <div className="rounded-2xl border border-white/[0.12] bg-white/[0.05] p-6 md:p-8">
+              <div
+                className="rounded-2xl p-6 md:p-8"
+                style={{
+                  borderWidth: "1px",
+                  borderStyle: "solid",
+                  borderColor: "var(--theme-border)",
+                  backgroundColor: "var(--theme-surface)",
+                  boxShadow: "var(--theme-card-shadow)",
+                }}
+              >
                 <blockquote
-                  className="text-base text-white/85 leading-relaxed italic mb-4"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
+                  className="text-base leading-relaxed italic mb-4"
+                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                 >
                   &ldquo;{current.quote}&rdquo;
                 </blockquote>
                 <p
-                  className="text-sm text-white/65 uppercase tracking-wider"
-                  style={{ fontFamily: "var(--font-messina-var)" }}
+                  className="text-sm uppercase tracking-wider"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                 >
                   — {current.customer}
                 </p>

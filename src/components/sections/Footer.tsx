@@ -1,3 +1,7 @@
+"use client";
+
+import { useI18n } from "@/lib/i18n/context";
+
 const FOOTER_LINKS = [
   {
     title: "Product",
@@ -41,8 +45,20 @@ const FOOTER_LINKS = [
 ];
 
 export function Footer() {
+  const { t } = useI18n();
+
+  const sectionTitles: Record<string, string> = {
+    Product: t.footer.product,
+    "Use cases": t.footer.useCases,
+    Resources: t.footer.resources,
+    Company: t.footer.company,
+  };
+
   return (
-    <footer className="border-t border-white/[0.06] px-6 md:px-12 pt-12 md:pt-16 pb-8">
+    <footer
+      className="px-6 md:px-12 pt-12 md:pt-16 pb-8"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 md:gap-10 mb-10 md:mb-16">
           {/* Brand */}
@@ -50,35 +66,32 @@ export function Footer() {
             <div className="mb-4">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/logos/hologram-wordmark.svg"
+                src="/logos/hologram-wordmark-white.svg"
                 alt="Hologram"
-                style={{ height: "24px", width: "auto" }}
+                style={{
+                  height: "24px",
+                  width: "auto",
+                  filter: "var(--theme-logo-filter)",
+                  transition: "filter 0.35s ease",
+                }}
               />
             </div>
             <p
-              className="text-sm text-white/70 leading-relaxed max-w-xs mb-5"
-              style={{ fontFamily: "var(--font-inter-var)" }}
+              className="text-sm leading-relaxed max-w-xs mb-5"
+              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
             >
-              Carrier-grade IoT connectivity with multi-carrier redundancy,
-              transparent pricing, and responsive engineering support.
+              {t.footer.tagline}
             </p>
-            <a
-              href="mailto:sales@hologram.io"
-              className="text-sm text-brand-lime hover:text-white transition-colors duration-200"
-              style={{ fontFamily: "var(--font-inter-var)" }}
-            >
-              sales@hologram.io
-            </a>
           </div>
 
           {/* Link columns */}
           {FOOTER_LINKS.map((section) => (
             <div key={section.title}>
               <p
-                className="text-sm text-white/60 tracking-[0.15em] uppercase mb-4"
-                style={{ fontFamily: "var(--font-messina-var)" }}
+                className="text-sm tracking-[0.15em] uppercase mb-4"
+                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
               >
-                {section.title}
+                {sectionTitles[section.title] || section.title}
               </p>
               <ul className="flex flex-col gap-3">
                 {section.links.map((link) => (
@@ -87,8 +100,8 @@ export function Footer() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-white/75 hover:text-white transition-colors duration-200"
-                      style={{ fontFamily: "var(--font-inter-var)" }}
+                      className="text-sm transition-colors duration-200"
+                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                     >
                       {link.label}
                     </a>
@@ -100,40 +113,43 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 border-t border-white/[0.06]">
+        <div
+          className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8"
+          style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+        >
           <p
-            className="text-sm text-white/60"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-sm"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
           >
-            © {new Date().getFullYear()} Hologram, Inc. All rights reserved.
+            © {new Date().getFullYear()} Hologram, Inc. {t.footer.copyright}
           </p>
           <div className="flex gap-6">
             <a
               href="https://hologram.io/privacy-policy/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+              className="text-sm transition-colors duration-200"
+              style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
             >
-              Privacy Policy
+              {t.footer.privacy}
             </a>
             <a
               href="https://hologram.io/terms-of-use/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+              className="text-sm transition-colors duration-200"
+              style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
             >
-              Terms of Use
+              {t.footer.terms}
             </a>
             <a
               href="https://hologram.io/sdn-security/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm text-white/60 hover:text-white/80 transition-colors duration-200"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+              className="text-sm transition-colors duration-200"
+              style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
             >
-              Security
+              {t.footer.security}
             </a>
           </div>
         </div>

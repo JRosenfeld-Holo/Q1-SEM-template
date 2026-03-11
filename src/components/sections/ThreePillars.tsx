@@ -1,4 +1,7 @@
+"use client";
+
 import { FadeIn } from "@/components/ui/FadeIn";
+import { useI18n } from "@/lib/i18n/context";
 
 // Checkmark SVG for feature lists
 function Check({ color = "#53f2fa" }: { color?: string }) {
@@ -10,21 +13,26 @@ function Check({ color = "#53f2fa" }: { color?: string }) {
 }
 
 export function ThreePillars() {
+  const { t } = useI18n();
   return (
-    <section id="products" className="py-16 md:py-24 px-6 md:px-12 border-t border-white/[0.06]">
+    <section
+      id="products"
+      className="py-16 md:py-24 px-6 md:px-12"
+      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+    >
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <p
-            className="text-sm text-brand-lime tracking-[0.2em] uppercase mb-5"
-            style={{ fontFamily: "var(--font-messina-var)" }}
+            className="text-sm tracking-[0.2em] uppercase mb-5"
+            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
           >
-            How Hologram is different
+            {t.pillars.eyebrow}
           </p>
           <h2
-            className="font-medium text-3xl md:text-4xl lg:text-5xl text-white mb-8 md:mb-12 max-w-2xl leading-[1.1]"
-            style={{ fontFamily: "var(--font-roobert-var)" }}
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-8 md:mb-12 max-w-2xl leading-[1.1]"
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
-            Carrier-grade connectivity without the carrier headaches.
+            {t.pillars.headline}
           </h2>
         </FadeIn>
 
@@ -34,60 +42,63 @@ export function ThreePillars() {
           {/* ── RELIABILITY — dominant card (3/5 cols, full height) ── */}
           <FadeIn
             delay={0.05}
-            className="md:col-span-3 md:row-span-2 rounded-2xl border border-brand-cyan/30 overflow-hidden"
-            style={{ background: "linear-gradient(135deg, rgba(83,242,250,0.08) 0%, rgba(255,255,255,0.03) 60%, transparent 100%)" } as React.CSSProperties}
+            className="md:col-span-3 md:row-span-2"
           >
-            <div className="h-full flex flex-col justify-between p-6 md:p-10">
-              <div className="flex flex-col gap-5">
-                <span
-                  className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
-                  style={{ fontFamily: "var(--font-messina-var)" }}
-                >
-                  Reliability
-                </span>
-                <h3
-                  className="font-medium text-2xl md:text-3xl text-white leading-snug max-w-sm"
-                  style={{ fontFamily: "var(--font-roobert-var)" }}
-                >
-                  Multi-carrier redundancy, not single-carrier risk.
-                </h3>
-                <p
-                  className="text-base text-white/80 leading-relaxed max-w-md"
-                  style={{ fontFamily: "var(--font-inter-var)" }}
-                >
-                  HyperSIM connects across 550+ carriers. If one network falters, your devices
-                  automatically switch — before your customers notice.
-                </p>
+            <div
+              className="h-full rounded-2xl overflow-hidden transition-all duration-300"
+              style={{ background: "linear-gradient(135deg, rgba(83,242,250,0.08) 0%, var(--theme-surface) 60%)", boxShadow: "var(--theme-card-shadow)", border: "1px solid rgba(83,242,250,0.3)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(83,242,250,0.55)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(83,242,250,0.1)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(83,242,250,0.3)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
+            >
+              <div className="h-full flex flex-col justify-between p-6 md:p-10">
+                <div className="flex flex-col gap-5">
+                  <span
+                    className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
+                    style={{ fontFamily: "var(--font-messina-var)" }}
+                  >
+                    Reliability
+                  </span>
+                  <h3
+                    className="font-medium text-2xl md:text-3xl leading-snug max-w-sm"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
+                  >
+                    {t.pillars.reliability.headline}
+                  </h3>
+                  <p
+                    className="text-base leading-relaxed max-w-md"
+                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                  >
+                    {t.pillars.reliability.body}
+                  </p>
 
-                <ul className="flex flex-col gap-2.5 mt-2">
-                  {[
-                    "Multi-carrier automatic failover",
-                    "Real-time outage detection",
-                    "Zero-touch remediation",
-                    "99.95% uptime SLA (historical 99.99%)",
-                  ].map((f) => (
-                    <li key={f} className="flex items-center gap-2.5 text-base text-white/80" style={{ fontFamily: "var(--font-inter-var)" }}>
-                      <Check color="#53f2fa" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+                  <ul className="flex flex-col gap-2.5 mt-2">
+                    {t.pillars.reliability.features.map((f) => (
+                      <li key={f} className="flex items-center gap-2.5 text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}>
+                        <Check color="#53f2fa" />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-              {/* Big stat */}
-              <div className="mt-8 pt-7 border-t border-white/[0.07]">
-                <p
-                  className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-cyan leading-none tabular-nums"
-                  style={{ fontFamily: "var(--font-roobert-var)" }}
+                {/* Big stat */}
+                <div
+                  className="mt-8 pt-7"
+                  style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                 >
-                  99.95%
-                </p>
-                <p
-                  className="text-sm text-white/65 mt-2"
-                  style={{ fontFamily: "var(--font-messina-var)" }}
-                >
-                  Uptime SLA — contractually guaranteed
-                </p>
+                  <p
+                    className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-cyan leading-none tabular-nums"
+                    style={{ fontFamily: "var(--font-roobert-var)" }}
+                  >
+                    {t.pillars.reliability.stat}
+                  </p>
+                  <p
+                    className="text-sm mt-2"
+                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                  >
+                    {t.pillars.reliability.statLabel}
+                  </p>
+                </div>
               </div>
             </div>
           </FadeIn>
@@ -95,80 +106,92 @@ export function ThreePillars() {
           {/* ── PRICING — top-right (2/5 cols) ── */}
           <FadeIn
             delay={0.12}
-            className="md:col-span-2 rounded-2xl border border-brand-lime/30 p-6 md:p-8"
-            style={{ background: "linear-gradient(135deg, rgba(191,253,17,0.08) 0%, rgba(255,255,255,0.03) 100%)" } as React.CSSProperties}
+            className="md:col-span-2"
           >
-            <span
-              className="block text-sm text-brand-lime tracking-[0.2em] uppercase font-semibold mb-4"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+            <div
+              className="h-full rounded-2xl p-6 md:p-8 transition-all duration-300"
+              style={{ background: "linear-gradient(135deg, var(--theme-accent-bg) 0%, var(--theme-surface) 100%)", border: "1px solid var(--theme-accent-border)", boxShadow: "var(--theme-card-shadow)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(191,253,17,0.08)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
             >
-              Pricing
-            </span>
-            <h3
-              className="font-medium text-xl text-white mb-3 leading-snug"
-              style={{ fontFamily: "var(--font-roobert-var)" }}
-            >
-              Transparent pricing you can build a business on.
-            </h3>
-            <p
-              className="text-base text-white/80 leading-relaxed mb-6"
-              style={{ fontFamily: "var(--font-inter-var)" }}
-            >
-              Predictable rates, flexible plans, no hidden fees. Your unit economics stay intact from 10 devices to 10,000.
-            </p>
-            <div className="flex items-baseline gap-2">
               <span
-                className="text-3xl font-semibold text-brand-lime"
-                style={{ fontFamily: "var(--font-roobert-var)" }}
+                className="block text-sm tracking-[0.2em] uppercase font-semibold mb-4"
+                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
               >
-                Up to 50%
+                {t.pillars.pricing.label}
               </span>
-              <span
-                className="text-sm text-white/60"
-                style={{ fontFamily: "var(--font-messina-var)" }}
+              <h3
+                className="font-medium text-xl mb-3 leading-snug"
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
               >
-                savings vs. carrier direct
-              </span>
+                {t.pillars.pricing.headline}
+              </h3>
+              <p
+                className="text-base leading-relaxed mb-6"
+                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+              >
+                {t.pillars.pricing.body}
+              </p>
+              <div className="flex items-baseline gap-2">
+                <span
+                  className="text-3xl font-semibold"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                >
+                  {t.pillars.pricing.stat}
+                </span>
+                <span
+                  className="text-sm"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                >
+                  {t.pillars.pricing.statLabel}
+                </span>
+              </div>
             </div>
           </FadeIn>
 
           {/* ── PARTNERSHIP — bottom-right (2/5 cols) ── */}
           <FadeIn
             delay={0.19}
-            className="md:col-span-2 rounded-2xl border border-brand-violet/30 p-6 md:p-8"
-            style={{ background: "linear-gradient(135deg, rgba(155,89,212,0.08) 0%, rgba(255,255,255,0.03) 100%)" } as React.CSSProperties}
+            className="md:col-span-2"
           >
-            <span
-              className="block text-sm text-brand-violet tracking-[0.2em] uppercase font-semibold mb-4"
-              style={{ fontFamily: "var(--font-messina-var)" }}
+            <div
+              className="h-full rounded-2xl p-6 md:p-8 transition-all duration-300"
+              style={{ background: "linear-gradient(135deg, rgba(var(--theme-tertiary-rgb),0.08) 0%, var(--theme-surface) 100%)", boxShadow: "var(--theme-card-shadow)", border: "1px solid rgba(var(--theme-tertiary-rgb),0.3)" }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = `rgba(var(--theme-tertiary-rgb),0.55)`; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(var(--theme-tertiary-rgb),0.1)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = `rgba(var(--theme-tertiary-rgb),0.3)`; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
             >
-              Partnership
-            </span>
-            <h3
-              className="font-medium text-xl text-white mb-3 leading-snug"
-              style={{ fontFamily: "var(--font-roobert-var)" }}
-            >
-              An engineering partner, not a support ticket queue.
-            </h3>
-            <p
-              className="text-base text-white/80 leading-relaxed mb-6"
-              style={{ fontFamily: "var(--font-inter-var)" }}
-            >
-              Our solutions engineers dig into modem logs with you. Scale from 1 to 1 million devices with a team that actually picks up the phone.
-            </p>
-            <div className="flex items-baseline gap-2">
               <span
-                className="text-3xl font-semibold text-brand-violet"
-                style={{ fontFamily: "var(--font-roobert-var)" }}
+                className="block text-sm tracking-[0.2em] uppercase font-semibold mb-4"
+                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-tertiary)" }}
               >
-                1 → 1M
+                {t.pillars.partnership.label}
               </span>
-              <span
-                className="text-sm text-white/60"
-                style={{ fontFamily: "var(--font-messina-var)" }}
+              <h3
+                className="font-medium text-xl mb-3 leading-snug"
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
               >
-                devices with hands-on support
-              </span>
+                {t.pillars.partnership.headline}
+              </h3>
+              <p
+                className="text-base leading-relaxed mb-6"
+                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+              >
+                {t.pillars.partnership.body}
+              </p>
+              <div className="flex items-baseline gap-2">
+                <span
+                  className="text-3xl font-semibold"
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-tertiary)" }}
+                >
+                  {t.pillars.partnership.stat}
+                </span>
+                <span
+                  className="text-sm"
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                >
+                  {t.pillars.partnership.statLabel}
+                </span>
+              </div>
             </div>
           </FadeIn>
 

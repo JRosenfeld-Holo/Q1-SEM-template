@@ -2,12 +2,12 @@
 import { useEffect, useRef } from "react";
 
 // ── Burst config ───────────────────────────────────────────────────────────────
-const BURST_COUNT = 220;
+const BURST_COUNT = 120;
 const LIME = "#bffd11";
 const WHITE = "#ffffff";
 
 // ── Ambient shimmer config ─────────────────────────────────────────────────────
-const AMBIENT_COUNT = 2200;
+const AMBIENT_COUNT = 800;
 const AMBIENT_COLORS = ["#c8e0ff", "#9b59d4", "#ffffff", "#bffd11", "#b8f0e0"];
 
 interface BurstParticle {
