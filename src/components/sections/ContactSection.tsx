@@ -114,17 +114,16 @@ type FormData = {
   firstname: string;
   lastname: string;
   email: string;
-  company: string;
-  jobtitle: string;
   phone: string;
-  num_employees: string;
-  how_did_you_hear_about_us: string;
+  company: string;
+  company_headquarters_region: string;
   message: string;
+  how_did_you_hear_about_us: string;
 };
 
 const EMPTY: FormData = {
-  firstname: "", lastname: "", email: "", company: "",
-  jobtitle: "", phone: "", num_employees: "", how_did_you_hear_about_us: "", message: "",
+  firstname: "", lastname: "", email: "", phone: "",
+  company: "", company_headquarters_region: "", message: "", how_did_you_hear_about_us: "",
 };
 
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content", "gclid"] as const;
@@ -180,9 +179,12 @@ export function ContactSection() {
         setStatus("success");
         setForm(EMPTY);
       } else {
+        const body = await res.text();
+        console.error("[HubSpot] submission failed", res.status, body);
         setStatus("error");
       }
-    } catch {
+    } catch (err) {
+      console.error("[HubSpot] network error", err);
       setStatus("error");
     }
   };
@@ -275,30 +277,27 @@ export function ContactSection() {
                     <InputField label="Company" name="company" placeholder="Acme Corp" required value={form.company} onChange={set("company")} />
                   </div>
 
-                  {/* Title + Phone */}
+                  {/* Phone + Region */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <InputField label="Job title" name="jobtitle" placeholder="Head of Engineering" value={form.jobtitle} onChange={set("jobtitle")} />
-                    <InputField label="Phone" name="phone" type="tel" placeholder="+1 (555) 000-0000" value={form.phone} onChange={set("phone")} />
+                    <InputField label="Phone number" name="phone" type="tel" placeholder="+1 (555) 000-0000" required value={form.phone} onChange={set("phone")} />
+                    <SelectField
+                      label="Company headquarters region"
+                      name="company_headquarters_region"
+                      required
+                      value={form.company_headquarters_region}
+                      onChange={set("company_headquarters_region")}
+                      options={["United States", "Canada", "United Kingdom", "Europe", "Latin America", "Asia Pacific", "Middle East & Africa", "Other"]}
+                    />
                   </div>
 
-                  {/* Device count + How did you hear */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <SelectField
-                      label="Estimated device count"
-                      name="num_employees"
-                      required
-                      value={form.num_employees}
-                      onChange={set("num_employees")}
-                      options={["1–100", "100–1,000", "1,000–10,000", "10,000–100,000", "100,000+"]}
-                    />
-                    <SelectField
-                      label="How did you hear about us?"
-                      name="how_did_you_hear_about_us"
-                      value={form.how_did_you_hear_about_us}
-                      onChange={set("how_did_you_hear_about_us")}
-                      options={["Google", "LLM (Claude/ChatGPT/Gemini)", "Reddit", "LinkedIn", "Event", "Word of Mouth"]}
-                    />
-                  </div>
+                  {/* How did you hear */}
+                  <SelectField
+                    label="How did you hear about us?"
+                    name="how_did_you_hear_about_us"
+                    value={form.how_did_you_hear_about_us}
+                    onChange={set("how_did_you_hear_about_us")}
+                    options={["Google", "LLM (Claude/ChatGPT/Gemini)", "Reddit", "LinkedIn", "Event", "Word of Mouth"]}
+                  />
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
@@ -307,7 +306,7 @@ export function ContactSection() {
                       className="text-sm font-medium tracking-wide"
                       style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
                     >
-                      Tell us about your use case
+                      Tell us more about your deployment
                     </label>
                     <textarea
                       id="message"
@@ -347,11 +346,14 @@ export function ContactSection() {
                     {status === "submitting" ? "Sending…" : "Talk to an IoT expert"}
                   </button>
 
-                  <p className="text-sm text-center" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-faint)" }}>
-                    By submitting, you agree to Hologram&apos;s{" "}
-                    <a href="https://hologram.io/privacy-policy/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>
-                      Privacy Policy
-                    </a>.
+                  <p className="text-sm text-center leading-relaxed" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-faint)" }}>
+                    By submitting the information above, I acknowledge that I have read and understand Hologram&apos;s{" "}
+                    <a href="https://www.hologram.io/terms-of-use/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>Terms of Use</a>
+                    {", "}
+                    <a href="https://www.hologram.io/privacy-policy/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>Website Privacy Notice</a>
+                    {", and "}
+                    <a href="https://www.hologram.io/products-privacy-statement/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>Products Privacy Statement</a>
+                    .
                   </p>
                 </form>
               )}
