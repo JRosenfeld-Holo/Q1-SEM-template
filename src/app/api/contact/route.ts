@@ -1,0 +1,28 @@
+import { NextRequest, NextResponse } from "next/server";
+
+const PORTAL_ID = "49396559";
+const FORM_ID = "5eaff5cf-059f-4b6f-8eaa-385e4d6abc29";
+const SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+
+export async function POST(req: NextRequest) {
+  try {
+    const body = await req.json();
+
+    const res = await fetch(SUBMIT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      return NextResponse.json(data, { status: res.status });
+    }
+
+    return NextResponse.json(data);
+  } catch (err) {
+    console.error("[contact proxy] error", err);
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+  }
+}

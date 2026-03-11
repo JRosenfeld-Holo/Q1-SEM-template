@@ -4,9 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
 
-const PORTAL_ID = "49396559";
-const FORM_ID = "5eaff5cf-059f-4b6f-8eaa-385e4d6abc29";
-const SUBMIT_URL = `https://api.hsforms.com/submissions/v3/integration/submit/${PORTAL_ID}/${FORM_ID}`;
+const SUBMIT_URL = "/api/contact";
 
 function InputField({
   label,
