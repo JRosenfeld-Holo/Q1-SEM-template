@@ -432,8 +432,15 @@ export function CoverageSection() {
                     </div>
                 )}
 
+                {/* Bottom fade — blends globe into page background */}
+                <div
+                    className="absolute bottom-0 left-0 right-0 h-32 pointer-events-none z-10"
+                    style={{ background: "linear-gradient(to bottom, transparent, #000000)" }}
+                    aria-hidden="true"
+                />
+
                 {/* Bottom status indicator */}
-                <div className="absolute bottom-2 right-4 md:bottom-6 md:right-8 z-10 pointer-events-none text-right select-none">
+                <div className="absolute bottom-2 right-4 md:bottom-6 md:right-8 z-20 pointer-events-none text-right select-none">
                     <p className="text-[8px] md:text-xs tracking-widest" style={{ color: "#bffd11", opacity: 0.5 }}>
                         SYSTEM: ONLINE
                     </p>
