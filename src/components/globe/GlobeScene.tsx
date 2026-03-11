@@ -10,7 +10,7 @@ export type Region = { name: string; lat: number; lon: number };
 const BrandColors = {
     lime: '#bffd11',
     cyan: '#00FFFF',
-    bg: '#00040F'
+    bg: '#000000'
 };
 
 const MAX_SELECTIONS = 7;

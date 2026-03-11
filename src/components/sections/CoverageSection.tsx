@@ -178,7 +178,7 @@ export function CoverageSection() {
             ref={sectionRef}
             id="coverage-globe"
             className="relative w-full overflow-hidden hidden md:block"
-            style={{ backgroundColor: "#00040F" }}
+            style={{ backgroundColor: "#000000" }}
         >
             {/* ── Section header ── */}
             <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-16 md:pt-24 pb-4">

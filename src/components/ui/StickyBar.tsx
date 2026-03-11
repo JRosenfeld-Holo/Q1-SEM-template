@@ -57,9 +57,10 @@ export function StickyBar() {
             >
               {t.sticky.text}
             </p>
+            {/* Desktop CTA → free pilot */}
             <a
               href="#free-pilot"
-              className="ml-auto inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
+              className="ml-auto hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
               style={{
                 fontFamily: "var(--font-inter-var)",
                 backgroundColor: "var(--theme-cta-bg)",
@@ -69,6 +70,21 @@ export function StickyBar() {
               onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-bg)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
             >
               {t.sticky.cta}
+            </a>
+
+            {/* Mobile CTA → contact form */}
+            <a
+              href="#contact"
+              className="ml-auto sm:hidden inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
+              style={{
+                fontFamily: "var(--font-inter-var)",
+                backgroundColor: "var(--theme-cta-bg)",
+                color: "var(--theme-cta-text)",
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-hover)"; e.currentTarget.style.transform = "translateY(-1px)"; e.currentTarget.style.boxShadow = "var(--shadow-lime-glow)"; }}
+              onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "var(--theme-cta-bg)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
+            >
+              {t.nav.cta}
             </a>
           </div>
         </motion.div>
