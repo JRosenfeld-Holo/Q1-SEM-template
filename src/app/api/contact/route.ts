@@ -8,10 +8,27 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
+    // Forward the real user IP and hutk cookie so HubSpot can properly
+    // identify the visitor and avoid spam-flagging legitimate submissions
+    const ip =
+      req.headers.get("x-forwarded-for")?.split(",")[0].trim() ??
+      req.headers.get("x-real-ip") ??
+      undefined;
+    const hutk = req.cookies.get("hubspotutk")?.value ?? undefined;
+
+    const enrichedBody = {
+      ...body,
+      context: {
+        ...body.context,
+        ...(ip && { ipAddress: ip }),
+        ...(hutk && { hutk }),
+      },
+    };
+
     const res = await fetch(SUBMIT_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
+      body: JSON.stringify(enrichedBody),
     });
 
     const data = await res.json();
