@@ -17,6 +17,7 @@ export const LOCALES: { code: Locale; label: string; flag: string }[] = [
     { code: "fr", label: "Français", flag: "🇫🇷" },
     { code: "de", label: "Deutsch", flag: "🇩🇪" },
     { code: "pt", label: "Português", flag: "🇧🇷" },
+    { code: "it", label: "Italiano", flag: "🇮🇹" },
     { code: "ja", label: "日本語", flag: "🇯🇵" },
     { code: "ko", label: "한국어", flag: "🇰🇷" },
     { code: "zh", label: "中文", flag: "🇨🇳" },
