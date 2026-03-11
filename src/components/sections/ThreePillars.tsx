@@ -2,9 +2,10 @@
 
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 // Checkmark SVG for feature lists
-function Check({ color = "#53f2fa" }: { color?: string }) {
+function Check({ color }: { color: string }) {
   return (
     <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
       <path d="M2.5 6.5L5.5 9.5L10.5 3.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
@@ -14,6 +15,13 @@ function Check({ color = "#53f2fa" }: { color?: string }) {
 
 export function ThreePillars() {
   const { t } = useI18n();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
+  /* Reliability card accent: cyan on dark, deep teal on light */
+  const relAccent = isLight ? "#0891a2" : "#53f2fa";
+  const relRgb = isLight ? "8,145,162" : "83,242,250";
+
   return (
     <section
       id="products"
@@ -46,15 +54,15 @@ export function ThreePillars() {
           >
             <div
               className="h-full rounded-2xl overflow-hidden transition-all duration-300"
-              style={{ background: "linear-gradient(135deg, rgba(83,242,250,0.08) 0%, var(--theme-surface) 60%)", boxShadow: "var(--theme-card-shadow)", border: "1px solid rgba(83,242,250,0.3)" }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = "rgba(83,242,250,0.55)"; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 30px rgba(83,242,250,0.1)"; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = "rgba(83,242,250,0.3)"; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
+              style={{ background: `linear-gradient(135deg, rgba(${relRgb},0.08) 0%, var(--theme-surface) 60%)`, boxShadow: "var(--theme-card-shadow)", border: `1px solid rgba(${relRgb},0.3)` }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = `rgba(${relRgb},0.55)`; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = `0 8px 30px rgba(${relRgb},0.1)`; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = `rgba(${relRgb},0.3)`; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
             >
               <div className="h-full flex flex-col justify-between p-6 md:p-10">
                 <div className="flex flex-col gap-5">
                   <span
-                    className="text-sm text-brand-cyan tracking-[0.2em] uppercase font-semibold"
-                    style={{ fontFamily: "var(--font-messina-var)" }}
+                    className="text-sm tracking-[0.2em] uppercase font-semibold"
+                    style={{ fontFamily: "var(--font-messina-var)", color: relAccent }}
                   >
                     {t.pillars.reliability.label}
                   </span>
@@ -74,7 +82,7 @@ export function ThreePillars() {
                   <ul className="flex flex-col gap-2.5 mt-2">
                     {t.pillars.reliability.features.map((f) => (
                       <li key={f} className="flex items-center gap-2.5 text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}>
-                        <Check color="#53f2fa" />
+                        <Check color={relAccent} />
                         {f}
                       </li>
                     ))}
@@ -87,8 +95,8 @@ export function ThreePillars() {
                   style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                 >
                   <p
-                    className="text-4xl md:text-5xl lg:text-6xl font-semibold text-brand-cyan leading-none tabular-nums"
-                    style={{ fontFamily: "var(--font-roobert-var)" }}
+                    className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-none tabular-nums"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: relAccent }}
                   >
                     {t.pillars.reliability.stat}
                   </p>

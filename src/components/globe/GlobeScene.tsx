@@ -423,16 +423,19 @@ export type GlobeSceneProps = {
 };
 
 export function GlobeScene({ onSelect, selectedRegions = [], rotationSpeed = 0.2, onLoaded }: GlobeSceneProps) {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+
     return (
         <Canvas
-            dpr={[1, 1.5]}
+            dpr={isMobile ? [1, 1] : [1, 1.5]}
             camera={{ position: [0, 0, 4.5], fov: 45 }}
             gl={{
-                antialias: true,
+                antialias: !isMobile,
                 alpha: true,
                 powerPreference: "high-performance"
             }}
             className="w-full h-full"
+            frameloop={isMobile ? "demand" : "always"}
         >
             <color attach="background" args={[BrandColors.bg]} />
             <ambientLight intensity={0.5} />

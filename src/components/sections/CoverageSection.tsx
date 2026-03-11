@@ -177,7 +177,7 @@ export function CoverageSection() {
         <section
             ref={sectionRef}
             id="coverage-globe"
-            className="relative w-full overflow-hidden"
+            className="relative w-full overflow-hidden hidden md:block"
             style={{ backgroundColor: "#00040F" }}
         >
             {/* ── Section header ── */}
@@ -193,7 +193,17 @@ export function CoverageSection() {
                         className="font-medium text-3xl md:text-4xl lg:text-5xl mb-4 max-w-2xl leading-[1.1] text-white"
                         style={{ fontFamily: "var(--font-roobert-var)" }}
                     >
-                        {t.coverage.headline}{" "}
+                        {(() => {
+                            const parts = t.coverage.headline.split(/(?=190\+)/);
+                            return (
+                                <>
+                                    {parts[0]?.trim()}
+                                    <br />
+                                    {parts[1] ?? ""}
+                                </>
+                            );
+                        })()}
+                        <br />
                         <span style={{ color: "#bffd11" }}>Zero dead zones.</span>
                     </h2>
                     <p

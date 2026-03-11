@@ -254,7 +254,7 @@ export function PricingSection() {
                                 }}
                             />
 
-                            <div className="relative z-10 flex flex-col h-full">
+                            <div className="relative z-10 flex flex-col h-full pt-4">
                                 {/* Header */}
                                 <div className="mb-8">
                                     <p
@@ -279,7 +279,7 @@ export function PricingSection() {
 
                                 {/* Price highlight */}
                                 <div
-                                    className="flex items-baseline gap-2 mb-8 pb-8"
+                                    className="flex flex-wrap items-baseline gap-2 mb-8 pb-8"
                                     style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
                                 >
                                     <span

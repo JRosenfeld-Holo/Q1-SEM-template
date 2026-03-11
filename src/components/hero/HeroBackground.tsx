@@ -22,6 +22,12 @@ export function HeroBackground() {
 
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
+    // Reduce particles on mobile for smoother scrolling
+    const isMobile = window.innerWidth < 768;
+    const particleCount = isMobile ? 200 : AMBIENT_COUNT;
+    const targetFps = isMobile ? 30 : 60;
+    const frameInterval = 1000 / targetFps;
+
     let w = canvas.offsetWidth;
     let h = canvas.offsetHeight;
 
@@ -36,7 +42,7 @@ export function HeroBackground() {
     resize();
 
     // Pre-generate ambient particles — biased toward the right half where the card is
-    const ambient: AmbientParticle[] = Array.from({ length: AMBIENT_COUNT }, () => {
+    const ambient: AmbientParticle[] = Array.from({ length: particleCount }, () => {
       // Weighted x: 60% of particles in the right half (card area)
       const x = Math.random() < 0.6
         ? 0.45 + Math.random() * 0.55
@@ -53,11 +59,24 @@ export function HeroBackground() {
 
     let raf: number;
     const startT = performance.now();
-    let prevT = performance.now();
+    let lastFrameT = 0;
+    let isVisible = true;
 
-    const draw = () => {
-      const now = performance.now();
-      prevT = now;
+    // Pause animation when hero scrolls off-screen
+    const observer = new IntersectionObserver(
+      ([entry]) => { isVisible = entry.isIntersecting; },
+      { threshold: 0 }
+    );
+    observer.observe(canvas);
+
+    const draw = (now: number) => {
+      raf = requestAnimationFrame(draw);
+
+      // Skip frame if hero is off-screen or we're throttling
+      if (!isVisible) return;
+      if (now - lastFrameT < frameInterval) return;
+      lastFrameT = now;
+
       const elapsed = (now - startT) / 1000;
 
       ctx.clearRect(0, 0, w, h);
@@ -73,13 +92,13 @@ export function HeroBackground() {
       }
 
       ctx.globalAlpha = 1;
-      raf = requestAnimationFrame(draw);
     };
 
-    draw();
+    raf = requestAnimationFrame(draw);
     return () => {
       cancelAnimationFrame(raf);
       ro.disconnect();
+      observer.disconnect();
     };
   }, []);
 

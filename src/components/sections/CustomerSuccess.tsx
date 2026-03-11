@@ -330,23 +330,26 @@ export function CustomerSuccess() {
                   >
                     <div>
                       {/* Company header */}
-                      <div className="flex items-center gap-3 mb-6">
+                      <div className="flex items-center gap-3 mb-6 min-w-0">
                         <Image
                           src={s.logo.src}
                           alt={s.company}
                           width={s.logo.w}
                           height={s.logo.h}
+                          className="shrink-0"
                           style={{
                             width: "auto",
                             height: `${s.logo.h}px`,
+                            maxWidth: "min(120px, 40%)",
+                            objectFit: "contain",
                             filter: "var(--theme-logo-filter)",
                             transition: "filter 0.35s ease",
                           }}
                           draggable={false}
                         />
-                        <span className="h-px flex-1" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
+                        <span className="h-px flex-1 min-w-[20px]" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
                         <span
-                          className="text-sm uppercase tracking-wider shrink-0"
+                          className="text-[11px] sm:text-sm uppercase tracking-wider shrink-0"
                           style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                         >
                           {t.customerSuccess.stories[index]?.industry ?? s.industry}

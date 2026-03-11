@@ -249,3 +249,41 @@ body,
 [data-theme] footer {
   transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, box-shadow 0.35s ease;
 }
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE SCROLL PERFORMANCE
+   ═══════════════════════════════════════════════════════ */
+
+/* Reduce backdrop-filter cost on mobile — biggest single perf win */
+@media (max-width: 767px) {
+
+  /* Lighter blur on mobile to reduce GPU compositing cost */
+  nav,
+  [class*="backdrop-blur"],
+  .fixed {
+    -webkit-backdrop-filter: blur(10px) !important;
+    backdrop-filter: blur(10px) !important;
+  }
+
+  /* Promote fixed/sticky elements to own layer to avoid repaints */
+  .fixed,
+  .sticky {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+}
+
+/* Force GPU compositing for smoother scrolling */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Disable heavy animations on low-power/mobile devices */
+@media (max-width: 767px) and (prefers-reduced-motion: no-preference) {
+
+  /* Throttle framer-motion by reducing transition durations */
+  * {
+    scroll-behavior: auto !important;
+  }
+}

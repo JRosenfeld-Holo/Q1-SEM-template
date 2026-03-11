@@ -123,6 +123,7 @@ export function SIMCardScene() {
       {/* Floor glow — flat, outside the 3D group */}
       <div
         aria-hidden="true"
+        className="sim-floor-glow"
         style={{
           position: "absolute",
           bottom: "4%",
@@ -133,6 +134,8 @@ export function SIMCardScene() {
             "radial-gradient(ellipse at center, rgba(80,130,255,0.18) 0%, transparent 70%)",
           filter: "blur(24px)",
           pointerEvents: "none",
+          willChange: "transform",
+          transform: "translateZ(0)",
         }}
       />
     </div>

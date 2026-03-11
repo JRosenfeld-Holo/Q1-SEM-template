@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
+import { useTheme } from "@/components/ui/ThemeProvider";
 
 function Check() {
   return (
@@ -15,11 +16,15 @@ function Check() {
 
 export function DashboardSection() {
   const { t } = useI18n();
+  const { theme } = useTheme();
+  const isLight = theme === "light";
 
+  /* Dark-mode accents look great on dark bg, but wash out on white.
+     Provide paired light-mode accents with proper contrast. */
   const ACCENT_MAP = [
-    { accent: "#bffd11", rgb: "191,253,17" },
-    { accent: "#53f2fa", rgb: "83,242,250" },
-    { accent: "#9b59d4", rgb: "155,89,212" },
+    { dark: "#bffd11", light: "#2d8a0e", rgb: "191,253,17", lightRgb: "45,138,14" },
+    { dark: "#53f2fa", light: "#0891a2", rgb: "83,242,250", lightRgb: "8,145,162" },
+    { dark: "#9b59d4", light: "#7c3aed", rgb: "155,89,212", lightRgb: "124,58,237" },
   ] as const;
 
   return (
@@ -145,18 +150,20 @@ export function DashboardSection() {
         {/* Feature cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {t.dashboard.cards.map((card, i) => {
-            const { accent, rgb } = ACCENT_MAP[i] ?? ACCENT_MAP[0];
+            const entry = ACCENT_MAP[i] ?? ACCENT_MAP[0];
+            const accent = isLight ? entry.light : entry.dark;
+            const rgb = isLight ? entry.lightRgb : entry.rgb;
             return (
               <FadeIn key={card.label} delay={i * 0.09}>
                 <div
                   className="h-full p-6 md:p-8 rounded-2xl transition-all duration-300"
                   style={{
-                    background: `linear-gradient(135deg, rgba(${rgb},0.07) 0%, var(--theme-surface) 60%)`,
-                    border: `1px solid rgba(${rgb},0.25)`,
+                    background: `linear-gradient(135deg, rgba(${rgb},${isLight ? 0.08 : 0.07}) 0%, var(--theme-surface) 60%)`,
+                    border: `1px solid rgba(${rgb},${isLight ? 0.3 : 0.25})`,
                     boxShadow: "var(--theme-card-shadow)",
                   }}
-                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `rgba(${rgb},0.5)`; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = `0 8px 30px rgba(${rgb},0.08)`; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = `rgba(${rgb},0.25)`; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
+                  onMouseEnter={(e) => { e.currentTarget.style.borderColor = `rgba(${rgb},0.5)`; e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = `0 8px 30px rgba(${rgb},${isLight ? 0.12 : 0.08})`; }}
+                  onMouseLeave={(e) => { e.currentTarget.style.borderColor = `rgba(${rgb},${isLight ? 0.3 : 0.25})`; e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "var(--theme-card-shadow)"; }}
                 >
                   <span
                     className="block text-sm tracking-[0.18em] uppercase mb-4 font-semibold"
