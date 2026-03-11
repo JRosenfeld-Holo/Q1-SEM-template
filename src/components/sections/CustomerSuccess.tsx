@@ -375,19 +375,19 @@ export function CustomerSuccess() {
 
                     {/* Metrics */}
                     <div
-                      className="grid grid-cols-3 gap-4 pt-6"
+                      className="grid grid-cols-3 gap-3 sm:gap-4 pt-6"
                       style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                     >
                       {s.metrics.map((m, mIdx) => (
-                        <div key={m.label}>
+                        <div key={m.label} className="min-w-0">
                           <p
-                            className="text-xl md:text-2xl font-semibold leading-none mb-1"
+                            className="text-lg sm:text-xl md:text-2xl font-semibold leading-none mb-1 truncate"
                             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
                           >
                             {m.value}
                           </p>
                           <p
-                            className="text-sm leading-tight"
+                            className="text-[11px] sm:text-sm leading-tight"
                             style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                           >
                             {t.customerSuccess.stories[index]?.metricLabels[mIdx] ?? m.label}
