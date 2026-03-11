@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback, useRef, useEffect, useMemo } from "react";
+import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import dynamic from "next/dynamic";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
@@ -236,7 +236,7 @@ export function CoverageSection() {
                         <GlobeScene
                             onSelect={handleSelect}
                             selectedRegions={selectedRegions}
-                            rotationSpeed={0.2}
+                            rotationSpeed={0.5}
                             onLoaded={() => setIsGlobeLoaded(true)}
                         />
                     </div>
