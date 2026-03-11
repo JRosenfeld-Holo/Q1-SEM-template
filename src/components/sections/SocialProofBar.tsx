@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { useI18n } from "@/lib/i18n/context";
 
 // Aspect ratios: verkada 205×162 (1.27:1 — nearly square, needs larger render height)
 // All others are wide wordmarks rendered at h=28; Verkada at h=44 to match visual weight.
@@ -52,19 +51,11 @@ function LogoList({ ariaHidden = false, priority = false }: { ariaHidden?: boole
 }
 
 export function SocialProofBar() {
-  const { t } = useI18n();
   return (
     <section
       className="py-4 md:py-10 overflow-hidden"
       style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
     >
-      <p
-        className="text-xs tracking-[0.18em] uppercase text-center mb-4 md:mb-7 hidden md:block"
-        style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
-      >
-        {t.socialProof.headline}
-      </p>
-
       {/* Marquee track */}
       <div className="relative overflow-hidden">
         {/* Edge fades */}
