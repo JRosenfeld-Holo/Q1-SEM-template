@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { inter, roobert, messina } from "@/lib/fonts";
 import { ThemeProvider } from "@/components/ui/ThemeProvider";
 import { LanguageProvider } from "@/lib/i18n/context";
@@ -72,6 +73,15 @@ export default function RootLayout({
         <LanguageProvider>
           <ThemeProvider>{children}</ThemeProvider>
         </LanguageProvider>
+
+        {/* Google Ads tag */}
+        <Script src="https://www.googletagmanager.com/gtag/js?id=AW-987290176" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'AW-987290176');
+        `}</Script>
       </body>
     </html>
   );
