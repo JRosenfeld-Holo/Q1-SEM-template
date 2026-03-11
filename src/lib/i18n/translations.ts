@@ -1,7 +1,7 @@
 export type Locale = "en" | "es" | "fr" | "de" | "pt" | "ja" | "ko" | "zh";
 
 export interface Translations {
-  nav: { products: string; pricing: string; customers: string; docs: string; cta: string };
+  nav: { products: string; pricing: string; customers: string; coverage: string; docs: string; cta: string };
   hero: { eyebrow: string; h1a: string; h1b: string; sub: string; cta1: string; cta2: string };
   socialProof: { headline: string };
   problem: {
@@ -51,7 +51,7 @@ export interface Translations {
 }
 
 const en: Translations = {
-  nav: { products: "Products", pricing: "Pricing", customers: "Customers", docs: "Docs", cta: "Talk to an IoT expert" },
+  nav: { products: "Products", pricing: "Pricing", customers: "Customers", coverage: "Coverage", docs: "Docs", cta: "Talk to an IoT expert" },
   hero: { eyebrow: "Trusted by 6,000+ IoT teams worldwide", h1a: "Every device.", h1b: "Always online.", sub: "The only IoT connectivity platform that stops outages before they start. One SIM spans 550+ carriers in 190+ countries, with automatic failover and a contractual 99.95% uptime SLA.", cta1: "Talk to an IoT expert", cta2: "Start for free" },
   socialProof: { headline: "Powering mission-critical IoT for 6,000+ teams worldwide" },
   problem: { eyebrow: "The problem with most providers", headline: "Is your provider protecting your revenue, or putting it at risk?", sub: "Surprise price increases. Weeks-long support tickets. Single-carrier dead zones. If any of this sounds familiar, you're not alone.", cards: [{ number: "01", title: "Surprise Price Increases", body: "Carrier direct customers face 35%+ mid-contract rate increases with little notice. When your connectivity bill spikes without warning, your unit economics fall apart and your margins take the hit." }, { number: "02", title: "Unresponsive Support", body: "You need a data pool adjustment today, not a ticket that sits for days. When devices go offline in the field, every hour of silence from your provider costs you customer trust and revenue." }, { number: "03", title: "Single-Carrier Dead Zones", body: "One carrier means dead zones in half your deployment locations. Every coverage gap is a device that isn't generating data or revenue. Multi-carrier should be table stakes, not a premium." }] },
@@ -73,7 +73,7 @@ const en: Translations = {
 };
 
 const es: Translations = {
-  nav: { products: 'Productos', pricing: 'Precios', customers: 'Clientes', docs: 'Documentación', cta: 'Habla con un experto en IoT' },
+  nav: { products: 'Productos', pricing: 'Precios', customers: 'Clientes', coverage: 'Cobertura', docs: 'Documentación', cta: 'Habla con un experto en IoT' },
   hero: { eyebrow: 'Conectividad IoT — Diseñada para escalar', h1a: 'Cada dispositivo.', h1b: 'Siempre en línea.', sub: 'Tus dispositivos merecen más que la fiabilidad de un solo operador. Una SIM abarca más de 550 operadores en más de 190 países, con conmutación automática y un SLA de disponibilidad del 99,95%.', cta1: 'Habla con un experto en IoT', cta2: 'Empieza gratis' },
   socialProof: { headline: 'Impulsando IoT de misión crítica para más de 6.000 empresas' },
   problem: { eyebrow: 'El problema', headline: 'Tu proveedor de conectividad te cuesta más de lo que crees.', sub: 'Precios impredecibles. Tickets de soporte de semanas. Zonas muertas. ¿Te suena?', cards: [{ number: '01', title: 'Precios impredecibles', body: 'Tu operador subió las tarifas a mitad de contrato. Mereces precios transparentes y predecibles.' }, { number: '02', title: 'Soporte que no responde', body: 'Necesitas un ajuste del pool de datos ahora, no un ticket que se queda días.' }, { number: '03', title: 'Dependencia de un solo operador', body: 'Un solo operador significa zonas sin cobertura. Multi-operador debería ser lo mínimo.' }] },
@@ -95,7 +95,7 @@ const es: Translations = {
 };
 
 const fr: Translations = {
-  nav: { products: "Produits", pricing: "Tarifs", customers: "Clients", docs: "Documentation", cta: "Parler à un expert IoT" },
+  nav: { products: "Produits", pricing: "Tarifs", customers: "Clients", coverage: "Couverture", docs: "Documentation", cta: "Parler à un expert IoT" },
   hero: { eyebrow: "Connectivité IoT — Conçue pour évoluer", h1a: "Chaque appareil.", h1b: "Toujours en ligne.", sub: "Vos appareils méritent mieux qu'un seul opérateur. Une SIM couvre plus de 550 opérateurs dans plus de 190 pays, avec basculement automatique et un SLA de 99,95%.", cta1: "Parler à un expert IoT", cta2: "Commencer gratuitement" },
   socialProof: { headline: "Au service de l'IoT critique pour plus de 6 000 entreprises" },
   problem: { eyebrow: "Le problème", headline: "Votre fournisseur de connectivité vous coûte plus que vous ne le pensez.", sub: "Tarifs imprévisibles. Tickets de support interminables. Zones mortes. Ça vous parle ?", cards: [{ number: "01", title: "Tarifs imprévisibles", body: "Votre opérateur a augmenté ses tarifs en cours de contrat. Vous méritez des prix transparents et prévisibles." }, { number: "02", title: "Support non réactif", body: "Vous avez besoin d'un ajustement maintenant, pas d'un ticket qui attend des jours." }, { number: "03", title: "Dépendance mono-opérateur", body: "Un seul opérateur signifie des zones blanches dans la moitié de vos sites. Le multi-opérateur devrait être la norme." }] },
@@ -117,7 +117,7 @@ const fr: Translations = {
 };
 
 const de: Translations = {
-  nav: { products: "Produkte", pricing: "Preise", customers: "Kunden", docs: "Dokumentation", cta: "IoT-Experten kontaktieren" },
+  nav: { products: "Produkte", pricing: "Preise", customers: "Kunden", coverage: "Abdeckung", docs: "Dokumentation", cta: "IoT-Experten kontaktieren" },
   hero: { eyebrow: "IoT-Konnektivität — Skalierbar gebaut", h1a: "Jedes Gerät.", h1b: "Immer online.", sub: "Ihre Geräte verdienen mehr als Ein-Netzbetreiber-Zuverlässigkeit. Eine SIM verbindet über 550 Netzbetreiber in über 190 Ländern mit automatischem Failover und 99,95% Uptime-SLA.", cta1: "IoT-Experten kontaktieren", cta2: "Kostenlos starten" },
   socialProof: { headline: "Betreibt geschäftskritisches IoT für über 6.000 Unternehmen" },
   problem: { eyebrow: "Das Problem", headline: "Ihr Konnektivitätsanbieter kostet Sie mehr als Sie denken.", sub: "Unvorhersehbare Preise. Wochenlange Support-Tickets. Funklöcher. Kommt Ihnen das bekannt vor?", cards: [{ number: "01", title: "Unvorhersehbare Preise", body: "Ihr Anbieter hat die Tarife mitten im Vertrag erhöht. Sie verdienen transparente, planbare Preise." }, { number: "02", title: "Nicht erreichbarer Support", body: "Sie brauchen jetzt eine Anpassung — kein Ticket, das tagelang liegen bleibt." }, { number: "03", title: "Ein-Anbieter-Abhängigkeit", body: "Ein Netzbetreiber bedeutet Funklöcher an vielen Standorten. Multi-Carrier sollte Standard sein." }] },
@@ -139,7 +139,7 @@ const de: Translations = {
 };
 
 const pt: Translations = {
-  nav: { products: "Produtos", pricing: "Preços", customers: "Clientes", docs: "Documentação", cta: "Fale com um especialista IoT" },
+  nav: { products: "Produtos", pricing: "Preços", customers: "Clientes", coverage: "Cobertura", docs: "Documentação", cta: "Fale com um especialista IoT" },
   hero: { eyebrow: "Conectividade IoT — Feita para escalar", h1a: "Cada dispositivo.", h1b: "Sempre online.", sub: "Seus dispositivos merecem mais que a confiabilidade de uma única operadora. Um SIM cobre mais de 550 operadoras em mais de 190 países, com failover automático e SLA de 99,95%.", cta1: "Fale com um especialista IoT", cta2: "Comece gratuitamente" },
   socialProof: { headline: "Alimentando IoT de missão crítica para mais de 6.000 empresas" },
   problem: { eyebrow: "O problema", headline: "Seu provedor de conectividade está custando mais do que você imagina.", sub: "Preços imprevisíveis. Tickets de semanas. Zonas mortas. Soa familiar?", cards: [{ number: "01", title: "Preços imprevisíveis", body: "Sua operadora aumentou as tarifas no meio do contrato. Você merece preços transparentes e previsíveis." }, { number: "02", title: "Suporte sem resposta", body: "Você precisa de um ajuste agora — não de um ticket que fica dias parado." }, { number: "03", title: "Dependência de operadora única", body: "Uma operadora significa zonas sem cobertura. Multi-operadora deveria ser o básico." }] },
@@ -161,7 +161,7 @@ const pt: Translations = {
 };
 
 const ja: Translations = {
-  nav: { products: "製品", pricing: "料金", customers: "お客様", docs: "ドキュメント", cta: "IoTエキスパートに相談" },
+  nav: { products: "製品", pricing: "料金", customers: "お客様", coverage: "カバレッジ", docs: "ドキュメント", cta: "IoTエキスパートに相談" },
   hero: { eyebrow: "IoTコネクティビティ — スケールのために構築", h1a: "すべてのデバイスを。", h1b: "常時オンラインに。", sub: "デバイスは、単一キャリアの信頼性以上のものに値します。1枚のSIMで550以上のキャリア、190以上の国をカバー。自動フェイルオーバーと99.95%の稼働率SLA。", cta1: "IoTエキスパートに相談", cta2: "無料で始める" },
   socialProof: { headline: "6,000社以上のミッションクリティカルなIoTを支援" },
   problem: { eyebrow: "課題", headline: "接続プロバイダーのコストは想像以上です。", sub: "予測不能な価格。数週間のサポートチケット。単一キャリアの死角。心当たりはありませんか？", cards: [{ number: "01", title: "予測不能な価格", body: "キャリアが契約途中で料金を引き上げ、ユニットエコノミクスが崩壊。透明で予測可能な価格設定が必要です。" }, { number: "02", title: "対応の遅いサポート", body: "データプールの調整が今すぐ必要なのに、チケットは何日も放置されます。" }, { number: "03", title: "単一キャリアへの依存", body: "1つのキャリアでは展開先の半分でカバレッジ不足。マルチキャリアは当然のことです。" }] },
@@ -183,7 +183,7 @@ const ja: Translations = {
 };
 
 const ko: Translations = {
-  nav: { products: "제품", pricing: "요금", customers: "고객", docs: "문서", cta: "IoT 전문가와 상담" },
+  nav: { products: "제품", pricing: "요금", customers: "고객", coverage: "커버리지", docs: "문서", cta: "IoT 전문가와 상담" },
   hero: { eyebrow: "IoT 연결 — 확장을 위해 설계", h1a: "모든 디바이스를.", h1b: "항상 온라인으로.", sub: "디바이스는 단일 통신사 신뢰성 이상을 받을 자격이 있습니다. 하나의 SIM으로 190개국 이상 550개 이상의 통신사에 연결. 자동 장애 조치 및 99.95% 가동시간 SLA.", cta1: "IoT 전문가와 상담", cta2: "무료로 시작하기" },
   socialProof: { headline: "6,000개 이상의 기업의 미션 크리티컬 IoT를 지원" },
   problem: { eyebrow: "문제", headline: "연결 제공업체가 생각보다 더 많은 비용을 들이고 있습니다.", sub: "예측 불가능한 가격. 몇 주씩 걸리는 지원 티켓. 단일 통신사 사각지대. 익숙하지 않으신가요?", cards: [{ number: "01", title: "예측 불가능한 가격", body: "통신사가 계약 중 요금을 인상했습니다. 투명하고 예측 가능한 가격이 필요합니다." }, { number: "02", title: "응답 없는 지원", body: "지금 당장 데이터 풀 조정이 필요하지만, 티켓은 며칠째 방치됩니다." }, { number: "03", title: "단일 통신사 종속", body: "하나의 통신사는 배포 위치의 절반에 사각지대를 의미합니다. 멀티 통신사는 기본이어야 합니다." }] },
@@ -205,7 +205,7 @@ const ko: Translations = {
 };
 
 const zh: Translations = {
-  nav: { products: "产品", pricing: "价格", customers: "客户", docs: "文档", cta: "联系IoT专家" },
+  nav: { products: "产品", pricing: "价格", customers: "客户", coverage: "覆盖范围", docs: "文档", cta: "联系IoT专家" },
   hero: { eyebrow: "物联网连接 — 为规模化而构建", h1a: "每一台设备。", h1b: "始终在线。", sub: "您的设备值得比单一运营商更可靠的连接。一张SIM覆盖190多个国家的550多家运营商，自动故障转移，99.95%正常运行时间SLA。", cta1: "联系IoT专家", cta2: "免费开始" },
   socialProof: { headline: "为6,000多家企业提供关键任务IoT支持" },
   problem: { eyebrow: "问题所在", headline: "您的连接提供商比您想象的花费更多。", sub: "不可预测的价格。数周的支持工单。单一运营商盲区。听起来熟悉吗？", cards: [{ number: "01", title: "不可预测的价格", body: "运营商在合同期内提高了费率，您的单位经济模型突然崩溃。您值得拥有透明、可预测的定价。" }, { number: "02", title: "无响应的支持", body: "您现在需要数据池调整——而不是一个等待数天的工单。" }, { number: "03", title: "单一运营商锁定", body: "一个运营商意味着一半部署位置存在盲区。多运营商应该是基本要求。" }] },
