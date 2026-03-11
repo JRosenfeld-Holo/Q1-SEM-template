@@ -83,8 +83,8 @@ export function Nav() {
   const NAV_LINKS = [
     { label: t.nav.products, href: "#products" },
     { label: t.nav.pricing, href: "#pricing" },
-    { label: t.nav.customers, href: "#customers" },
     { label: t.nav.coverage, href: "#coverage-globe" },
+    { label: t.nav.customers, href: "#customers" },
     { label: t.nav.docs, href: "https://docs.hologram.io/", external: true },
   ];
 
