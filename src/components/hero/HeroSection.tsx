@@ -45,7 +45,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.0 }}
-                className="text-xs tracking-[0.22em] uppercase"
+                className="text-xs tracking-[0.22em] uppercase hidden md:inline"
                 style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
               >
                 {t.hero.eyebrow}

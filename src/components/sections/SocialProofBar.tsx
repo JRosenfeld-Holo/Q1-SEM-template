@@ -55,11 +55,11 @@ export function SocialProofBar() {
   const { t } = useI18n();
   return (
     <section
-      className="py-10 overflow-hidden"
+      className="py-4 md:py-10 overflow-hidden"
       style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
     >
       <p
-        className="text-xs tracking-[0.18em] uppercase text-center mb-7"
+        className="text-xs tracking-[0.18em] uppercase text-center mb-4 md:mb-7 hidden md:block"
         style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
       >
         {t.socialProof.headline}
