@@ -35,7 +35,7 @@ const PAYG_FEATURES = [
 ];
 
 const ENTERPRISE_PERKS = [
-    { label: "Custom data rates", value: "Per fleet", highlight: true },
+    { label: "Negotiated data rates", value: "Per fleet", highlight: true },
     { label: "Data pooling", value: "Available", highlight: true },
     { label: "Multi-year prepaid", value: "Available", highlight: true },
     { label: "Month-to-month or annual", value: "Your choice", highlight: true },
@@ -277,7 +277,7 @@ export function PricingSection() {
                                         className="text-3xl md:text-4xl lg:text-5xl font-semibold"
                                         style={{ fontFamily: "var(--font-roobert-var)", color: "#bffd11" }}
                                     >
-                                        Custom
+                                        Let's Talk
                                     </span>
                                 </div>
 
