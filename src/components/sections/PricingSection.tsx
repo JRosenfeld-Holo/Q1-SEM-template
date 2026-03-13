@@ -35,9 +35,7 @@ const PAYG_FEATURES = [
 ];
 
 const ENTERPRISE_PERKS = [
-    { label: "Volume data pricing", value: "Discounted" },
-    { label: "Inactive SIM fees", value: "Waived", highlight: true },
-    { label: "Data pooling", value: "Included", highlight: true },
+    { label: "Data pooling", value: "Available", highlight: true },
     { label: "Volume discounts", value: "Available", highlight: true },
     { label: "Multi-year prepaid", value: "Available", highlight: true },
     { label: "Flexible contract terms", value: "Fully custom", highlight: true },
@@ -121,7 +119,7 @@ export function PricingSection() {
                                 </h3>
                                 <p
                                     className="text-sm leading-relaxed"
-                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
+                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)", minHeight: "60px" }}
                                 >
                                     {t.pricing.paygDesc}
                                 </p>
@@ -251,20 +249,20 @@ export function PricingSection() {
                                 {/* Header */}
                                 <div className="mb-8">
                                     <p
-                                        className="text-xs tracking-[0.2em] uppercase mb-3"
-                                        style={{ fontFamily: "var(--font-messina-var)", color: "rgba(191,253,17,0.7)" }}
+                                        className="text-xs tracking-[0.2em] uppercase mb-3 opacity-0"
+                                        style={{ fontFamily: "var(--font-messina-var)" }}
                                     >
-                                        {t.pricing.customPlan}
+                                        &nbsp;
                                     </p>
                                     <h3
                                         className="text-2xl md:text-3xl font-medium mb-3"
                                         style={{ fontFamily: "var(--font-roobert-var)", color: "#ffffff" }}
                                     >
-                                        {t.pricing.enterpriseName}
+                                        {t.pricing.customPlan}
                                     </h3>
                                     <p
                                         className="text-sm leading-relaxed"
-                                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.55)" }}
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.55)", minHeight: "60px" }}
                                     >
                                         {t.pricing.enterpriseDesc}
                                     </p>
@@ -272,7 +270,7 @@ export function PricingSection() {
 
                                 {/* Price highlight */}
                                 <div
-                                    className="flex flex-wrap items-baseline gap-2 mb-8 pb-8"
+                                    className="flex items-baseline gap-2 mb-8 pb-8"
                                     style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
                                 >
                                     <span
@@ -280,12 +278,6 @@ export function PricingSection() {
                                         style={{ fontFamily: "var(--font-roobert-var)", color: "#bffd11" }}
                                     >
                                         Custom
-                                    </span>
-                                    <span
-                                        className="text-base"
-                                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.45)" }}
-                                    >
-                                        / tailored to your fleet
                                     </span>
                                 </div>
 
