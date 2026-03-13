@@ -44,14 +44,14 @@ export function DashboardSection() {
             {t.dashboard.eyebrow}
           </p>
           <h2
-            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-6 max-w-2xl leading-[1.1]"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-6 max-w-4xl leading-[1.1]"
             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
             {t.dashboard.headline}
           </h2>
           <p
             className="text-lg md:text-xl mb-12 max-w-xl leading-relaxed"
-            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
           >
             {t.dashboard.sub}
           </p>
@@ -68,14 +68,14 @@ export function DashboardSection() {
                   <span className="mt-0.5"><Check /></span>
                   <div>
                     <p
-                      className="text-base font-medium mb-1 leading-snug"
+                      className="text-base font-semibold mb-1 leading-snug"
                       style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                     >
                       {b.headline}
                     </p>
                     <p
                       className="text-sm leading-relaxed"
-                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                     >
                       {b.body}
                     </p>
@@ -85,11 +85,11 @@ export function DashboardSection() {
             </ul>
 
             <a
-              href="https://dashboard.hologram.io"
+              href="https://dashboard.hologram.io/account/register"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-200 group w-fit"
-              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-accent)" }}
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
             >
               {t.dashboard.exploreCta}
               <svg
@@ -179,7 +179,7 @@ export function DashboardSection() {
                   </h3>
                   <p
                     className="text-sm leading-relaxed mb-6"
-                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                   >
                     {card.body}
                   </p>

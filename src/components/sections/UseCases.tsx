@@ -1,8 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
+
+const CUSTOMER_LOGOS: Record<string, { src: string; w: number; h: number }> = {
+  "Verkada": { src: "/customer-logos/verkada.png", w: 56, h: 44 },
+  "Fieldin": { src: "/customer-logos/fieldin.png", w: 143, h: 28 },
+};
 
 // ── Icons ─────────────────────────────────────────────────────────────────────
 function IconCamera() {
@@ -181,7 +187,7 @@ export function UseCases() {
           </h2>
           <p
             className="text-lg md:text-xl mb-10 md:mb-14 max-w-xl leading-relaxed"
-            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
           >
             {t.useCases.sub}
           </p>
@@ -210,13 +216,13 @@ export function UseCases() {
                   style={
                     isActive
                       ? {
-                        fontFamily: "var(--font-inter-var)",
+                        fontFamily: "var(--font-roobert-var)",
                         backgroundColor: "var(--theme-accent-bg)",
                         borderColor: "var(--theme-accent-border)",
                         color: "var(--theme-accent)",
                       }
                       : {
-                        fontFamily: "var(--font-inter-var)",
+                        fontFamily: "var(--font-roobert-var)",
                         borderColor: "var(--theme-border)",
                         color: "var(--theme-text-secondary)",
                       }
@@ -276,7 +282,7 @@ export function UseCases() {
                 </p>
                 <p
                   className="text-base leading-relaxed mb-8"
-                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                 >
                   {card?.pain ?? current.pain}
                 </p>
@@ -293,7 +299,7 @@ export function UseCases() {
                       </span>
                       <span
                         className="text-base leading-relaxed"
-                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                       >
                         {card?.solution[idx] ?? point}
                       </span>
@@ -318,13 +324,13 @@ export function UseCases() {
               >
                 <p
                   className="text-4xl md:text-5xl lg:text-6xl font-semibold leading-none mb-3"
-                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                 >
                   {current.stat.value}
                 </p>
                 <p
                   className="text-base leading-snug"
-                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                 >
                   {card?.statLabel ?? current.stat.label}
                 </p>
@@ -343,16 +349,35 @@ export function UseCases() {
               >
                 <blockquote
                   className="text-base leading-relaxed italic mb-4"
-                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                 >
                   &ldquo;{card?.quote ?? current.quote}&rdquo;
                 </blockquote>
-                <p
-                  className="text-sm uppercase tracking-wider"
-                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
-                >
-                  — {current.customer}
-                </p>
+                <div className="flex items-center gap-3">
+                  {CUSTOMER_LOGOS[current.customer] && (
+                    <Image
+                      src={CUSTOMER_LOGOS[current.customer].src}
+                      alt={current.customer}
+                      width={CUSTOMER_LOGOS[current.customer].w}
+                      height={CUSTOMER_LOGOS[current.customer].h}
+                      style={{
+                        width: "auto",
+                        height: `${CUSTOMER_LOGOS[current.customer].h}px`,
+                        maxWidth: "80px",
+                        objectFit: "contain",
+                        filter: "var(--theme-logo-filter)",
+                        opacity: 0.7,
+                      }}
+                      draggable={false}
+                    />
+                  )}
+                  <p
+                    className="text-sm uppercase tracking-wider"
+                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                  >
+                    — {current.customer}
+                  </p>
+                </div>
               </div>
             </div>
           </div>

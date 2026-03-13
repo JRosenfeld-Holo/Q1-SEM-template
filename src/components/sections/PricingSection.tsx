@@ -14,13 +14,6 @@ function CheckIcon({ accent }: { accent?: boolean }) {
     );
 }
 
-function StarIcon() {
-    return (
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </svg>
-    );
-}
 
 function ArrowRightIcon() {
     return (
@@ -91,7 +84,7 @@ export function PricingSection() {
                         </h2>
                         <p
                             className="text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
-                            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                         >
                             {t.pricing.sub}
                         </p>
@@ -128,7 +121,7 @@ export function PricingSection() {
                                 </h3>
                                 <p
                                     className="text-sm leading-relaxed"
-                                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                                 >
                                     {t.pricing.paygDesc}
                                 </p>
@@ -141,13 +134,13 @@ export function PricingSection() {
                             >
                                 <span
                                     className="text-3xl md:text-4xl lg:text-5xl font-semibold"
-                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
+                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
                                 >
                                     $0.03
                                 </span>
                                 <span
                                     className="text-base"
-                                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                                 >
                                     / MB
                                 </span>
@@ -163,7 +156,7 @@ export function PricingSection() {
                                     >
                                         <span
                                             className="text-sm"
-                                            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                                            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                                         >
                                             {feat.label}
                                         </span>
@@ -185,7 +178,7 @@ export function PricingSection() {
                                 href="#free-pilot"
                                 className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer"
                                 style={{
-                                    fontFamily: "var(--font-inter-var)",
+                                    fontFamily: "var(--font-roobert-var)",
                                     borderWidth: "1px",
                                     borderStyle: "solid",
                                     borderColor: "var(--theme-btn-outline-border)",
@@ -271,7 +264,7 @@ export function PricingSection() {
                                     </h3>
                                     <p
                                         className="text-sm leading-relaxed"
-                                        style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.55)" }}
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.55)" }}
                                     >
                                         {t.pricing.enterpriseDesc}
                                     </p>
@@ -284,13 +277,13 @@ export function PricingSection() {
                                 >
                                     <span
                                         className="text-3xl md:text-4xl lg:text-5xl font-semibold"
-                                        style={{ fontFamily: "var(--font-roobert-var)", color: "#ffffff" }}
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "#bffd11" }}
                                     >
                                         Custom
                                     </span>
                                     <span
                                         className="text-base"
-                                        style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.45)" }}
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.45)" }}
                                     >
                                         / tailored to your fleet
                                     </span>
@@ -306,7 +299,7 @@ export function PricingSection() {
                                         >
                                             <span
                                                 className="text-sm"
-                                                style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.65)" }}
+                                                style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.65)" }}
                                             >
                                                 {perk.label}
                                             </span>
@@ -337,7 +330,7 @@ export function PricingSection() {
                                                 <CheckIcon accent />
                                                 <span
                                                     className="text-sm"
-                                                    style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.65)" }}
+                                                    style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.65)" }}
                                                 >
                                                     {extra}
                                                 </span>
@@ -351,7 +344,7 @@ export function PricingSection() {
                                     href="#contact"
                                     className="inline-flex items-center justify-center gap-2 w-full px-8 py-4 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer"
                                     style={{
-                                        fontFamily: "var(--font-inter-var)",
+                                        fontFamily: "var(--font-roobert-var)",
                                         backgroundColor: "#bffd11",
                                         color: "#00040F",
                                     }}
@@ -374,25 +367,6 @@ export function PricingSection() {
                     </FadeIn>
                 </div>
 
-                {/* ── Bottom trust strip ── */}
-                <FadeIn delay={0.2}>
-                    <div className="mt-12 md:mt-16 text-center">
-                        <div className="flex flex-wrap items-center justify-center gap-6 md:gap-10">
-                            {t.pricing.trust.map((item) => (
-                                <div
-                                    key={item}
-                                    className="flex items-center gap-2 text-sm"
-                                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
-                                >
-                                    <span style={{ color: "var(--theme-accent)" }}>
-                                        <StarIcon />
-                                    </span>
-                                    {item}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </FadeIn>
             </div>
         </section>
     );

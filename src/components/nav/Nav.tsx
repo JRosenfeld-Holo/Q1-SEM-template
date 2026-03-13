@@ -129,7 +129,7 @@ export function Nav() {
                 {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                 className="text-sm transition-colors duration-200 cursor-pointer hover-nav-link"
                 style={{
-                  fontFamily: "var(--font-inter-var)",
+                  fontFamily: "var(--font-roobert-var)",
                   color: "var(--theme-text-secondary)",
                 }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--theme-text)")}
@@ -149,7 +149,7 @@ export function Nav() {
             href="#contact"
             className="inline-flex items-center px-5 py-2 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200"
             style={{
-              fontFamily: "var(--font-inter-var)",
+              fontFamily: "var(--font-roobert-var)",
               backgroundColor: "var(--theme-cta-bg)",
               color: "var(--theme-cta-text)",
             }}
@@ -210,7 +210,7 @@ export function Nav() {
                   {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="text-sm transition-colors duration-200"
                   style={{
-                    fontFamily: "var(--font-inter-var)",
+                    fontFamily: "var(--font-roobert-var)",
                     color: "var(--theme-text-secondary)",
                   }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "var(--theme-text)")}
@@ -229,7 +229,7 @@ export function Nav() {
                 href="#contact"
                 className="inline-flex px-5 py-2.5 rounded-[10px] font-medium text-sm w-fit transition-all duration-200"
                 style={{
-                  fontFamily: "var(--font-inter-var)",
+                  fontFamily: "var(--font-roobert-var)",
                   backgroundColor: "var(--theme-cta-bg)",
                   color: "var(--theme-cta-text)",
                 }}

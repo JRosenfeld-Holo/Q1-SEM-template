@@ -46,7 +46,7 @@ export function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: 0.0 }}
                 className="text-xs tracking-[0.22em] uppercase hidden md:inline"
-                style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
+                style={{ fontFamily: "var(--font-messina-var)", fontWeight: 600, color: "var(--theme-accent)" }}
               >
                 {t.hero.eyebrow}
               </motion.span>
@@ -56,7 +56,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 22 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
-                className="font-medium text-[2.1rem] sm:text-4xl md:text-5xl xl:text-[4.25rem] leading-[1.04]"
+                className="font-medium text-[2.1rem] sm:text-4xl md:text-5xl xl:text-[4.25rem] leading-[1.04] tracking-[-0.01em]"
                 style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
               >
                 {t.hero.h1a}
@@ -69,8 +69,8 @@ export function HeroSection() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
-                className="text-xl max-w-md leading-relaxed"
-                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                className="text-base max-w-md leading-relaxed"
+                style={{ fontFamily: "var(--font-roobert-var)", color: "#FFFFFF" }}
               >
                 {t.hero.sub}
               </motion.p>
@@ -86,7 +86,7 @@ export function HeroSection() {
                   href="#contact"
                   className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200"
                   style={{
-                    fontFamily: "var(--font-inter-var)",
+                    fontFamily: "var(--font-roobert-var)",
                     backgroundColor: "var(--theme-cta-bg)",
                     color: "var(--theme-cta-text)",
                   }}
@@ -99,7 +99,7 @@ export function HeroSection() {
                   href="#free-pilot"
                   className="inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] text-sm cursor-pointer transition-all duration-200"
                   style={{
-                    fontFamily: "var(--font-inter-var)",
+                    fontFamily: "var(--font-roobert-var)",
                     borderWidth: "1px",
                     borderStyle: "solid",
                     borderColor: "var(--theme-btn-outline-border)",

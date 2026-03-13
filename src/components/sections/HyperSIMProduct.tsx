@@ -7,14 +7,14 @@ const FEATURES = [
   {
     label: "Global Coverage",
     headline: "550+ carriers, zero coverage gaps",
-    body: "Connect across AT&T, T-Mobile, Verizon, and 550+ global carrier partners with a single SIM. HyperSIM intelligently selects the strongest network so vehicles, cameras, and sensors stay online everywhere they operate.",
+    body: "Connect across AT&T, T-Mobile, Verizon, and 550+ global carrier partners with a single SIM. Hyper SIMs intelligently select the strongest available network, so vehicles, cameras, and sensors stay online everywhere they operate.",
     stat: "550+",
     statLabel: "Carrier partners",
   },
   {
     label: "Outage Protection",
-    headline: "Automatic failover before you lose a single transaction",
-    body: "Multiple independent cores on every SIM provide redundant paths. If an outage is detected, HyperSIM switches to the backup network in seconds, not minutes. We put 99.95% uptime in the contract, not just the marketing.",
+    headline: "Automatic failover before you lose a single packet",
+    body: "Every Hyper SIM carries multiple network profiles. If one carrier goes down, it switches to a backup network in seconds — no manual intervention, no dropped transactions. We put 99.95% uptime in the contract, not just the marketing.",
     stat: "99.95%",
     statLabel: "Uptime SLA",
   },
@@ -93,20 +93,20 @@ export function HyperSIMProduct() {
                 </h3>
                 <p
                   className="text-base leading-relaxed mb-6"
-                  style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                 >
                   {f.body}
                 </p>
                 <div className="flex items-baseline gap-2">
                   <span
                     className="text-3xl font-semibold"
-                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                   >
                     {f.stat}
                   </span>
                   <span
                     className="text-sm"
-                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                   >
                     {f.statLabel}
                   </span>

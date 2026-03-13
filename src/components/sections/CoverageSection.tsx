@@ -208,7 +208,7 @@ export function CoverageSection() {
                     </h2>
                     <p
                         className="text-lg md:text-xl mb-2 max-w-xl leading-relaxed"
-                        style={{ fontFamily: "var(--font-inter-var)", color: "rgba(255,255,255,0.55)" }}
+                        style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.55)" }}
                     >
                         {t.coverage.sub}
                     </p>

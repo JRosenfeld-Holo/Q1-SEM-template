@@ -127,7 +127,7 @@ function VideoLightbox({ videoId, onClose }: { videoId: string; onClose: () => v
           onClick={onClose}
           aria-label="Close video"
           className="absolute -top-10 right-0 text-white/60 hover:text-white transition-colors duration-200 cursor-pointer"
-          style={{ fontFamily: "var(--font-inter-var)" }}
+          style={{ fontFamily: "var(--font-roobert-var)" }}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <line x1="18" y1="6" x2="6" y2="18" />
@@ -268,7 +268,7 @@ export function CustomerSuccess() {
               exit="exit"
             >
               <div
-                className="rounded-2xl overflow-hidden transition-colors duration-300 flex flex-col"
+                className="rounded-2xl overflow-hidden transition-colors duration-300 grid grid-cols-1 lg:grid-cols-2"
                 style={{
                   borderWidth: "1px",
                   borderStyle: "solid",
@@ -278,165 +278,150 @@ export function CustomerSuccess() {
                 }}
               >
 
-                {/* Video thumbnail — full-width header */}
-                <button
-                  onClick={() => setActiveVideoId(s.videoId)}
-                  aria-label={`Watch ${s.company} customer story video`}
-                  className="group relative w-full h-52 md:h-72 overflow-hidden cursor-pointer shrink-0"
-                  style={{ borderBottomWidth: "1px", borderBottomStyle: "solid", borderBottomColor: "var(--theme-border-subtle)" }}
-                >
-                  <Image
-                    src={s.thumbnail}
-                    alt={`${s.company} customer story`}
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 896px"
-                    style={{ objectFit: "cover" }}
-                    draggable={false}
-                  />
-                  {/* Dark overlay */}
-                  <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-colors duration-300" />
-                  {/* Play button */}
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="flex items-center justify-center w-14 h-14 rounded-full group-hover:scale-110 transition-transform duration-300"
-                      style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)", border: "2px solid var(--theme-accent)" }}
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style={{ marginLeft: "3px", fill: "var(--theme-accent)" }}>
-                        <polygon points="5,3 19,12 5,21" />
-                      </svg>
+                {/* Left: video inset */}
+                <div className="p-6 md:p-10 flex items-stretch">
+                  <button
+                    onClick={() => setActiveVideoId(s.videoId)}
+                    aria-label={`Watch ${s.company} customer story video`}
+                    className="group relative w-full overflow-hidden rounded-xl cursor-pointer min-h-[240px] md:min-h-0"
+                  >
+                    <Image
+                      src={s.thumbnail}
+                      alt={`${s.company} customer story`}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 448px"
+                      style={{ objectFit: "cover" }}
+                      draggable={false}
+                    />
+                    {/* Dark overlay */}
+                    <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-colors duration-300" />
+                    {/* Play button */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div
+                        className="flex items-center justify-center w-14 h-14 rounded-full group-hover:scale-110 transition-transform duration-300"
+                        style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)", border: "2px solid var(--theme-accent)" }}
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style={{ marginLeft: "3px", fill: "var(--theme-accent)" }}>
+                          <polygon points="5,3 19,12 5,21" />
+                        </svg>
+                      </div>
                     </div>
-                  </div>
-                  {/* Bottom fade — blends thumbnail into card body */}
-                  <div
-                    className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-                    style={{ background: `linear-gradient(to bottom, transparent, var(--theme-video-fade))` }}
-                    aria-hidden="true"
-                  />
-                  {/* Watch story label */}
-                  <div className="absolute bottom-3 left-4">
-                    <span className="text-xs text-white/70 tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-messina-var)" }}>
-                      {t.customerSuccess.watchStory}
+                    {/* Watch story label */}
+                    <div className="absolute bottom-3 left-4">
+                      <span className="text-xs text-white/70 tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-messina-var)" }}>
+                        {t.customerSuccess.watchStory}
+                      </span>
+                    </div>
+                  </button>
+                </div>
+
+                {/* Right: all content stacked */}
+                <div
+                  className="p-6 md:p-10 flex flex-col gap-6"
+                  style={{ borderLeftWidth: "1px", borderLeftStyle: "solid", borderLeftColor: "var(--theme-border-subtle)" }}
+                >
+                  {/* Company header */}
+                  <div className="flex items-center gap-3 min-w-0">
+                    <Image
+                      src={s.logo.src}
+                      alt={s.company}
+                      width={s.logo.w}
+                      height={s.logo.h}
+                      className="shrink-0"
+                      style={{
+                        width: "auto",
+                        height: `${s.logo.h}px`,
+                        maxWidth: "min(120px, 40%)",
+                        objectFit: "contain",
+                        filter: "var(--theme-logo-filter)",
+                        transition: "filter 0.35s ease",
+                      }}
+                      draggable={false}
+                    />
+                    <span className="h-px flex-1 min-w-[20px]" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
+                    <span
+                      className="text-[11px] sm:text-sm uppercase tracking-wider shrink-0"
+                      style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
+                    >
+                      {t.customerSuccess.stories[index]?.industry ?? s.industry}
                     </span>
                   </div>
-                </button>
 
-                {/* Body — 2-column grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 flex-1">
-
-                  {/* Left: logo + quote + attribution + metrics */}
-                  <div
-                    className="p-6 md:p-10 flex flex-col justify-between gap-8"
-                    style={{ backgroundColor: "var(--theme-surface)" }}
+                  {/* Quote */}
+                  <blockquote
+                    className="text-xl md:text-2xl leading-snug font-medium"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                   >
-                    <div>
-                      {/* Company header */}
-                      <div className="flex items-center gap-3 mb-6 min-w-0">
-                        <Image
-                          src={s.logo.src}
-                          alt={s.company}
-                          width={s.logo.w}
-                          height={s.logo.h}
-                          className="shrink-0"
-                          style={{
-                            width: "auto",
-                            height: `${s.logo.h}px`,
-                            maxWidth: "min(120px, 40%)",
-                            objectFit: "contain",
-                            filter: "var(--theme-logo-filter)",
-                            transition: "filter 0.35s ease",
-                          }}
-                          draggable={false}
-                        />
-                        <span className="h-px flex-1 min-w-[20px]" style={{ backgroundColor: "var(--theme-border-subtle)" }} />
-                        <span
-                          className="text-[11px] sm:text-sm uppercase tracking-wider shrink-0"
+                    &ldquo;{t.customerSuccess.stories[index]?.quote ?? s.quote}&rdquo;
+                  </blockquote>
+
+                  {/* Attribution */}
+                  <p
+                    className="text-sm leading-snug"
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
+                  >
+                    {s.name} &mdash; {t.customerSuccess.stories[index]?.title ?? s.title}
+                  </p>
+
+                  {/* Metrics */}
+                  <div
+                    className="grid grid-cols-3 gap-3 sm:gap-4 pt-4"
+                    style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
+                  >
+                    {s.metrics.map((m, mIdx) => (
+                      <div key={m.label} className="min-w-0">
+                        <p
+                          className="text-lg sm:text-xl md:text-2xl font-semibold leading-none mb-1 truncate"
+                          style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                        >
+                          {m.value}
+                        </p>
+                        <p
+                          className="text-[11px] sm:text-sm leading-tight"
                           style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                         >
-                          {t.customerSuccess.stories[index]?.industry ?? s.industry}
-                        </span>
+                          {t.customerSuccess.stories[index]?.metricLabels[mIdx] ?? m.label}
+                        </p>
                       </div>
-
-                      {/* Quote */}
-                      <blockquote
-                        className="text-xl md:text-2xl leading-snug font-medium mb-5"
-                        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
-                      >
-                        &ldquo;{t.customerSuccess.stories[index]?.quote ?? s.quote}&rdquo;
-                      </blockquote>
-
-                      {/* Attribution */}
-                      <p
-                        className="text-sm leading-snug"
-                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
-                      >
-                        {s.name} &mdash; {t.customerSuccess.stories[index]?.title ?? s.title}
-                      </p>
-                    </div>
-
-                    {/* Metrics */}
-                    <div
-                      className="grid grid-cols-3 gap-3 sm:gap-4 pt-6"
-                      style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
-                    >
-                      {s.metrics.map((m, mIdx) => (
-                        <div key={m.label} className="min-w-0">
-                          <p
-                            className="text-lg sm:text-xl md:text-2xl font-semibold leading-none mb-1 truncate"
-                            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
-                          >
-                            {m.value}
-                          </p>
-                          <p
-                            className="text-[11px] sm:text-sm leading-tight"
-                            style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
-                          >
-                            {t.customerSuccess.stories[index]?.metricLabels[mIdx] ?? m.label}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                    ))}
                   </div>
 
-                  {/* Right: challenge / solution */}
+                  {/* Challenge */}
                   <div
-                    className="p-6 md:p-10 flex flex-col gap-6"
-                    style={{
-                      borderTopWidth: "1px",
-                      borderTopStyle: "solid",
-                      borderTopColor: "var(--theme-border-subtle)",
-                    }}
+                    className="pt-4"
+                    style={{ borderTopWidth: "1px", borderTopStyle: "solid", borderTopColor: "var(--theme-border-subtle)" }}
                   >
-                    <div>
-                      <p
-                        className="text-xs tracking-[0.18em] uppercase mb-3"
-                        style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
-                      >
-                        {t.customerSuccess.challengeLabel}
-                      </p>
-                      <p
-                        className="text-base leading-relaxed"
-                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
-                      >
-                        {t.customerSuccess.stories[index]?.challenge ?? s.challenge}
-                      </p>
-                    </div>
-                    <div>
-                      <p
-                        className="text-xs tracking-[0.18em] uppercase mb-3"
-                        style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
-                      >
-                        {t.customerSuccess.solutionLabel}
-                      </p>
-                      <p
-                        className="text-base leading-relaxed"
-                        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
-                      >
-                        {t.customerSuccess.stories[index]?.solution ?? s.solution}
-                      </p>
-                    </div>
+                    <p
+                      className="text-xs tracking-[0.18em] uppercase mb-3"
+                      style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
+                    >
+                      {t.customerSuccess.challengeLabel}
+                    </p>
+                    <p
+                      className="text-base leading-relaxed"
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
+                    >
+                      {t.customerSuccess.stories[index]?.challenge ?? s.challenge}
+                    </p>
                   </div>
 
-                </div>{/* end inner grid */}
+                  {/* Solution */}
+                  <div>
+                    <p
+                      className="text-xs tracking-[0.18em] uppercase mb-3"
+                      style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
+                    >
+                      {t.customerSuccess.solutionLabel}
+                    </p>
+                    <p
+                      className="text-base leading-relaxed"
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
+                    >
+                      {t.customerSuccess.stories[index]?.solution ?? s.solution}
+                    </p>
+                  </div>
+                </div>
+
               </div>{/* end outer card */}
             </motion.div>
           </AnimatePresence>

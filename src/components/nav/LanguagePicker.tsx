@@ -29,7 +29,7 @@ export function LanguagePicker() {
                 aria-expanded={open}
                 className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-xs cursor-pointer transition-all duration-200"
                 style={{
-                    fontFamily: "var(--font-inter-var)",
+                    fontFamily: "var(--font-roobert-var)",
                     border: `1px solid ${isDark ? "rgba(255,255,255,0.12)" : "rgba(0,0,0,0.12)"}`,
                     background: isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
                     color: "var(--theme-text-secondary)",
@@ -58,7 +58,7 @@ export function LanguagePicker() {
                             onClick={() => { setLocale(l.code); setOpen(false); }}
                             className="w-full flex items-center gap-2.5 px-4 py-2 text-sm cursor-pointer transition-colors duration-150"
                             style={{
-                                fontFamily: "var(--font-inter-var)",
+                                fontFamily: "var(--font-roobert-var)",
                                 color: l.code === locale ? "var(--theme-accent)" : "var(--theme-text-secondary)",
                                 fontWeight: l.code === locale ? 600 : 400,
                                 background: "transparent",

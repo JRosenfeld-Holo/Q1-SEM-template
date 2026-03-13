@@ -28,7 +28,7 @@ function InputField({
       <label
         htmlFor={name}
         className="text-sm font-medium tracking-wide"
-        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
       >
         {label}{required && <span style={{ color: "var(--theme-accent)" }} className="ml-0.5">*</span>}
       </label>
@@ -42,7 +42,7 @@ function InputField({
         onChange={onChange}
         className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200"
         style={{
-          fontFamily: "var(--font-inter-var)",
+          fontFamily: "var(--font-roobert-var)",
           backgroundColor: "var(--theme-input-bg)",
           borderWidth: "1px",
           borderStyle: "solid",
@@ -74,7 +74,7 @@ function SelectField({
       <label
         htmlFor={name}
         className="text-sm font-medium tracking-wide"
-        style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
       >
         {label}{required && <span style={{ color: "var(--theme-accent)" }} className="ml-0.5">*</span>}
       </label>
@@ -86,7 +86,7 @@ function SelectField({
         onChange={onChange}
         className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200 cursor-pointer appearance-none"
         style={{
-          fontFamily: "var(--font-inter-var)",
+          fontFamily: "var(--font-roobert-var)",
           backgroundColor: "var(--theme-input-bg)",
           borderWidth: "1px",
           borderStyle: "solid",
@@ -209,7 +209,7 @@ export function ContactSection() {
             </h2>
             <p
               className="text-lg leading-relaxed"
-              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
             >
               {t.contact.sub}
             </p>
@@ -222,7 +222,7 @@ export function ContactSection() {
                       <path d="M4.5 7L6.5 9L9.5 5" stroke="var(--theme-accent)" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
                   </span>
-                  <span className="text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}>
+                  <span className="text-base" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}>
                     {point}
                   </span>
                 </li>
@@ -253,7 +253,7 @@ export function ContactSection() {
                     <p className="font-medium text-lg mb-1" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}>
                       You&apos;re in good hands.
                     </p>
-                    <p className="text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}>
+                    <p className="text-base" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}>
                       A connectivity specialist will reach out today.
                     </p>
                   </div>
@@ -299,7 +299,7 @@ export function ContactSection() {
                     <label
                       htmlFor="message"
                       className="text-sm font-medium tracking-wide"
-                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                     >
                       Tell us more about your deployment
                     </label>
@@ -312,7 +312,7 @@ export function ContactSection() {
                       onChange={set("message")}
                       className="w-full px-4 py-3 rounded-xl text-base focus:outline-none transition-all duration-200 resize-none"
                       style={{
-                        fontFamily: "var(--font-inter-var)",
+                        fontFamily: "var(--font-roobert-var)",
                         backgroundColor: "var(--theme-input-bg)",
                         borderWidth: "1px",
                         borderStyle: "solid",
@@ -323,7 +323,7 @@ export function ContactSection() {
                   </div>
 
                   {status === "error" && (
-                    <p className="text-red-400 text-sm" style={{ fontFamily: "var(--font-inter-var)" }}>
+                    <p className="text-red-400 text-sm" style={{ fontFamily: "var(--font-roobert-var)" }}>
                       Something went wrong. Please try again or email us directly.
                     </p>
                   )}
@@ -333,7 +333,7 @@ export function ContactSection() {
                     disabled={status === "submitting"}
                     className="mt-1 w-full inline-flex items-center justify-center px-7 py-3.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
                     style={{
-                      fontFamily: "var(--font-inter-var)",
+                      fontFamily: "var(--font-roobert-var)",
                       backgroundColor: "var(--theme-cta-bg)",
                       color: "var(--theme-cta-text)",
                     }}
@@ -341,7 +341,7 @@ export function ContactSection() {
                     {status === "submitting" ? "Sending…" : "Talk to an IoT expert"}
                   </button>
 
-                  <p className="text-sm text-center leading-relaxed" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-faint)" }}>
+                  <p className="text-sm text-center leading-relaxed" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-faint)" }}>
                     By submitting the information above, I acknowledge that I have read and understand Hologram&apos;s{" "}
                     <a href="https://www.hologram.io/terms-of-use/" target="_blank" rel="noopener noreferrer" className="transition-colors underline underline-offset-2" style={{ color: "var(--theme-text-muted)" }}>Terms of Use</a>
                     {", "}

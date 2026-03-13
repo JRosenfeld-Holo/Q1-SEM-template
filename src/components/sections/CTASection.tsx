@@ -32,7 +32,7 @@ export function CTASection() {
           </h2>
           <p
             className="text-lg md:text-xl mb-10 leading-relaxed"
-            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
           >
             {t.cta.sub}
           </p>
@@ -44,7 +44,7 @@ export function CTASection() {
               href="#contact"
               className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200"
               style={{
-                fontFamily: "var(--font-inter-var)",
+                fontFamily: "var(--font-roobert-var)",
                 backgroundColor: "var(--theme-cta-bg)",
                 color: "var(--theme-cta-text)",
               }}
@@ -57,7 +57,7 @@ export function CTASection() {
               href="#free-pilot"
               className="inline-flex items-center justify-center px-8 py-4 rounded-[10px] text-sm cursor-pointer transition-all duration-200"
               style={{
-                fontFamily: "var(--font-inter-var)",
+                fontFamily: "var(--font-roobert-var)",
                 borderWidth: "1px",
                 borderStyle: "solid",
                 borderColor: "var(--theme-btn-outline-border)",
@@ -76,7 +76,7 @@ export function CTASection() {
               <div
                 key={line}
                 className="flex items-center gap-2 text-sm"
-                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
               >
                 <span className="shrink-0" style={{ color: "var(--theme-accent)" }}>
                   <svg

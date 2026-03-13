@@ -34,9 +34,9 @@ export default function HomePage() {
         <CustomerSuccess />
         <PricingSection />
         <CTASection />
-        <FreePilotProgram />
         <G2Strip />
         <ContactSection />
+        <FreePilotProgram />
       </main>
       <Footer />
     </>

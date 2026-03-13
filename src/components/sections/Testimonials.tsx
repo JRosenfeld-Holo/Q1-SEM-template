@@ -212,13 +212,13 @@ export function Testimonials() {
                   <div className="text-right">
                     <p
                       className="text-sm"
-                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                     >
                       {testimonial.name}
                     </p>
                     <p
                       className="text-xs mt-0.5"
-                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
                     >
                       {testimonial.title} &mdash; {testimonial.company}
                     </p>
@@ -302,7 +302,7 @@ export function Testimonials() {
           <a
             href="#contact"
             className="inline-flex items-center gap-2 text-sm font-medium cursor-pointer transition-all duration-200 group"
-            style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-accent)" }}
+            style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
           >
             Join 6,000+ IoT teams on Hologram
             <svg

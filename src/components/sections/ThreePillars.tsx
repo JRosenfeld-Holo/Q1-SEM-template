@@ -37,7 +37,7 @@ export function ThreePillars() {
             {t.pillars.eyebrow}
           </p>
           <h2
-            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-8 md:mb-12 max-w-2xl leading-[1.1]"
+            className="font-medium text-3xl md:text-4xl lg:text-5xl mb-8 md:mb-12 max-w-4xl leading-[1.1]"
             style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
           >
             {t.pillars.headline}
@@ -67,21 +67,21 @@ export function ThreePillars() {
                     {t.pillars.reliability.label}
                   </span>
                   <h3
-                    className="font-medium text-2xl md:text-3xl leading-snug max-w-sm"
+                    className="font-medium text-2xl md:text-3xl leading-[1.1] max-w-sm"
                     style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text)" }}
                   >
                     {t.pillars.reliability.headline}
                   </h3>
                   <p
                     className="text-base leading-relaxed max-w-md"
-                    style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                   >
                     {t.pillars.reliability.body}
                   </p>
 
                   <ul className="flex flex-col gap-2.5 mt-2">
                     {t.pillars.reliability.features.map((f) => (
-                      <li key={f} className="flex items-center gap-2.5 text-base" style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}>
+                      <li key={f} className="flex items-center gap-2.5 text-base" style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}>
                         <Check color={relAccent} />
                         {f}
                       </li>
@@ -136,14 +136,14 @@ export function ThreePillars() {
               </h3>
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
               >
                 {t.pillars.pricing.body}
               </p>
               <div>
                 <p
                   className="text-3xl font-semibold leading-none"
-                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-accent)" }}
                 >
                   {t.pillars.pricing.stat}
                 </p>
@@ -182,14 +182,14 @@ export function ThreePillars() {
               </h3>
               <p
                 className="text-base leading-relaxed mb-6"
-                style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
               >
                 {t.pillars.partnership.body}
               </p>
               <div>
                 <p
                   className="text-3xl font-semibold leading-none"
-                  style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-tertiary)" }}
+                  style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-tertiary)" }}
                 >
                   {t.pillars.partnership.stat}
                 </p>

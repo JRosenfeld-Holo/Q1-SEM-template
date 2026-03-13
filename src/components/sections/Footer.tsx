@@ -78,7 +78,7 @@ export function Footer() {
             </div>
             <p
               className="text-sm leading-relaxed max-w-xs mb-5"
-              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-muted)" }}
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
             >
               {t.footer.tagline}
             </p>
@@ -101,7 +101,7 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm transition-colors duration-200"
-                      style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+                      style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
                     >
                       {link.label}
                     </a>

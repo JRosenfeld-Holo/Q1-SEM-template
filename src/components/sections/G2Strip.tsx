@@ -4,7 +4,7 @@ import Image from "next/image";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { useI18n } from "@/lib/i18n/context";
 
-const BADGE_SIZE = 90;
+const BADGE_SIZE = 100;
 
 const BADGES: { src: string; alt: string; scale?: number }[] = [
   { src: "/g2-badges/g2_winter_leader.avif", alt: "G2 Winter Leader" },
@@ -53,7 +53,7 @@ export function G2Strip() {
                     alt={badge.alt}
                     width={w}
                     height={h}
-                    style={{ width: `${w}px`, height: `${h}px`, objectFit: "contain", opacity: 0.9 }}
+                    style={{ width: `${w}px`, height: `${h}px`, objectFit: "contain", opacity: 1.0 }}
                     draggable={false}
                   />
                 </div>

@@ -53,16 +53,16 @@ export function StickyBar() {
           <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
             <p
               className="text-sm hidden sm:block"
-              style={{ fontFamily: "var(--font-inter-var)", color: "var(--theme-text-secondary)" }}
+              style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-secondary)" }}
             >
               {t.sticky.text}
             </p>
-            {/* Desktop CTA → free pilot */}
+            {/* Desktop CTA → contact */}
             <a
-              href="#free-pilot"
+              href="#contact"
               className="ml-auto hidden sm:inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
               style={{
-                fontFamily: "var(--font-inter-var)",
+                fontFamily: "var(--font-roobert-var)",
                 backgroundColor: "var(--theme-cta-bg)",
                 color: "var(--theme-cta-text)",
               }}
@@ -77,7 +77,7 @@ export function StickyBar() {
               href="#contact"
               className="ml-auto sm:hidden inline-flex items-center justify-center px-6 py-2.5 rounded-[10px] font-medium text-sm cursor-pointer transition-all duration-200 shrink-0"
               style={{
-                fontFamily: "var(--font-inter-var)",
+                fontFamily: "var(--font-roobert-var)",
                 backgroundColor: "var(--theme-cta-bg)",
                 color: "var(--theme-cta-text)",
               }}

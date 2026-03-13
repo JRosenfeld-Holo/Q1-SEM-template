@@ -127,17 +127,6 @@ export function SIMCardScene() {
             />
           </div>
 
-          {/* Subtle edge rim highlight */}
-          <div
-            aria-hidden="true"
-            style={{
-              position: "absolute",
-              inset: 0,
-              borderRadius: "18px",
-              boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.18)",
-              pointerEvents: "none",
-            }}
-          />
         </motion.div>
       </motion.div>
 
