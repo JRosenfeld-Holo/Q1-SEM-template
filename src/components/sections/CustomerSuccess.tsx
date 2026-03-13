@@ -14,7 +14,7 @@ const STORIES = [
     name: "Brandon Davito",
     title: "SVP of Product Management",
     logo: { src: "/customer-logos/verkada.png", w: 56, h: 44 },
-    thumbnail: "/case-study-thumbnails/verkada.avif",
+    thumbnail: "/case-study-thumbnails/verkada-person.avif",
     videoId: "m-q18SEOScc",
     quote:
       "When AT&T and Verizon both had outages this year, our devices never went down. That's the flexibility Hologram gives us.",
@@ -34,7 +34,7 @@ const STORIES = [
     name: "Luke Saunders",
     title: "President & CEO",
     logo: { src: "/customer-logos/farmers-fridge.avif", w: 73, h: 28 },
-    thumbnail: "/case-study-thumbnails/farmers-fridge.avif",
+    thumbnail: "/case-study-thumbnails/farmers-fridge-person.avif",
     videoId: "QPPWgESttVE",
     quote:
       "The ROI with Hologram has been exceptional. We were able to cut our IoT bills in half.",
@@ -54,7 +54,7 @@ const STORIES = [
     name: "Endre Ulberg",
     title: "Software Engineer",
     logo: { src: "/customer-logos/sunday-power.avif", w: 148, h: 28 },
-    thumbnail: "/case-study-thumbnails/sunday-power.avif",
+    thumbnail: "/case-study-thumbnails/sunday-power-person.avif",
     videoId: "6FUO4UBT3YU",
     quote:
       "With Hologram, we get the ability to scale on top of systems that we trust and we get to do it in a cost-effective way.",
