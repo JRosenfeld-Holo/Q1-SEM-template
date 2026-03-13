@@ -295,19 +295,19 @@ export function CustomerSuccess() {
                     />
                     {/* Dark overlay */}
                     <div className="absolute inset-0 bg-black/45 group-hover:bg-black/25 transition-colors duration-300" />
-                    {/* Play button */}
-                    <div className="absolute inset-0 flex items-center justify-center">
+                    {/* Play button — bottom right, off faces */}
+                    <div className="absolute bottom-4 right-4">
                       <div
-                        className="flex items-center justify-center w-14 h-14 rounded-full group-hover:scale-110 transition-transform duration-300"
+                        className="flex items-center justify-center w-12 h-12 rounded-full group-hover:scale-110 transition-transform duration-300"
                         style={{ background: "rgba(0,0,0,0.55)", backdropFilter: "blur(6px)", border: "2px solid var(--theme-accent)" }}
                       >
-                        <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" style={{ marginLeft: "3px", fill: "var(--theme-accent)" }}>
+                        <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" style={{ marginLeft: "2px", fill: "var(--theme-accent)" }}>
                           <polygon points="5,3 19,12 5,21" />
                         </svg>
                       </div>
                     </div>
                     {/* Watch story label */}
-                    <div className="absolute bottom-3 left-4">
+                    <div className="absolute bottom-4 left-4 flex items-center gap-2">
                       <span className="text-xs text-white/70 tracking-[0.15em] uppercase" style={{ fontFamily: "var(--font-messina-var)" }}>
                         {t.customerSuccess.watchStory}
                       </span>
