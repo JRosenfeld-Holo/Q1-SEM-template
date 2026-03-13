@@ -35,10 +35,10 @@ const PAYG_FEATURES = [
 ];
 
 const ENTERPRISE_PERKS = [
+    { label: "Custom data rates", value: "Per fleet", highlight: true },
     { label: "Data pooling", value: "Available", highlight: true },
-    { label: "Volume discounts", value: "Available", highlight: true },
     { label: "Multi-year prepaid", value: "Available", highlight: true },
-    { label: "Flexible contract terms", value: "Fully custom", highlight: true },
+    { label: "Month-to-month or annual", value: "Your choice", highlight: true },
 ];
 
 const ENTERPRISE_EXTRAS = [
