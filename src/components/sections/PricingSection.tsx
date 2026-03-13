@@ -249,10 +249,10 @@ export function PricingSection() {
                                 {/* Header */}
                                 <div className="mb-8">
                                     <p
-                                        className="text-xs tracking-[0.2em] uppercase mb-3 opacity-0"
-                                        style={{ fontFamily: "var(--font-messina-var)" }}
+                                        className="text-xs tracking-[0.2em] uppercase mb-3"
+                                        style={{ fontFamily: "var(--font-messina-var)", color: "rgba(191,253,17,0.7)" }}
                                     >
-                                        &nbsp;
+                                        {t.pricing.enterpriseName}
                                     </p>
                                     <h3
                                         className="text-2xl md:text-3xl font-medium mb-3"
