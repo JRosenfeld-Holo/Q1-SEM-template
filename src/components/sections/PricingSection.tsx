@@ -268,19 +268,6 @@ export function PricingSection() {
                                     </p>
                                 </div>
 
-                                {/* Price highlight */}
-                                <div
-                                    className="flex items-baseline gap-2 mb-8 pb-8"
-                                    style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
-                                >
-                                    <span
-                                        className="text-3xl md:text-4xl lg:text-5xl font-semibold"
-                                        style={{ fontFamily: "var(--font-roobert-var)", color: "#bffd11" }}
-                                    >
-                                        Let's Talk
-                                    </span>
-                                </div>
-
                                 {/* Included perks */}
                                 <div className="flex flex-col gap-0 mb-8 flex-1">
                                     {ENTERPRISE_PERKS.map((perk) => (
