@@ -4,15 +4,6 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { useState } from "react";
 import { useI18n } from "@/lib/i18n/context";
 
-/* ── Icon components ── */
-function CheckIcon({ accent }: { accent?: boolean }) {
-    return (
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true" className="shrink-0">
-            <circle cx="10" cy="10" r="10" fill={accent ? "#bffd11" : "rgba(255,255,255,0.08)"} />
-            <path d="M6 10.5L8.5 13L14 7" stroke={accent ? "#00040F" : "rgba(255,255,255,0.5)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-    );
-}
 
 
 function ArrowRightIcon() {
@@ -37,15 +28,11 @@ const PAYG_FEATURES = [
 const ENTERPRISE_PERKS = [
     { label: "Negotiated data rates", value: "Per fleet", highlight: true },
     { label: "Data pooling", value: "Available", highlight: true },
+    { label: "Dedicated onboarding", value: "Included", highlight: true },
     { label: "Multi-year prepaid", value: "Available", highlight: true },
     { label: "Month-to-month or annual", value: "Your choice", highlight: true },
-];
-
-const ENTERPRISE_EXTRAS = [
-    "Dedicated account manager",
-    "Custom SLA & uptime guarantee",
-    "Priority technical support",
-    "Multi-carrier optimization",
+    { label: "Priority technical support", value: "Included", highlight: true },
+    { label: "Dedicated account manager", value: "Included", highlight: true },
 ];
 
 export function PricingSection() {
@@ -127,21 +114,29 @@ export function PricingSection() {
 
                             {/* Price highlight */}
                             <div
-                                className="flex items-baseline gap-2 mb-8 pb-8"
+                                className="mb-8 pb-8"
                                 style={{ borderBottom: "1px solid var(--theme-border-subtle)" }}
                             >
-                                <span
-                                    className="text-3xl md:text-4xl lg:text-5xl font-semibold"
-                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                                <div className="flex items-baseline gap-2">
+                                    <span
+                                        className="text-3xl md:text-4xl lg:text-5xl font-semibold"
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-accent)" }}
+                                    >
+                                        $0.03
+                                    </span>
+                                    <span
+                                        className="text-base"
+                                        style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
+                                    >
+                                        / MB
+                                    </span>
+                                </div>
+                                <p
+                                    className="text-xs mt-2"
+                                    style={{ fontFamily: "var(--font-messina-var)", color: "var(--theme-text-muted)" }}
                                 >
-                                    $0.03
-                                </span>
-                                <span
-                                    className="text-base"
-                                    style={{ fontFamily: "var(--font-roobert-var)", color: "var(--theme-text-muted)" }}
-                                >
-                                    / MB
-                                </span>
+                                    Starting price • volume discounts available
+                                </p>
                             </div>
 
                             {/* Feature rows */}
@@ -268,6 +263,19 @@ export function PricingSection() {
                                     </p>
                                 </div>
 
+                                {/* Price-like highlight — mirrors PAYG price block */}
+                                <div
+                                    className="mb-8 pb-8"
+                                    style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
+                                >
+                                    <p
+                                        className="text-xs tracking-[0.15em] uppercase font-semibold"
+                                        style={{ fontFamily: "var(--font-messina-var)", color: "#bffd11" }}
+                                    >
+                                        Everything in Pay-As-You-Go, plus:
+                                    </p>
+                                </div>
+
                                 {/* Included perks */}
                                 <div className="flex flex-col gap-0 mb-8 flex-1">
                                     {ENTERPRISE_PERKS.map((perk) => (
@@ -293,29 +301,6 @@ export function PricingSection() {
                                             </span>
                                         </div>
                                     ))}
-                                </div>
-
-                                {/* Enterprise extras */}
-                                <div
-                                    className="rounded-xl p-5 mb-8"
-                                    style={{
-                                        border: "1px solid rgba(191,253,17,0.12)",
-                                        backgroundColor: "rgba(191,253,17,0.03)",
-                                    }}
-                                >
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                        {ENTERPRISE_EXTRAS.map((extra) => (
-                                            <div key={extra} className="flex items-center gap-2.5">
-                                                <CheckIcon accent />
-                                                <span
-                                                    className="text-sm"
-                                                    style={{ fontFamily: "var(--font-roobert-var)", color: "rgba(255,255,255,0.65)" }}
-                                                >
-                                                    {extra}
-                                                </span>
-                                            </div>
-                                        ))}
-                                    </div>
                                 </div>
 
                                 {/* CTA */}
