@@ -290,7 +290,7 @@ export function CustomerSuccess() {
                       alt={`${s.company} customer story`}
                       fill
                       sizes="(max-width: 1024px) 100vw, 448px"
-                      style={{ objectFit: "cover" }}
+                      style={{ objectFit: "cover", objectPosition: "center 20%" }}
                       draggable={false}
                     />
                     {/* Dark overlay */}

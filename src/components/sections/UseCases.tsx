@@ -80,7 +80,7 @@ const USE_CASES = [
     subhead: "Global coverage without per-country carrier contracts.",
     pain: "Containers cross borders. Fleets go international. Managing carrier contracts per country kills expansion before it starts. Tracking gaps mean blind spots, and blind spots mean liability.",
     solution: [
-      "Multi-carrier SIM that works in 200+ countries, no renegotiating per market",
+      "Multi-carrier SIM that works in 190+ countries, no renegotiating per market",
       "Pause unused SIMs to stop billing on idle assets and seasonal fleets",
       "Pay only for the data each device actually uses, predictable cost at scale",
     ],
@@ -140,7 +140,7 @@ const USE_CASES = [
     id: "sensors",
     label: "Remote Sensors",
     Icon: IconWifi,
-    headline: "One SIM to manage sensors across 200+ countries.",
+    headline: "One SIM to manage sensors across 190+ countries.",
     subhead: "Deploy globally without per-region carrier contracts.",
     pain: "Managing carrier contracts country-by-country at sensor scale is a full-time operational burden. Remote and rural locations have spotty single-carrier coverage. Seasonal deployments billing through dormancy waste budget that should go to product.",
     solution: [
